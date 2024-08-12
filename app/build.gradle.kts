@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -15,6 +16,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -41,7 +47,24 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    //viewModelScope
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10")
+    //gson
+    implementation("com.google.code.gson:gson:2.10.1")
+    //glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
     testImplementation("junit:junit:4.13.2")
+
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+
+    testImplementation("com.google.truth:truth:1.0.1")
+    androidTestImplementation("com.google.truth:truth:1.0.1")
 }
