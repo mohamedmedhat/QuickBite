@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="fourteen_text_Size">14sp</dimen>
+    <dimen name="sixteen_text_Size">16sp</dimen>
+    <dimen name="eighteen_text_Size">18p</dimen>
+    <dimen name="button_login_height">327dp</dimen>
+    <dimen name="button_login_width">52dp</dimen>
+    <dimen name="recipe_detail_image">350dp</dimen>
+
+
+</resources>
