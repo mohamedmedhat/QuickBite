@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">قطمه سريعه</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register_imageDesc">صورة انشاء حساب</string>
+    <string name="register_username">اسم المستخدم</string>
+    <string name="register_email">البريد الاكتروني</string>
+    <string name="register_password">كلمه المرور</string>
+    <string name="register_confirmPassword">تاكيد كلمه المرور</string>
+    <string name="register_button_text">انشاء حساب</string>
+</resources>

@@ -1,5 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QuickBit</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">QuickBite</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register_imageDesc">register Image</string>
+    <string name="register_username">username</string>
+    <string name="register_email">email</string>
+    <string name="register_password">password</string>
+    <string name="register_confirmPassword">confirm password</string>
+    <string name="register_button_text">signUp</string>
 </resources>

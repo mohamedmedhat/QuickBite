@@ -5,11 +5,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 import com.xapp.quickbit.data.source.local.dao.SimpleEntityDao
+import com.xapp.quickbit.data.source.local.dao.UserDao
 import com.xapp.quickbit.data.source.local.entity.SimpleEntity
+import com.xapp.quickbit.data.source.local.entity.User
 
-@Database(entities = [SimpleEntity::class], version = 1)
+@Database(entities = [SimpleEntity::class, User::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun simpleEntityDao(): SimpleEntityDao
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile
