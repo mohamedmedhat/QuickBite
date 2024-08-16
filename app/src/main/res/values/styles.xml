@@ -14,7 +14,7 @@
     </style>
 
 
-    <style name="inputs_cornerRadius">
+    <style name="inputs_corner_Radius">
         <item name="boxCornerRadiusBottomStart">@dimen/register_inputs_cornerRadius</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/register_inputs_cornerRadius</item>
         <item name="boxCornerRadiusTopEnd">@dimen/register_inputs_cornerRadius</item>

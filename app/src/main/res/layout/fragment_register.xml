@@ -44,7 +44,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvl_userName"
-        style="@style/inputs_cornerRadius"
+        style="@style/inputs_corner_Radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -62,7 +62,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvl_email"
-        style="@style/inputs_cornerRadius"
+        style="@style/inputs_corner_Radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -79,11 +79,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvl_password"
-        style="@style/inputs_cornerRadius"
+        style="@style/inputs_corner_Radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_inputs_marginTop"
         android:hint="@string/register_password"
+        app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@+id/tvl_email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -97,11 +98,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvl_confirmPassword"
-        style="@style/inputs_cornerRadius"
+        style="@style/inputs_corner_Radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_inputs_marginTop"
         android:hint="@string/register_confirmPassword"
+        app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@id/tvl_password">
 
         <com.google.android.material.textfield.TextInputEditText
