@@ -48,6 +48,10 @@ class RegisterFragment : Fragment() {
             authViewModel.handleRegisterAction(userName, email, password, confirmPassword)
         }
 
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
+
         authViewModel.registrationResult.observe(viewLifecycleOwner) { message ->
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             if (message == "You have signed up successfully") {
