@@ -2,4 +2,17 @@
     <string name="app_name">QuickBit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_world">hello_world</string>
+    <string name="home">Home</string>
+    <string name="Search">search</string>
+    <string name="Info">info</string>
+    <string name="Favourite">favourite</string>
+    <string name="profile">profile</string>
+    <string name="about">about</string>
+    <string name="sign_out">sign out</string>
+    <string name="hello">so affect the outcome of the dish. For example, a mango smoothie may not taste as sweet and flavorful if the mangoes were sour and not in season.</string>
+    <string name="search">search...</string>
+    <string name="search_history">search_history</string>
+    <string name="lastviewed">last</string>
+    <string name="last_Viewed">Last_Viewed</string>
 </resources>

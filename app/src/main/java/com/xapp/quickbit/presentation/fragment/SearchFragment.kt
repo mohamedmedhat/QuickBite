@@ -5,56 +5,111 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.xapp.quickbit.R
+import com.xapp.quickbit.data.source.remote.model.myAdapter
+import com.xapp.quickbit.data.source.remote.model.recycleView
+import com.xapp.quickbit.databinding.FragmentSearchBinding
+import com.xapp.quickbit.presentation.activity.RecipeActivity
+import java.util.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding:FragmentSearchBinding?=null
+    private val binding get() = _binding!!
+    private lateinit var newRecyclerView1: RecyclerView
+    private lateinit var newRecyclerView2: RecyclerView
+    private lateinit var newRecyclerView3: RecyclerView
+    private lateinit var newArrayList: ArrayList<recycleView>
+    private lateinit var searchView:SearchView
+    lateinit var imageId:Array<Int>
+    lateinit var heading:Array<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
+        imageId= arrayOf(
+            R.drawable.ic_search ,
+            R.drawable.ic_clear,
+            R.drawable.searchbar,
+            R.drawable.ic_search ,
+            R.drawable.ic_clear,
+            R.drawable.searchbar,
+            R.drawable.ic_search ,
+            R.drawable.ic_clear,
+            R.drawable.searchbar,
+            R.drawable.ic_search ,
+            R.drawable.ic_clear,
+            R.drawable.searchbar,
+        )
+heading= arrayOf(
+    "hello",
+    "hi",
+    "nice",
+    "hello",
+    "hi",
+    "nice",
+    "hello",
+    "hi",
+    "nice",
+    "hello",
+    "hi",
+    "nice",
+
+
+
+)
+
+        searchView=binding.search
+        searchView.clearFocus()
+
+
+        newRecyclerView1 =binding.recyclerview
+        newRecyclerView1.layoutManager=LinearLayoutManager(context)
+        newRecyclerView1.setHasFixedSize(true)
+
+        newArrayList= arrayListOf<recycleView>()
+        getUserData()
+    }
+    private fun getUserData() {
+        for (i in imageId.indices) {
+            val new = recycleView(imageId[i], heading[i])
+            newArrayList.add(new)
+
+        }
+
+        val adapter = myAdapter(newArrayList)
+        newRecyclerView1.adapter = adapter
+
+        newRecyclerView2=binding.recyclerview2
+        newRecyclerView2.layoutManager=LinearLayoutManager(context)
+        adapter.setOnItemClickListener(object : myAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(context, "$position", Toast.LENGTH_SHORT).show()
+        }
+
+    })
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        _binding=FragmentSearchBinding.inflate(inflater,container,false)
+        return binding.root
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
-}
+    }
+
+
