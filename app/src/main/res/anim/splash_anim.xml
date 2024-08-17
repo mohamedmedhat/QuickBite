@@ -3,12 +3,12 @@
     android:ordering="together">
 
     <alpha
-        android:duration="1000"
+        android:duration="300"
         android:fromAlpha="0.0"
         android:toAlpha="1.0" />
 
     <scale
-        android:duration="1000"
+        android:duration="500"
         android:fromXScale="0.5"
         android:fromYScale="0.5"
         android:pivotX="50%"

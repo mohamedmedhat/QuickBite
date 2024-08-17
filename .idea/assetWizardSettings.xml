@@ -81,7 +81,8 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="F:\Downloads\logo.png" />
-                                                <entry key="scalingPercent" value="83" />
+                                                <entry key="scalingPercent" value="135" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -115,7 +116,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="outputName" value="in_launcher" />
+                                      <entry key="outputName" value="ia_launcher" />
                                     </map>
                                   </option>
                                 </PersistentState>

@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/register_logo_width"
+        android:layout_height="@dimen/register_logo_height"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/register_imageDesc"
         android:src="@drawable/logo"
@@ -37,7 +37,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/register_Text"
         android:textColor="@color/darkGreen"
-        android:textSize="40sp"
+        android:textSize="@dimen/register_tv_joinUs_textSize"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
@@ -47,7 +47,7 @@
         style="@style/inputs_corner_Radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/register_tvl_userName_margin_top"
         android:hint="@string/register_username"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@+id/tv_joinUs">
@@ -56,8 +56,8 @@
             android:id="@+id/tv_userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:fontFamily="@font/poppins_medium" />
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +67,7 @@
         style="@style/inputs_corner_Radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/register_tvl_email_margin_top"
         android:hint="@string/register_email"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@+id/tvl_userName">
@@ -76,8 +76,8 @@
             android:id="@+id/tv_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:fontFamily="@font/poppins_medium" />
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,8 +95,8 @@
             android:id="@+id/tv_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:fontFamily="@font/poppins_medium" />
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,8 +115,8 @@
             android:id="@+id/tv_confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:fontFamily="@font/poppins_medium" />
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,9 +125,9 @@
         style="@style/auth_button"
         android:layout_marginTop="@dimen/register_inputs_marginTop"
         android:backgroundTint="@color/darkGreen"
-        android:paddingHorizontal="50dp"
-        android:paddingVertical="15dp"
         android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="@dimen/btnSignUp_padding_horizontal"
+        android:paddingVertical="@dimen/btnSignUp_padding_vertical"
         android:text="@string/register_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
