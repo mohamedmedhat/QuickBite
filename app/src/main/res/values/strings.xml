@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">QuickBite</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
     <string name="register_Text">Join Us</string>
     <string name="register_imageDesc">register Image</string>
     <string name="register_username">username</string>
@@ -10,4 +11,13 @@
     <string name="register_confirmPassword">confirm password</string>
     <string name="register_button_text">Agree and Register</string>
     <string name="register_fab_desc">nav to login</string>
+    <string name="login_with_google_desc">login with google</string>
+    <string name="register_now">Register Now</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="login_as_guest_desc">login as Guest</string>
+    <string name="login_as_guest_text">login as Guest</string>
+    <string name="login_btn_text">login</string>
+    <string name="enter_your_password_hint">enter your password</string>
+    <string name="enter_your_email_hint">enter your email</string>
+    <string name="login_top_image">loginTopImage</string>
 </resources>

@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentSplashBinding
 
-
 class SplashFragment : Fragment() {
     private lateinit var _binding: FragmentSplashBinding
     private val binding get() = _binding
@@ -33,6 +32,6 @@ class SplashFragment : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-        }, 4000)
+        }, 800)
     }
 }

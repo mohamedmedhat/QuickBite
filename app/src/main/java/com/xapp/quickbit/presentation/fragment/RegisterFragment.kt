@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentRegisterBinding
 import com.xapp.quickbit.viewModel.AuthViewModel
-import java.lang.IllegalArgumentException
 
 class RegisterFragment : Fragment() {
-    private lateinit var _binding: FragmentRegisterBinding
-    private val binding get() = _binding
+
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
+
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,17 +30,18 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        try {
-            handleOnClicks()
-        } catch (error: IllegalArgumentException) {
-            throw error
-        }
+        handleOnClicks()
 
+        authViewModel.registrationResult.observe(viewLifecycleOwner) { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            if (message == "You have signed up successfully") {
+                authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            }
+        }
     }
 
     private fun handleOnClicks() {
-        val authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
-
         binding.btnSignUp.setOnClickListener {
             val userName = binding.tvUserName.text.toString()
             val email = binding.tvEmail.text.toString()
@@ -51,12 +54,10 @@ class RegisterFragment : Fragment() {
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
+    }
 
-        authViewModel.registrationResult.observe(viewLifecycleOwner) { message ->
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            if (message == "You have signed up successfully") {
-                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-            }
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

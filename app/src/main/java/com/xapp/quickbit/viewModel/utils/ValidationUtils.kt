@@ -11,6 +11,10 @@ object ValidationUtils {
         return username.isNotBlank() && email.isNotBlank() && password.isNotBlank() && confirmPassword.isNotBlank()
     }
 
+    fun validateLoginInputs(email: String, password: String): Boolean {
+        return email.isNotBlank() && password.isNotBlank()
+    }
+
     fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }

@@ -10,4 +10,13 @@
     <string name="register_confirmPassword">تاكيد كلمه المرور</string>
     <string name="register_button_text">انشاء حساب</string>
     <string name="register_fab_desc">الانتقال الي تسجيل الدخول</string>
+    <string name="login_with_google_desc">login with google</string>
+    <string name="register_now">Register Now</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="login_as_guest_desc">login as Guest</string>
+    <string name="login_as_guest_text">login as Guest</string>
+    <string name="login_btn_text">login</string>
+    <string name="enter_your_password_hint">enter your password</string>
+    <string name="enter_your_email_hint">enter your email</string>
+    <string name="login_top_image">loginTopImage</string>
 </resources>

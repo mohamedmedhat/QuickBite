@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.kapt")
+    id("com.google.gms.google-services")
 
 }
 
@@ -44,6 +45,18 @@ android {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-auth:23.0.0")
+
+    // Add the Firebase BOM (Bill of Materials)
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.android.gms:play-services-auth:20.0.0")
+
+    // google maps
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+
     // Room dependencies
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
@@ -68,15 +81,15 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     //glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
-    implementation("androidx.activity:activity:1.9.1")
+    implementation("androidx.activity:activity-ktx:1.9.1")
     testImplementation("junit:junit:4.13.2")
     // navigation component
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-
+    // default test
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-
+    // trust library for test
     testImplementation("com.google.truth:truth:1.0.1")
     androidTestImplementation("com.google.truth:truth:1.0.1")
 }
