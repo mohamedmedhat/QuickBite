@@ -3,10 +3,18 @@
 <resources>
     <dimen name="fourteen_text_Size">14sp</dimen>
     <dimen name="sixteen_text_Size">16sp</dimen>
-    <dimen name="eighteen_text_Size">18p</dimen>
+    <dimen name="eighteen_text_Size">18sp</dimen>
+
+
     <dimen name="button_login_height">327dp</dimen>
     <dimen name="button_login_width">52dp</dimen>
     <dimen name="recipe_detail_image">350dp</dimen>
+    <dimen name="register_inputs_marginTop">12dp</dimen>
+    <dimen name="register_inputs_cornerRadius">8dp</dimen>
 
-
+    <dimen name="auth_button_paddingHo">50dp</dimen>
+    <dimen name="auth_button_paddingVertical">15dp</dimen>
+    <dimen name="auth_button_cornerRadius">12dp</dimen>
+    <dimen name="auth_button_flow_horizontalGap">10dp</dimen>
+    <dimen name="auth_button_flow_verticalGap">10dp</dimen>
 </resources>

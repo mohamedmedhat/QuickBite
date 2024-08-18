@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mordida rápida</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register_Text">Únete a nosotros</string>
+    <string name="register_imageDesc">registrar imagen</string>
+    <string name="register_username">nombre de usuario</string>
+    <string name="register_email">Correo electrónico</string>
+    <string name="register_password">contraseña</string>
+    <string name="register_confirmPassword">Confirmar contraseña</string>
+    <string name="register_button_text">Regístrate</string>
+    <string name="register_fab_desc">Ir a la página de inicio de sesión</string>
+</resources>
