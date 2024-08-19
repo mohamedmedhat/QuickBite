@@ -59,6 +59,8 @@ class LoginFragment : Fragment() {
         authViewModel.loginState.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
+                Toast.makeText(requireContext(), "you have login successfully", Toast.LENGTH_LONG)
+                    .show()
                 goToHomeActivity()
             } else {
                 Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -66,13 +68,14 @@ class LoginFragment : Fragment() {
         }
 
         authViewModel.loginError.observe(viewLifecycleOwner) { errorMessage ->
-            errorMessage?.let {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-            }
-        }
+            val emailError = errorMessage["email"]
+            val passwordError = errorMessage["password"]
 
-        if (authViewModel.checkIfLoggedIn(requireContext())) {
-            goToHomeActivity()
+            binding.tvlEmail.error = emailError
+            binding.tvlPassword.error = passwordError
+            if (authViewModel.checkIfLoggedIn(requireContext())) {
+                goToHomeActivity()
+            }
         }
     }
 
@@ -87,6 +90,8 @@ class LoginFragment : Fragment() {
 
     private fun handleOnClicks() {
         binding.btnLogin.setOnClickListener {
+            binding.tvlEmail.error = null
+            binding.tvlPassword.error = null
             val email = binding.tvEmail.text.toString()
             val password = binding.tvPassword.text.toString()
             authViewModel.handleLoginAction(email, password)

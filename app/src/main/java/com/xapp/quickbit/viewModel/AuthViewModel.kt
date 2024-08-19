@@ -9,8 +9,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.xapp.quickbit.data.source.local.dao.UserDao
-import com.xapp.quickbit.data.source.local.database.AppDatabase
 import com.xapp.quickbit.viewModel.utils.ValidationUtils
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,17 +16,17 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     private val _user = MutableLiveData<FirebaseUser?>()
-    private val _loginError = MutableLiveData<String?>()
-    val registrationResult = MutableLiveData<String>()
-
     private val _registrationState = MutableLiveData<Boolean>()
-    val registrationState: LiveData<Boolean> get() = _registrationState
-
     private val _loginState = MutableLiveData<Boolean>()
+    val registerState: LiveData<Boolean> get() = _registrationState
     val loginState: LiveData<Boolean> get() = _loginState
-
     val user: LiveData<FirebaseUser?> get() = _user
-    val loginError: LiveData<String?> get() = _loginError
+
+    val loginError = MutableLiveData<Map<String, String?>>()
+    val registrationResult = MutableLiveData<Map<String, String?>>()
+
+    private val loginWithGoogleError = MutableLiveData<String>()
+    private var hasError = false
 
     fun handleRegisterAction(
         userName: String,
@@ -36,44 +34,71 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
         password: String,
         confirmPassword: String
     ) {
-        if (!ValidationUtils.validateInputs(userName, email, password, confirmPassword)) {
-            registrationResult.postValue("All fields must be filled")
-            return
+        val errors = mutableMapOf<String, String?>()
+
+        if (!ValidationUtils.isUserNameFilled(userName)) {
+            errors["userName"] = "Username is required"
+            hasError = true
+        }
+        if (!ValidationUtils.isEmailFilled(email)) {
+            errors["email"] = "Email is required"
+            hasError = true
+        }
+        if (!ValidationUtils.isPasswordFilled(password)) {
+            errors["password"] = "Password is required"
+            hasError = true
+        }
+        if (!ValidationUtils.isConfirmPasswordFilled(confirmPassword)) {
+            errors["confirmPassword"] = "Confirm password is required"
+            hasError = true
         }
         if (!ValidationUtils.isEmailValid(email)) {
-            registrationResult.postValue("Invalid email format")
-            return
+            errors["email"] = "Invalid email format"
+            hasError = true
         }
         if (!ValidationUtils.isPasswordValid(password)) {
-            registrationResult.postValue("Password must be at least 6 characters")
-            return
+            errors["password"] = "Password must be at least 6 characters"
+            hasError = true
         }
         if (!ValidationUtils.isPasswordMatching(password, confirmPassword)) {
-            registrationResult.postValue("Passwords do not match")
-            return
+            errors["confirmPassword"] = "Passwords do not match"
+            hasError = true
         }
         if (!ValidationUtils.isNameValid(userName)) {
-            registrationResult.postValue("Name must be less than 25 characters")
-            return
+            errors["userName"] = "Name must be less than 25 characters"
+            hasError = true
         }
 
-        registerUser(userName, email, password)
+        registrationResult.postValue(errors)
+
+        if (!hasError) {
+            registerUser(userName, email, password)
+        }
     }
 
     fun handleLoginAction(email: String, password: String) {
-        if (!ValidationUtils.validateLoginInputs(email, password)) {
-            _loginError.value = "Email and password are required"
-            return
+        val errors = mutableMapOf<String, String?>()
+
+        if (!ValidationUtils.isEmailFilled(email)) {
+            errors["email"] = "Email is required"
+            hasError = true
+        }
+        if (!ValidationUtils.isPasswordFilled(password)) {
+            errors["password"] = "Password is required"
+            hasError = true
         }
         if (!ValidationUtils.isEmailValid(email)) {
-            _loginError.value = "Invalid email format"
-            return
+            errors["email"] = "Invalid email format"
+            hasError = true
         }
         if (!ValidationUtils.isPasswordValid(password)) {
-            _loginError.value = "Password must be at least 6 characters"
-            return
+            errors["password"] = "Password must be at least 6 characters"
+            hasError = true
         }
-        loginUser(email, password)
+        loginError.postValue(errors)
+        if (!hasError) {
+            loginUser(email, password)
+        }
     }
 
     private fun registerUser(name: String, email: String, password: String) {
@@ -101,11 +126,10 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                 _loginState.value = task.isSuccessful
                 if (task.isSuccessful) {
                     _user.value = auth.currentUser
-                } else {
-                    _loginError.value = task.exception?.message
                 }
             }
     }
+
 
     fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
@@ -113,8 +137,6 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     _user.value = auth.currentUser
-                } else {
-                    _loginError.value = task.exception?.message
                 }
             }
     }
@@ -132,6 +154,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             apply()
         }
     }
+
 
     fun signOut() {
         auth.signOut()

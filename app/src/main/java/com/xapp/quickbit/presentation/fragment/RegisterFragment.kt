@@ -1,7 +1,7 @@
 package com.xapp.quickbit.presentation.fragment
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,11 +32,29 @@ class RegisterFragment : Fragment() {
 
         handleOnClicks()
 
-        authViewModel.registrationResult.observe(viewLifecycleOwner) { message ->
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            if (message == "You have signed up successfully") {
+        authViewModel.registrationResult.observe(viewLifecycleOwner) { errors ->
+            val userNameError = errors["userName"]
+            val emailError = errors["email"]
+            val passwordError = errors["password"]
+            val confirmPasswordError = errors["confirmPassword"]
+
+            binding.tvlUserName.error = userNameError
+            binding.tvlEmail.error = emailError
+            binding.tvlPassword.error = passwordError
+            binding.tvlConfirmPassword.error = confirmPasswordError
+        }
+
+        authViewModel.registerState.observe(viewLifecycleOwner) { isSuccess ->
+            if (isSuccess) {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
+                Toast.makeText(
+                    requireContext(),
+                    "You have registered successfully",
+                    Toast.LENGTH_LONG
+                ).show()
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            } else {
+                Toast.makeText(context, "Registration failed. Please try again.", Toast.LENGTH_SHORT).show()
             }
         }
     }
