@@ -2,17 +2,20 @@ package com.xapp.quickbit.viewModel.utils
 
 object ValidationUtils {
 
-    fun validateInputs(
-        username: String,
-        email: String,
-        password: String,
-        confirmPassword: String
-    ): Boolean {
-        return username.isNotBlank() && email.isNotBlank() && password.isNotBlank() && confirmPassword.isNotBlank()
+    fun isUserNameFilled(username: String): Boolean {
+        return username.isNotBlank()
     }
 
-    fun validateLoginInputs(email: String, password: String): Boolean {
-        return email.isNotBlank() && password.isNotBlank()
+    fun isEmailFilled(email: String): Boolean {
+        return email.isNotBlank()
+    }
+
+    fun isPasswordFilled(password: String): Boolean {
+        return password.isNotBlank()
+    }
+
+    fun isConfirmPasswordFilled(confirmPassword: String): Boolean {
+        return confirmPassword.isNotBlank()
     }
 
     fun isEmailValid(email: String): Boolean {
