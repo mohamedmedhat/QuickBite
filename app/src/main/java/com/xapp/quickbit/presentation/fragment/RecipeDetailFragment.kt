@@ -7,8 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import com.xapp.quickbit.R
 
+<<<<<<< HEAD
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+
 class RecipeDetailFragment : Fragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+=======
+class RecipeDetailFragment : Fragment() {
+
+>>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -16,4 +31,9 @@ class RecipeDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recipe_detail, container, false)
     }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
 }

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+<<<<<<< HEAD
+    <mapping directory="" vcs="Git" />
+=======
 
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+>>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
   </component>
 </project>
