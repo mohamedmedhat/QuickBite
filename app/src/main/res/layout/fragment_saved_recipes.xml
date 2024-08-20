@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Caption for the page -->
+
+    <!-- Search Bar -->
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="16dp"
+        android:text="Recipe Saved"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:drawableStart="@drawable/search_24px"
+        android:drawablePadding="8dp"
+        android:hint="Search saved recipes..."
+        android:padding="12dp"
+        android:layout_below="@id/caption"
+        android:layout_marginTop="16dp" />
+
+    <!-- RecyclerView for the recipes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipe_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_bar"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical" />
+</RelativeLayout>
