@@ -3,6 +3,7 @@ package com.xapp.quickbit.presentation.activity
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+<<<<<<< HEAD
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -41,5 +42,16 @@ public class RecipeActivity : AppCompatActivity() {
             replace(R.id.nav_host_fragment,fragment)
             commit()
         }
+=======
+import com.xapp.quickbit.databinding.ActivityRecipeActivityBinding
+
+class RecipeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRecipeActivityBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityRecipeActivityBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+        setContentView(binding.root)
+>>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
     }
 }

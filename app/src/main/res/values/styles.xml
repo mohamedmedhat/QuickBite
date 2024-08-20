@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="auth_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:layout_marginTop">@dimen/register_inputs_marginTop</item>
+        <item name="backgroundTint">@color/darkGreen</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="flow_horizontalGap">@dimen/auth_button_flow_horizontalGap</item>
+        <item name="flow_verticalGap">@dimen/auth_button_flow_verticalGap</item>
+        <item name="strokeColor">@color/darkGreen</item>
+    </style>
+
+
+    <style name="inputs_corner_Radius">
+        <item name="boxCornerRadiusBottomStart">@dimen/register_inputs_cornerRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/register_inputs_cornerRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/register_inputs_cornerRadius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/register_inputs_cornerRadius</item>
+    </style>
+</resources>

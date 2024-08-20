@@ -1,14 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.fragment.LoginFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/login_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/login_image_height"
+        android:contentDescription="@string/login_top_image"
+        android:src="@drawable/image_1"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/login_logoImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_logoImage_height"
+        android:layout_marginTop="@dimen/login_logoImage_margin_top"
+        android:contentDescription="@string/login_top_image"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvl_email"
+        style="@style/inputs_corner_Radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/login_tvl_margin_horizontal"
+        android:hint="@string/enter_your_email_hint"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_image">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvl_password"
+        style="@style/inputs_corner_Radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/login_tvl_margin_horizontal"
+        android:layout_marginTop="@dimen/login_tvl_password_margin_top"
+        android:hint="@string/enter_your_password_hint"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvl_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        style="@style/auth_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/login_tvl_margin_horizontal"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/login_btn_text"
+        android:textSize="@dimen/btn_login_textSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvl_password" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_loginWithGoogle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/loginWithGoogle_margin_start"
+        android:layout_marginTop="@dimen/loginWithGoogle_margin_top"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/login_with_google_desc"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="@dimen/loginWithGoogle_padding_horizontal"
+        android:paddingVertical="@dimen/loginWithGoogle_padding_vertical"
+        app:cornerRadius="@dimen/register_inputs_cornerRadius"
+        app:icon="@drawable/googleicon"
+        app:iconSize="@dimen/loginWithGoogle_icon_size"
+        app:iconTint="@color/darkGreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:strokeColor="@color/darkGreen"
+        app:strokeWidth="@dimen/loginBtn_stroke_width" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_loginAsGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/loginAsGuest_margin_start"
+        android:layout_marginTop="@dimen/loginAsGuest_margin_top"
+        android:layout_marginEnd="@dimen/loginAsGuest_margin_end"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/login_as_guest_desc"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="@dimen/loginAsGuest_padding_Horizontal"
+        android:paddingVertical="@dimen/loginAsGuest_padding_Vertical"
+        android:text="@string/login_as_guest_text"
+        android:textColor="@color/darkGreen"
+        android:textSize="@dimen/loginAsGuest_textSize"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/register_inputs_cornerRadius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_loginWithGoogle"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:strokeColor="@color/darkGreen"
+        app:strokeWidth="@dimen/loginBtn_stroke_width" />
+
+    <TextView
+        android:id="@+id/tv_notHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/notHaveAccount_margin_start"
+        android:layout_marginBottom="@dimen/notHaveAccount_margin_bottom"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/don_t_have_an_account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_registerLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/registerLink_margin_start"
+        android:layout_marginBottom="@dimen/registerLink_margin_bottom"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/register_now"
+        android:textColor="@color/darkGreen"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_notHaveAccount" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

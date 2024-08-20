@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.activity.RecipeActivity">
 
+<<<<<<< HEAD
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
@@ -31,3 +36,6 @@
 
 
 </RelativeLayout>
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
