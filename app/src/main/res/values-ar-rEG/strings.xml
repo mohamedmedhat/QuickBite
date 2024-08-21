@@ -21,4 +21,7 @@
     <string name="login_top_image">loginTopImage</string>
     <string name="this_is_info_button">this is info button</string>
     <string name="this_is_profile_picture">this is profile picture</string>
+    <string name="get_started">Get Started</string>
+    <string name="this_is_intro_image_desc">this is intro image</string>
+    <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
 </resources>
