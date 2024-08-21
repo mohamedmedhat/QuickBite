@@ -2,21 +2,17 @@
 <resources>
     <string name="app_name">QuickBite</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<<<<<<< HEAD
-    <string name="hello_world">hello_world</string>
-    <string name="home">Home</string>
-    <string name="Search">search</string>
-    <string name="Info">info</string>
-    <string name="Favourite">favourite</string>
-    <string name="profile">profile</string>
-    <string name="about">about</string>
-    <string name="sign_out">sign out</string>
-    <string name="hello">so affect the outcome of the dish. For example, a mango smoothie may not taste as sweet and flavorful if the mangoes were sour and not in season.</string>
-    <string name="search">search...</string>
-    <string name="search_history">search_history</string>
-    <string name="lastviewed">last</string>
-    <string name="last_Viewed">Last_Viewed</string>
-=======
+    <string name="hello_world" translatable="false">hello_world</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="Search" translatable="false">search</string>
+    <string name="profile" translatable="false">profile</string>
+    =
+    <string name="hello" translatable="false">so affect the outcome of the dish. For example, a mango smoothie may not taste as sweet and flavorful if the mangoes were sour and not in season.</string>
+    =
+    <string name="search_history" translatable="false">search_history</string>
+    =
+    <string name="last_Viewed" translatable="false">Last_Viewed</string>
+
     <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
     <string name="register_Text">Join Us</string>
     <string name="register_imageDesc">register Image</string>
@@ -35,5 +31,7 @@
     <string name="enter_your_password_hint">enter your password</string>
     <string name="enter_your_email_hint">enter your email</string>
     <string name="login_top_image">loginTopImage</string>
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
+    <string name="this_is_info_button">this is info button</string>
+    <string name="this_is_profile_picture">this is profile picture</string>
+    <string name="saved" translatable="false">saved</string>
 </resources>

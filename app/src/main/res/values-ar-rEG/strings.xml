@@ -19,4 +19,6 @@
     <string name="enter_your_password_hint">enter your password</string>
     <string name="enter_your_email_hint">enter your email</string>
     <string name="login_top_image">loginTopImage</string>
+    <string name="this_is_info_button">this is info button</string>
+    <string name="this_is_profile_picture">this is profile picture</string>
 </resources>

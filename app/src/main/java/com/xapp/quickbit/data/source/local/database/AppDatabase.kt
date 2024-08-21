@@ -8,11 +8,14 @@ import com.xapp.quickbit.data.source.local.dao.SimpleEntityDao
 import com.xapp.quickbit.data.source.local.dao.UserDao
 import com.xapp.quickbit.data.source.local.entity.SimpleEntity
 import com.xapp.quickbit.data.source.local.entity.User
+import com.xapp.quickbit.data.source.local.entity.Colors
+import com.xapp.quickbit.data.source.local.dao.ColorDao
 
-@Database(entities = [SimpleEntity::class, User::class], version = 2)
+@Database(entities = [SimpleEntity::class, User::class, Colors::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun simpleEntityDao(): SimpleEntityDao
     abstract fun userDao(): UserDao
+    abstract fun colorDao(): ColorDao
 
     companion object {
         @Volatile

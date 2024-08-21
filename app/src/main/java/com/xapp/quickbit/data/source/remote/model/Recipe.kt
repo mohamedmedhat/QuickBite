@@ -8,6 +8,6 @@ import com.squareup.moshi.JsonClass
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class Recipe(
-    @SerializedName("")
+    @SerializedName("id")
     val id: Long = 0,
 ) : Parcelable

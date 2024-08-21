@@ -9,9 +9,6 @@
     <dimen name="splash_logo_height">220dp</dimen>
     <dimen name="register_logo_width">150dp</dimen>
     <dimen name="register_logo_height">150dp</dimen>
-    <dimen name="button_login_height">327dp</dimen>
-    <dimen name="button_login_width">52dp</dimen>
-    <dimen name="recipe_detail_image">350dp</dimen>
     <dimen name="register_inputs_marginTop">12dp</dimen>
     <dimen name="register_inputs_cornerRadius">8dp</dimen>
     <dimen name="register_tvl_email_margin_top">10dp</dimen>
@@ -38,9 +35,6 @@
     <dimen name="loginAsGuest_margin_start">20dp</dimen>
     <dimen name="loginAsGuest_margin_end">20dp</dimen>
     <dimen name="loginAsGuest_margin_top">10dp</dimen>
-    <dimen name="auth_button_paddingHo">50dp</dimen>
-    <dimen name="auth_button_paddingVertical">15dp</dimen>
-    <dimen name="auth_button_cornerRadius">12dp</dimen>
     <dimen name="auth_button_flow_horizontalGap">10dp</dimen>
     <dimen name="auth_button_flow_verticalGap">10dp</dimen>
 </resources>

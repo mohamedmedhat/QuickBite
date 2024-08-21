@@ -13,28 +13,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.xapp.quickbit.R
-import com.xapp.quickbit.databinding.FragmentSearchBinding
-import com.xapp.quickbit.presentation.activity.AuthActivity
-import com.xapp.quickbit.presentation.activity.RecipeActivity
-
+import com.xapp.quickbit.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
-    private var _binding: FragmentSearchBinding?=null
+    private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
-    private lateinit var btn1:Button
-    private lateinit var btn2:Button
-    private lateinit var window:TextView
-    private lateinit var image:ImageView
-    private val image_request_code:Int=100
+    private lateinit var btn2: Button
+    private lateinit var window: TextView
+    private lateinit var image: ImageView
+
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-    btn1.findViewById<Button>(R.id.signOut)
-        btn1.setOnClickListener{
-
-        }
         btn2.findViewById<Button>(R.id.about)
         btn2.setOnClickListener {
             window.setTransitionVisibility(View.VISIBLE)
@@ -43,27 +34,33 @@ class AboutFragment : Fragment() {
 
     }
 
-private fun pickImageGallery(){
-    val intent=Intent(Intent.ACTION_PICK)
-    intent.type="image/*"
-    startActivityForResult(intent,image_request_code)
-}
+    private fun pickImageGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, imageRequestCode)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding=FragmentSearchBinding.inflate(inflater,container,false)
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding=null
+        _binding = null
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == image_request_code && resultCode==RESULT_OK ){
+        if (requestCode == imageRequestCode && resultCode == RESULT_OK) {
             image.setImageURI(data?.data)
         }
     }
+
+    companion object {
+        private const val imageRequestCode: Int = 100
     }
+}

@@ -13,17 +13,9 @@ import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {
-<<<<<<< HEAD
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-=======
     private lateinit var _binding: FragmentSplashBinding
     private val binding get() = _binding
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +25,6 @@ class SplashFragment : Fragment() {
         return binding.root
     }
 
-<<<<<<< HEAD
-
-}
-=======
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -48,4 +36,3 @@ class SplashFragment : Fragment() {
         }, 800)
     }
 }
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e

@@ -1,6 +1,6 @@
-package com.xapp.quickbit.data.source.remote.network.restapi
+package com.xapp.quickbit.data.source.remote.model
 
-data class productsItem(
+data class ProductsItem(
     val country: String,
     val description: String,
     val difficulty: Int,

@@ -20,14 +20,7 @@ import com.xapp.quickbit.databinding.FragmentLoginBinding
 import com.xapp.quickbit.presentation.activity.RecipeActivity
 import com.xapp.quickbit.viewModel.AuthViewModel
 
-<<<<<<< HEAD
 
-class LoginFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-=======
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
@@ -49,7 +42,6 @@ class LoginFragment : Fragment() {
                     .show()
             }
         }
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,10 +51,6 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-<<<<<<< HEAD
-
-}
-=======
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -135,4 +123,3 @@ class LoginFragment : Fragment() {
         _binding = null
     }
 }
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e

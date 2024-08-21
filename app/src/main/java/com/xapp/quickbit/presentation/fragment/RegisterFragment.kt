@@ -13,20 +13,10 @@ import com.xapp.quickbit.databinding.FragmentRegisterBinding
 import com.xapp.quickbit.viewModel.AuthViewModel
 
 class RegisterFragment : Fragment() {
-<<<<<<< HEAD
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-=======
-
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
     private val authViewModel: AuthViewModel by viewModels()
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,10 +26,6 @@ class RegisterFragment : Fragment() {
         return binding.root
     }
 
-<<<<<<< HEAD
-
-}
-=======
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -67,7 +53,11 @@ class RegisterFragment : Fragment() {
                 ).show()
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             } else {
-                Toast.makeText(context, "Registration failed. Please try again.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Registration failed. Please try again.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -92,4 +82,3 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 }
->>>>>>> 59c289dd795c237dd9bdc9fe70d59d2079ab864e
