@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
                 Toast.makeText(requireContext(), "you have login successfully", Toast.LENGTH_LONG)
                     .show()
-                goToHomeActivity()
+                goToIntroFragment()
             } else {
                 Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
             }
@@ -112,10 +112,13 @@ class LoginFragment : Fragment() {
         googleSignInLauncher.launch(signInIntent)
     }
 
+    private fun goToIntroFragment() {
+        findNavController().navigate(R.id.action_loginFragment_to_introFragment)
+    }
+
     private fun goToHomeActivity() {
-        val intent = Intent(activity, RecipeActivity::class.java)
+        val intent = Intent(requireContext(), RecipeActivity::class.java)
         startActivity(intent)
-        activity?.finish()
     }
 
     override fun onDestroyView() {

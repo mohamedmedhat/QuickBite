@@ -37,4 +37,5 @@
     <dimen name="loginAsGuest_margin_top">10dp</dimen>
     <dimen name="auth_button_flow_horizontalGap">10dp</dimen>
     <dimen name="auth_button_flow_verticalGap">10dp</dimen>
+    <dimen name="intro_btn_cornerRadius">3dp</dimen>
 </resources>
