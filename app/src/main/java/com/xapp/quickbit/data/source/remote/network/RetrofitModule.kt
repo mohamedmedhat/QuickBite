@@ -1,5 +1,6 @@
 package com.xapp.quickbit.data.source.remote.network
 
+import com.xapp.quickbit.data.source.remote.network.restapi.FoodService
 import com.xapp.quickbit.data.source.remote.network.restapi.RecipeService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitModule {
     const val END_POINT = ""
-    private const val BASE_URL = ""
+    private const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply {
@@ -22,5 +23,5 @@ object RetrofitModule {
         .client(okHttpClient)
         .build()
 
-    val apiRecipe: RecipeService = retrofit.create(RecipeService::class.java)
+    val apiRecipe: FoodService = retrofit.create(FoodService::class.java)
 }

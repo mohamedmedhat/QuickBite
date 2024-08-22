@@ -37,4 +37,6 @@
     <string name="get_started">Get Started</string>
     <string name="this_is_intro_image_desc">this is intro image</string>
     <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
+    <string name="area_info" translatable="false">area</string>
+    <string name="category_info"translatable="false">category</string>
 </resources>
