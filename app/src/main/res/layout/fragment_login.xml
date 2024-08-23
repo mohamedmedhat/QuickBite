@@ -8,6 +8,7 @@
         android:id="@+id/login_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_image_height"
+        android:layout_marginTop="-15dp"
         android:contentDescription="@string/login_top_image"
         android:src="@drawable/image_1"
         app:layout_constraintTop_toTopOf="parent" />

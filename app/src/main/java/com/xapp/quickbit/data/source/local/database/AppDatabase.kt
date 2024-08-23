@@ -4,18 +4,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
-import com.xapp.quickbit.data.source.local.dao.SimpleEntityDao
+import com.xapp.quickbit.data.source.local.dao.FavouriteDao
 import com.xapp.quickbit.data.source.local.dao.UserDao
-import com.xapp.quickbit.data.source.local.entity.SimpleEntity
-import com.xapp.quickbit.data.source.local.entity.User
-import com.xapp.quickbit.data.source.local.entity.Colors
-import com.xapp.quickbit.data.source.local.dao.ColorDao
+import com.xapp.quickbit.data.source.local.entity.MealEntity
+import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
+import com.xapp.quickbit.data.source.local.entity.UserEntity
 
-@Database(entities = [SimpleEntity::class, User::class, Colors::class], version = 3)
+@Database(
+    entities = [UserEntity::class, MealEntity::class, MealInformationEntity::class],
+    version = 3
+)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun simpleEntityDao(): SimpleEntityDao
     abstract fun userDao(): UserDao
-    abstract fun colorDao(): ColorDao
+    abstract fun favouriteDao(): FavouriteDao
 
     companion object {
         @Volatile

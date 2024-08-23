@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
@@ -19,6 +18,7 @@ import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentLoginBinding
 import com.xapp.quickbit.presentation.activity.RecipeActivity
 import com.xapp.quickbit.viewModel.AuthViewModel
+import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 
 
 class LoginFragment : Fragment() {
@@ -38,8 +38,11 @@ class LoginFragment : Fragment() {
                     authViewModel.firebaseAuthWithGoogle(idToken)
                 }
             } catch (e: ApiException) {
-                Toast.makeText(context, "Google sign-in failed: ${e.message}", Toast.LENGTH_SHORT)
-                    .show()
+                CustomToast(
+                    requireContext(),
+                    "Google sign-in failed: ${e.message}",
+                    R.drawable.error_24px
+                )
             }
         }
 
@@ -60,11 +63,14 @@ class LoginFragment : Fragment() {
         authViewModel.loginState.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
-                Toast.makeText(requireContext(), "you have login successfully", Toast.LENGTH_LONG)
-                    .show()
+                CustomToast(
+                    requireContext(),
+                    "you have login successfully",
+                    R.drawable.task_alt_24px
+                )
                 goToHomeActivity()
             } else {
-                Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                CustomToast(requireContext(), "Authentication failed.", R.drawable.error_24px)
             }
         }
 

@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentRegisterBinding
 import com.xapp.quickbit.viewModel.AuthViewModel
+import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
@@ -46,18 +46,18 @@ class RegisterFragment : Fragment() {
         authViewModel.registerState.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
-                Toast.makeText(
+                CustomToast(
                     requireContext(),
                     "You have registered successfully",
-                    Toast.LENGTH_LONG
-                ).show()
+                    R.drawable.task_alt_24px
+                )
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             } else {
-                Toast.makeText(
-                    context,
+                CustomToast(
+                    requireContext(),
                     "Registration failed. Please try again.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                    R.drawable.error_24px
+                )
             }
         }
     }

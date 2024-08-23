@@ -21,4 +21,25 @@
     <string name="login_top_image">loginTopImage</string>
     <string name="this_is_info_button">this is info button</string>
     <string name="this_is_profile_picture">this is profile picture</string>
+    <string name="default_home_image">default home image</string>
+    <string name="welcome">Welcome 👋🏼</string>
+    <string name="user_name">user name</string>
+    <string name="item_name">Item Name</string>
+    <string name="clock_time">30 min</string>
+    <string name="rate">(4.5)</string>
+    <string name="image_of_item_in_home_recycleview">image of item in home recycleView</string>
+    <string name="star_icon">star icon</string>
+    <string name="item_image_in_home_recycleview">item image in home recycleView</string>
+    <string name="save_icon">save icon</string>
+    <string name="shedule_icon">shedule icon</string>
+    <string name="rate_icon">rate icon</string>
+    <string name="thai_basil_pork">Thai Basil Pork</string>
+    <string name="favourite_item_image">favourite item image</string>
+    <string name="no_favorites">No Favorites...</string>
+    <string name="recipe_saved">Recipe Saved</string>
+    <string name="filter_your_recipes_by_first_letter">filter your recipes by first letter</string>
+    <string name="nav_to_profile">nav to profile</string>
+    <string name="logout_desc">logout</string>
+    <string name="settings_icon_title">Settings</string>
+    <string name="toast_icon">toast icon</string>
 </resources>

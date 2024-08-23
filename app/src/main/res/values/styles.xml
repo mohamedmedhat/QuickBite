@@ -20,4 +20,12 @@
         <item name="boxCornerRadiusTopEnd">@dimen/register_inputs_cornerRadius</item>
         <item name="boxCornerRadiusTopStart">@dimen/register_inputs_cornerRadius</item>
     </style>
+
+    <style name="SpinnerItemTextStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/darkGreen</item>
+    </style>
+
+    <style name="SpinnerItemTextStyleSelected" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
