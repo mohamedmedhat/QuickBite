@@ -13,7 +13,7 @@
     <string name="search_history" translatable="false">search_history</string>
     =
     <string name="last_Viewed" translatable="false">Last_Viewed</string>
-
+    <string name="intro_desc_text" translatable="false">There is no need to fear failure. Tested recipes are guaranteed to work by our professional chefs.</string>
     <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
     <string name="register_Text">Join Us</string>
     <string name="register_imageDesc">register Image</string>
@@ -35,6 +35,7 @@
     <string name="this_is_info_button">this is info button</string>
     <string name="this_is_profile_picture">this is profile picture</string>
     <string name="saved" translatable="false">saved</string>
+
     <string name="default_home_image">default home image</string>
     <string name="welcome">Welcome 👋🏼</string>
     <string name="user_name">user name</string>
@@ -85,4 +86,7 @@
         <item>Y</item>
         <item>Z</item>
     </string-array>
+    <string name="get_started">Get Started</string>
+    <string name="this_is_intro_image_desc">this is intro image</string>
+    <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
 </resources>

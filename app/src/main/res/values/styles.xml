@@ -21,11 +21,21 @@
         <item name="boxCornerRadiusTopStart">@dimen/register_inputs_cornerRadius</item>
     </style>
 
+
     <style name="SpinnerItemTextStyle" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/darkGreen</item>
     </style>
 
     <style name="SpinnerItemTextStyleSelected" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="introBtn_corner_Radius">
+        <item name="boxCornerRadiusBottomStart">@dimen/intro_btn_cornerRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/intro_btn_cornerRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/intro_btn_cornerRadius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/intro_btn_cornerRadius</item>
+        <item name="flow_horizontalGap">@dimen/auth_button_flow_horizontalGap</item>
+        <item name="flow_verticalGap">@dimen/auth_button_flow_verticalGap</item>
     </style>
 </resources>

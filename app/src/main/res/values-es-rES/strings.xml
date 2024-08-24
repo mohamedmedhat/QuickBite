@@ -42,4 +42,7 @@
     <string name="logout_desc">logout</string>
     <string name="settings_icon_title">Settings</string>
     <string name="toast_icon">toast icon</string>
+    <string name="get_started">Get Started</string>
+    <string name="this_is_intro_image_desc">this is intro image</string>
+    <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
 </resources>

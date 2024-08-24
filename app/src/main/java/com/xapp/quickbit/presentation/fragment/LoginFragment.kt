@@ -68,7 +68,7 @@ class LoginFragment : Fragment() {
                     "you have login successfully",
                     R.drawable.task_alt_24px
                 )
-                goToHomeActivity()
+                goToIntroFragment()
             } else {
                 CustomToast(requireContext(), "Authentication failed.", R.drawable.error_24px)
             }
@@ -118,10 +118,13 @@ class LoginFragment : Fragment() {
         googleSignInLauncher.launch(signInIntent)
     }
 
+    private fun goToIntroFragment() {
+        findNavController().navigate(R.id.action_loginFragment_to_introFragment)
+    }
+
     private fun goToHomeActivity() {
-        val intent = Intent(activity, RecipeActivity::class.java)
+        val intent = Intent(requireContext(), RecipeActivity::class.java)
         startActivity(intent)
-        activity?.finish()
     }
 
     override fun onDestroyView() {
