@@ -102,6 +102,8 @@ heading= arrayOf(
     ): View {
         _binding=FragmentSearchBinding.inflate(inflater,container,false)
         return binding.root
+        // Inflate the layout for this fragment
+
     }
 
     override fun onDestroyView() {
