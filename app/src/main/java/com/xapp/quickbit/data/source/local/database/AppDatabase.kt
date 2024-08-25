@@ -6,13 +6,12 @@ import androidx.room.RoomDatabase
 import android.content.Context
 import com.xapp.quickbit.data.source.local.dao.FavouriteDao
 import com.xapp.quickbit.data.source.local.dao.UserDao
-import com.xapp.quickbit.data.source.local.entity.MealEntity
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
 import com.xapp.quickbit.data.source.local.entity.UserEntity
 
 @Database(
-    entities = [UserEntity::class, MealEntity::class, MealInformationEntity::class],
-    version = 3
+    entities = [UserEntity::class, MealInformationEntity::class],
+    version = 4
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao

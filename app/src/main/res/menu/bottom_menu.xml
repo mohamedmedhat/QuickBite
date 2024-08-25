@@ -17,9 +17,9 @@
         android:iconTint="@color/nav_bottom_icon"
         android:title="@string/saved" />
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/categoryFragment"
         android:fontFamily="@font/poppins_medium"
-        android:icon="@drawable/profile"
-        android:title="@string/profile" />
+        android:icon="@drawable/category_24px"
+        android:title="@string/categories_bottom_nav_title" />
 
 </menu>

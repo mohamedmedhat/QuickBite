@@ -1,23 +1,24 @@
 package com.xapp.quickbit.presentation.fragment
 
-import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentHomeBinding
+import com.xapp.quickbit.presentation.activity.AuthActivity
+import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.HomeRecipesViewModel
 import com.xapp.quickbit.viewModel.adapter.HomeRecipesAdapter
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
@@ -26,8 +27,17 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var homeRecipesViewModel: HomeRecipesViewModel
     private lateinit var homeRecipesAdapter: HomeRecipesAdapter
+    private lateinit var authViewModel: AuthViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        sharedPreferences =
+            requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +50,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         homeRecipesViewModel = ViewModelProvider(this)[HomeRecipesViewModel::class.java]
+
+        binding.lottieLoading.visibility = View.VISIBLE
+        binding.rvHomeRecycleView.visibility = View.GONE
 
         homeRecipesAdapter = HomeRecipesAdapter(ArrayList()) { mealDetail ->
             navigateToItemFragment(mealDetail)
@@ -48,10 +62,18 @@ class HomeFragment : Fragment() {
         binding.rvHomeRecycleView.adapter = homeRecipesAdapter
 
         homeRecipesViewModel.mealRecipes.observe(viewLifecycleOwner) { recipes ->
-            homeRecipesAdapter.updateData(recipes)
+            if (recipes.isNotEmpty()) {
+                binding.lottieLoading.visibility = View.GONE
+                binding.rvHomeRecycleView.visibility = View.VISIBLE
+                homeRecipesAdapter.updateData(recipes)
+            }
         }
 
         homeRecipesViewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+            binding.lottieLoading.visibility = View.GONE
+            binding.rvHomeRecycleView.visibility = View.GONE
+
+            binding.tvNoRecipes.visibility = View.VISIBLE
             errorMessage?.let {
                 CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
                 Log.e("Home Fragment Error", it)
@@ -59,7 +81,13 @@ class HomeFragment : Fragment() {
         }
 
         setupSpinner()
+        welcomeUser()
         handleOnCLick()
+    }
+
+    private fun welcomeUser() {
+        val userName = sharedPreferences.getString("userName", "Guest")
+        binding.tvUserNameText.text = userName
     }
 
     private fun navigateToItemFragment(mealDetail: MealDetail) {
@@ -126,20 +154,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun handleOnCLick() {
-        binding.svHomeSearch.setOnClickListener {
-            val bundle = Bundle().apply {
-                putBoolean("focus_search", true)
-            }
-            findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundle)
-
-            Handler(Looper.getMainLooper()).postDelayed({
-                val searchView = requireActivity().findViewById<androidx.appcompat.widget.SearchView>(R.id.search)
-                searchView.requestFocus()
-                searchView.setIconified(false)
-                searchView.setQuery("", false)
-                val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT)
-            }, 300)
+        binding.ivHomeLogoutImage.setOnClickListener {
+            authViewModel.signOut()
+            val editor = sharedPreferences.edit()
+            editor.remove("userEmail")
+            editor.remove("userPassword")
+            editor.apply()
+            val intent = Intent(requireContext(), AuthActivity::class.java)
+            startActivity(intent)
         }
 
     }

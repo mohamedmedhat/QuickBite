@@ -1,24 +1,31 @@
 package com.xapp.quickbit.data.repository
 
+import android.content.Context
 import androidx.lifecycle.LiveData
-import com.xapp.quickbit.data.source.local.dao.FavouriteDao
+import com.xapp.quickbit.data.source.local.database.AppDatabase
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
 
-class FavouriteRecipesRepository(private val mealDao: FavouriteDao) {
-    val mealList: LiveData<List<MealInformationEntity>> = mealDao.getAllSavedMeals()
+class FavouriteRecipesRepository(context: Context) {
+    private val favouriteDao = AppDatabase.getInstance(context).favouriteDao()
 
     suspend fun insertFavoriteMeal(meal: MealInformationEntity) {
-        mealDao.insertFavorite(meal)
+        favouriteDao.insertFavorite(meal)
+    }
+
+    fun getAllMeals(): LiveData<List<MealInformationEntity>> {
+        return favouriteDao.getAllSavedMeals()
     }
 
     suspend fun getMealById(mealId: String): MealInformationEntity {
-        return mealDao.getMealById(mealId)
+        return favouriteDao.getMealById(mealId)
     }
 
     suspend fun deleteMealById(mealId: String) {
-        mealDao.deleteMealById(mealId)
+        favouriteDao.deleteMealById(mealId)
     }
 
-    suspend fun deleteMeal(meal: MealInformationEntity) = mealDao.deleteMeal(meal)
-
+    suspend fun deleteMeal(meal: MealInformationEntity) {
+        favouriteDao.deleteMeal(meal)
+    }
 }
+
