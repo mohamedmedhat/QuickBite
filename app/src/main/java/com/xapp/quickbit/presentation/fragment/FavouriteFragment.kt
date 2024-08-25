@@ -28,9 +28,11 @@ class FavouriteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         sharedPreferences =
-            requireContext().getSharedPreferences("favourite_recipes_details", AppCompatActivity.MODE_PRIVATE)
+            requireContext().getSharedPreferences(
+                "favourite_recipes_details",
+                AppCompatActivity.MODE_PRIVATE
+            )
     }
 
     override fun onCreateView(
@@ -52,9 +54,11 @@ class FavouriteFragment : Fragment() {
             if (!meals.isNullOrEmpty()) {
                 binding.lottieLoading.visibility = View.GONE
                 binding.favRecView.visibility = View.VISIBLE
-                adapter = FavouriteAdapter(meals) { meal ->
+                adapter = FavouriteAdapter(meals.toMutableList(), { meal ->
                     goToDetails(meal)
-                }
+                }, { meal ->
+                    deleteMeal(meal)
+                })
                 binding.favRecView.adapter = adapter
             } else {
                 binding.tvNoRecipes.visibility = View.VISIBLE
@@ -62,8 +66,9 @@ class FavouriteFragment : Fragment() {
         }
     }
 
-    private fun setupRecyclerView() {
-        binding.favRecView.layoutManager = GridLayoutManager(requireContext(), 2)
+    private fun deleteMeal(meal: MealInformationEntity) {
+        favouriteRecipesViewModel.deleteMeal(meal)
+        adapter.removeItem(meal)
     }
 
     private fun goToDetails(favourite: MealInformationEntity) {
@@ -77,10 +82,14 @@ class FavouriteFragment : Fragment() {
         findNavController().navigate(R.id.action_favouriteFragment_to_recipeDetailFragment)
     }
 
+    private fun setupRecyclerView() {
+        binding.favRecView.layoutManager = GridLayoutManager(requireContext(), 2)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+
 
