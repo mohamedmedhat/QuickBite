@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_medium">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,7 +19,7 @@
             android:layout_margin="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="25dp"
-            android:backgroundTint="#EEFFFEFD"
+            android:backgroundTint="?attr/buttonIcon"
             android:contentDescription="@string/register_fab_desc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +43,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/register_Text"
-            android:textColor="@color/darkGreen"
+            android:textColor="?attr/colorPrimary"
             android:textSize="@dimen/register_tv_joinUs_textSize"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,10 +135,12 @@
             android:id="@+id/btnSignUp"
             style="@style/auth_button"
             android:layout_marginTop="@dimen/register_inputs_marginTop"
-            android:backgroundTint="@color/darkGreen"
+            android:backgroundTint="?attr/colorPrimary"
             android:fontFamily="@font/poppins_medium"
             android:paddingHorizontal="@dimen/btnSignUp_padding_horizontal"
             android:paddingVertical="@dimen/btnSignUp_padding_vertical"
+
+            android:textColor="?attr/colorButtonNormal"
             android:text="@string/register_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

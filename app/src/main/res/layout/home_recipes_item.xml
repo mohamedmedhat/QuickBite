@@ -12,6 +12,7 @@
         android:id="@+id/CardLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorButtonNormal"
         android:padding="10dp">
 
         <ImageView
