@@ -33,6 +33,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/recipeFragment"
@@ -65,7 +72,15 @@
         android:id="@+id/favouriteFragment"
         android:name="com.xapp.quickbit.presentation.fragment.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite" >
+        <action
+            android:id="@+id/action_favouriteFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/recipeDetailFragment"
         android:name="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment"
@@ -74,6 +89,30 @@
         <action
             android:id="@+id/action_recipeDetailFragment_to_favouriteFragment"
             app:destination="@id/favouriteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.CategoryFragment"
+        android:label="CategoryFragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_categoryDetailsFragment"
+            app:destination="@id/categoryDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryDetailsFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.CategoryDetailsFragment"
+        android:label="CategoryDetailsFragment" >
+        <action
+            android:id="@+id/action_categoryDetailsFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"

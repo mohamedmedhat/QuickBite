@@ -39,16 +39,25 @@ class SearchFragment : Fragment() {
 
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
 
+        binding.lottieLoading.visibility = View.VISIBLE
+        binding.rvSearchRecycleView.visibility = View.GONE
+
         searchAdapter = SearchAdapter(ArrayList()) { searchMealDetails ->
             navigateToItemFragment(searchMealDetails)
         }
         binding.rvSearchRecycleView.adapter = searchAdapter
 
         searchViewModel.searchRecipes.observe(viewLifecycleOwner) { searchRecipes ->
-            searchAdapter.updateData(searchRecipes)
+            if (!searchRecipes.isNullOrEmpty()) {
+                binding.lottieLoading.visibility = View.GONE
+                binding.rvSearchRecycleView.visibility = View.VISIBLE
+                searchAdapter.updateData(searchRecipes)
+            }
         }
 
         searchViewModel.error.observe(viewLifecycleOwner) { error ->
+            binding.rvSearchRecycleView.visibility = View.GONE
+            binding.tvNoRecipes.visibility = View.VISIBLE
             error?.let {
                 CustomToast(requireContext(), it, R.drawable.error_24px)
                 Log.e("Search Fragment Error", it)

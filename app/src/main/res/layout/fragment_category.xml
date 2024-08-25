@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.FavouriteFragment">
+    android:padding="10dp">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_loading"
@@ -34,46 +34,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/caption"
+        android:id="@+id/tv_categoryFragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/recipe_saved"
-        android:textColor="#0F172A"
+        android:text="@string/categories_fragment_title"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_fav_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_favorites"
-        android:textColor="#21412F"
-        android:textSize="20sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/caption"
-        app:layout_constraintVertical_bias="0.5" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fav_rec_view"
+        android:id="@+id/rv_CategoriesRecycleView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
         android:padding="4dp"
-        tools:listitem="@layout/fragment_favourite_item"
+        app:spanCount="3"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/caption" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tv_categoryFragment_title"
+        tools:listitem="@layout/fragment_category_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

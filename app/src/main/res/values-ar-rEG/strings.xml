@@ -45,4 +45,9 @@
     <string name="get_started">Get Started</string>
     <string name="this_is_intro_image_desc">this is intro image</string>
     <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
+    <string name="categories_fragment_title">Categories</string>
+    <string name="categories_bottom_nav_title">categories</string>
+    <string name="search_title">Search</string>
+    <string name="category_details_title">Recipes</string>
+    <string name="no_recipes_here">No Recipes here...</string>
 </resources>

@@ -56,6 +56,9 @@ dependencies {
     // google maps
     implementation("com.google.android.gms:play-services-maps:19.0.0")
 
+    // lottie animation
+    implementation("com.airbnb.android:lottie:6.0.0")
+
     // Room dependencies
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
