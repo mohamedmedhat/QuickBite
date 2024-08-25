@@ -3,8 +3,16 @@
     <style name="Base.Theme.QuickBit" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
 
+        <item name="colorPrimary">@color/darkGreen</item>
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="color">@color/white</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="buttonIcon">@color/white</item>
+        <item name="textFillColor">@color/darkGreen</item>
         <item name="android:statusBarColor">@color/darkGreen</item>
+        <item name="navGraph">@color/white</item>
     </style>
+
 
     <style name="Theme.QuickBit" parent="Base.Theme.QuickBit" />
 </resources>

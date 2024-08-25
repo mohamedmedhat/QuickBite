@@ -40,7 +40,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/recipe_saved"
-        android:textColor="#0F172A"
+        android:textColor="?attr/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
