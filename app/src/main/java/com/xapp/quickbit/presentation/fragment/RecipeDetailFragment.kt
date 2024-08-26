@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -108,43 +110,7 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.fabSaveItem.setOnClickListener {
-            val userType = userPermissionSharedPreferences.getString("userName", "Guest")
-            val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
-
-            if (userType !== "Guest") {
-                mealDetail?.let { meal ->
-                    val mealEntity = MealInformationEntity(
-                        mealId = meal.idMeal,
-                        mealName = meal.strMeal,
-                        mealInstruction = meal.strInstructions,
-                        mealThumb = meal.strMealThumb,
-                        mealCategory = meal.strCategory,
-                        mealCountry = meal.strArea,
-                        mealYoutubeLink = meal.strYoutube
-                    )
-                    favouriteRecipesViewModel.insertFavoriteMeal(mealEntity)
-
-                    showSnackBar(
-                        view = requireView(),
-                        message = "Item saved successfully",
-                        duration = Snackbar.LENGTH_LONG,
-                        actionText = getString(R.string.saved_snackBar),
-                        action = { findNavController().navigate(R.id.action_recipeDetailFragment_to_favouriteFragment) }
-                    )
-                } ?: run {
-                    CustomToast(
-                        requireContext(),
-                        "Meal detail data is missing",
-                        R.drawable.error_24px
-                    )
-                }
-            } else {
-                CustomToast(
-                    requireContext(),
-                    "you should have an account first to save a Recipe",
-                    R.drawable.error_24px
-                )
-            }
+            showConfirmationSaveDialog()
         }
 
         binding.ivYoutubeRecipe.setOnClickListener {
@@ -162,6 +128,68 @@ class RecipeDetailFragment : Fragment() {
                 }
             } ?: CustomToast(requireContext(), "No YouTube link available", R.drawable.error_24px)
         }
+    }
+
+    private fun saveItemToFavourite() {
+        val userType = userPermissionSharedPreferences.getString("userName", "Guest")
+        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
+
+        if (userType !== "Guest") {
+            mealDetail?.let { meal ->
+                val mealEntity = MealInformationEntity(
+                    mealId = meal.idMeal,
+                    mealName = meal.strMeal,
+                    mealInstruction = meal.strInstructions,
+                    mealThumb = meal.strMealThumb,
+                    mealCategory = meal.strCategory,
+                    mealCountry = meal.strArea,
+                    mealYoutubeLink = meal.strYoutube
+                )
+                favouriteRecipesViewModel.insertFavoriteMeal(mealEntity)
+
+                showSnackBar(
+                    view = requireView(),
+                    message = "Item saved successfully",
+                    duration = Snackbar.LENGTH_LONG,
+                    actionText = getString(R.string.saved_snackBar),
+                    action = { findNavController().navigate(R.id.action_recipeDetailFragment_to_favouriteFragment) }
+                )
+            } ?: run {
+                CustomToast(
+                    requireContext(),
+                    "Meal detail data is missing",
+                    R.drawable.error_24px
+                )
+            }
+        } else {
+            CustomToast(
+                requireContext(),
+                "you should have an account first to save a Recipe",
+                R.drawable.error_24px
+            )
+        }
+    }
+
+    private fun showConfirmationSaveDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_custom_save_recipe, null)
+        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setView(dialogView)
+
+        val alertDialog = dialogBuilder.create()
+
+        val btnCancel = dialogView.findViewById<Button>(R.id.btn_cancel)
+        val btnSave = dialogView.findViewById<Button>(R.id.btn_confirm)
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        btnSave.setOnClickListener {
+            saveItemToFavourite()
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 
     override fun onDestroyView() {

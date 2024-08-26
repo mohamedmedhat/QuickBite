@@ -11,6 +11,9 @@
         <item name="textFillColor">@color/darkGreen</item>
         <item name="android:statusBarColor">@color/darkGreen</item>
         <item name="navGraph">@color/white</item>
+        <item name="colorSecondary">#FB0303</item>
+        <item name="colorOnSecondary">#575656</item>
+        <item name="colorOnPrimary">#9CECE3E3</item>
     </style>
 
 

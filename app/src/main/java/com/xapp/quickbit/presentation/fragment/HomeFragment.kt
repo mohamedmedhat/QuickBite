@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -155,15 +157,42 @@ class HomeFragment : Fragment() {
 
     private fun handleOnCLick() {
         binding.ivHomeLogoutImage.setOnClickListener {
-            authViewModel.signOut()
-            val editor = sharedPreferences.edit()
-            editor.remove("userEmail")
-            editor.remove("userPassword")
-            editor.apply()
-            val intent = Intent(requireContext(), AuthActivity::class.java)
-            startActivity(intent)
+            showSignOutConfirmationDialog()
         }
 
+    }
+
+    private fun showSignOutConfirmationDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_custom_sign_out, null)
+
+        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setView(dialogView)
+
+        val alertDialog = dialogBuilder.create()
+
+        val btnCancel = dialogView.findViewById<Button>(R.id.btn_cancel)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btn_confirm)
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        btnConfirm.setOnClickListener {
+            signOutUser()
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+    private fun signOutUser() {
+        authViewModel.signOut()
+        val editor = sharedPreferences.edit()
+        editor.remove("userEmail")
+        editor.remove("userPassword")
+        editor.apply()
+        val intent = Intent(requireContext(), AuthActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
