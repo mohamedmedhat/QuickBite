@@ -1,53 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">قطمه سريعه</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="register_Text">انضم لنا</string>
-    <string name="register_imageDesc">صورة انشاء حساب</string>
+    <string name="app_name">لقمة سريعة</string>
+    <string name="hello_blank_fragment">مرحبًا بك في المقطع الفارغ</string>
+    <string name="hello_world">hello_world</string>
+    <string name="home">الرئيسية</string>
+    <string name="Search">بحث</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="saved_snackBar">تم الحفظ</string>
+    <string name="hello">لذلك قد تؤثر على نتيجة الطبق. على سبيل المثال، قد لا يكون مذاق عصير المانجو حلوًا ولذيذًا إذا كانت المانجو حامضة وليست في الموسم.</string>
+    <string name="search_history">سجل البحث</string>
+    <string name="last_Viewed">آخر مشاهدة</string>
+    <string name="intro_desc_text">لا داعي للخوف من الفشل. الوصفات المجربة مضمونة النجاح من قبل طهاتنا المحترفين.</string>
+    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
+    <string name="register_Text">انضم إلينا</string>
+    <string name="register_imageDesc">صورة التسجيل</string>
     <string name="register_username">اسم المستخدم</string>
-    <string name="register_email">البريد الاكتروني</string>
-    <string name="register_password">كلمه المرور</string>
-    <string name="register_confirmPassword">تاكيد كلمه المرور</string>
-    <string name="register_button_text">انشاء حساب</string>
-    <string name="register_fab_desc">الانتقال الي تسجيل الدخول</string>
-    <string name="login_with_google_desc">login with google</string>
-    <string name="register_now">Register Now</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="login_as_guest_desc">login as Guest</string>
-    <string name="login_as_guest_text">login as Guest</string>
-    <string name="login_btn_text">login</string>
-    <string name="enter_your_password_hint">enter your password</string>
-    <string name="enter_your_email_hint">enter your email</string>
-    <string name="login_top_image">loginTopImage</string>
-    <string name="this_is_info_button">this is info button</string>
-    <string name="this_is_profile_picture">this is profile picture</string>
-    <string name="default_home_image">default home image</string>
-    <string name="welcome">Welcome 👋🏼</string>
-    <string name="user_name">user name</string>
-    <string name="item_name">Item Name</string>
-    <string name="clock_time">30 min</string>
+    <string name="register_email">البريد الإلكتروني</string>
+    <string name="register_password">كلمة المرور</string>
+    <string name="register_confirmPassword">تأكيد كلمة المرور</string>
+    <string name="register_button_text">الموافقة والتسجيل</string>
+    <string name="register_fab_desc">التنقل إلى تسجيل الدخول</string>
+    <string name="login_with_google_desc">تسجيل الدخول باستخدام جوجل</string>
+    <string name="register_now">سجل الآن</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="login_as_guest_desc">تسجيل الدخول كضيف</string>
+    <string name="login_as_guest_text">تسجيل الدخول كضيف</string>
+    <string name="login_btn_text">تسجيل الدخول</string>
+    <string name="enter_your_password_hint">أدخل كلمة المرور</string>
+    <string name="enter_your_email_hint">أدخل بريدك الإلكتروني</string>
+    <string name="login_top_image">صورة تسجيل الدخول العلوية</string>
+    <string name="this_is_info_button">هذا زر المعلومات</string>
+    <string name="this_is_profile_picture">هذه صورة الملف الشخصي</string>
+    <string name="saved">تم الحفظ</string>
+    <string name="default_home_image">الصورة الافتراضية للمنزل</string>
+    <string name="welcome">مرحبًا 👋🏼</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="item_name">اسم العنصر</string>
+    <string name="clock_time">30 دقيقة</string>
     <string name="rate">(4.5)</string>
-    <string name="image_of_item_in_home_recycleview">image of item in home recycleView</string>
-    <string name="star_icon">star icon</string>
-    <string name="item_image_in_home_recycleview">item image in home recycleView</string>
-    <string name="save_icon">save icon</string>
-    <string name="shedule_icon">shedule icon</string>
-    <string name="rate_icon">rate icon</string>
-    <string name="thai_basil_pork">Thai Basil Pork</string>
-    <string name="favourite_item_image">favourite item image</string>
-    <string name="no_favorites">No Favorites...</string>
-    <string name="recipe_saved">Recipe Saved</string>
-    <string name="filter_your_recipes_by_first_letter">filter your recipes by first letter</string>
-    <string name="nav_to_profile">nav to profile</string>
-    <string name="logout_desc">logout</string>
-    <string name="settings_icon_title">Settings</string>
-    <string name="toast_icon">toast icon</string>
-    <string name="get_started">Get Started</string>
-    <string name="this_is_intro_image_desc">this is intro image</string>
-    <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
-    <string name="categories_fragment_title">Categories</string>
-    <string name="categories_bottom_nav_title">categories</string>
-    <string name="search_title">Search</string>
-    <string name="category_details_title">Recipes</string>
-    <string name="no_recipes_here">No Recipes here...</string>
+    <string name="image_of_item_in_home_recycleview">صورة العنصر في عرض إعادة التدوير المنزلي</string>
+    <string name="star_icon">رمز النجمة</string>
+    <string name="item_image_in_home_recycleview">صورة العنصر في عرض إعادة التدوير المنزلي</string>
+    <string name="save_icon">رمز الحفظ</string>
+    <string name="shedule_icon">رمز الجدولة</string>
+    <string name="rate_icon">رمز التقييم</string>
+    <string name="thai_basil_pork">لحم الخنزير بالريحان التايلاندي</string>
+    <string name="favourite_item_image">صورة العنصر المفضل</string>
+    <string name="no_favorites">لا توجد مفضلات…</string>
+    <string name="recipe_saved">تم حفظ الوصفة</string>
+    <string name="filter_your_recipes_by_first_letter">قم بتصفية وصفاتك بالحرف الأول</string>
+    <string name="nav_to_profile">الانتقال إلى الملف الشخصي</string>
+    <string name="logout_desc">تسجيل الخروج</string>
+    <string name="settings_icon_title">الإعدادات</string>
+    <string name="toast_icon">رمز التنبيه</string>
+
+    <string-array name="letters_array">
+        <item>A</item>
+        <item>B</item>
+        <item>D</item>
+        <item>C</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+
+    <string name="get_started">ابدأ الآن</string>
+    <string name="this_is_intro_image_desc">هذه صورة المقدمة</string>
+    <string name="thousands_of_tested_recipes">آلاف الوصفات المجربة</string>
+    <string name="categories_fragment_title">الفئات</string>
+    <string name="categories_bottom_nav_title">الفئات</string>
+    <string name="search_title">البحث</string>
+    <string name="category_details_title">الوصفات</string>
+    <string name="no_recipes_here">لا توجد وصفات هنا…</string>
+    <string name="watch_video">مشاهدة الفيديو</string>
+    <string name="description">الوصف</string>
+    <string name="description_title">الوصف</string>
+    <string name="recipe_detail_image">صورة تفاصيل الوصفة</string>
+    <string name="this_float_button_to_back_to_home">هذا الزر العائم للعودة إلى الصفحة الرئيسية</string>
+    <string name="this_float_button_to_save_item">هذا الزر العائم لحفظ العنصر</string>
+    <string name="recipe_title">العنوان</string>
 </resources>

@@ -39,7 +39,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/rate"
-            android:textSize="10sp"
+            android:textSize="@dimen/tv_SearchlocationIconText_text_size"
             app:layout_constraintStart_toEndOf="@+id/iv_starIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/clock_time"
-            android:textSize="10sp"
+            android:textSize="@dimen/tv_SearchlocationIconText_text_size"
             app:layout_constraintStart_toEndOf="@+id/iv_clockIcon"
             app:layout_constraintTop_toTopOf="parent" />
 

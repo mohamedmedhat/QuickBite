@@ -1,53 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mordida rápida</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Bocado Rápido</string>
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="hello_world">hello_world</string>
+    <string name="home">Inicio</string>
+    <string name="Search">Buscar</string>
+    <string name="profile">Perfil</string>
+    <string name="saved_snackBar">guardado</string>
+    <string name="hello">por lo que puede afectar el resultado del plato. Por ejemplo, un batido de mango puede no saber tan dulce y sabroso si los mangos estaban agrios y no estaban en temporada.</string>
+    <string name="search_history">historial de búsqueda</string>
+    <string name="last_Viewed">Última Vista</string>
+    <string name="intro_desc_text">No hay necesidad de temer al fracaso. Las recetas probadas están garantizadas por nuestros chefs profesionales.</string>
+    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
     <string name="register_Text">Únete a nosotros</string>
-    <string name="register_imageDesc">registrar imagen</string>
+    <string name="register_imageDesc">Imagen de registro</string>
     <string name="register_username">nombre de usuario</string>
-    <string name="register_email">Correo electrónico</string>
+    <string name="register_email">correo electrónico</string>
     <string name="register_password">contraseña</string>
-    <string name="register_confirmPassword">Confirmar contraseña</string>
-    <string name="register_button_text">Regístrate</string>
-    <string name="register_fab_desc">Ir a la página de inicio de sesión</string>
-    <string name="login_with_google_desc">login with google</string>
-    <string name="register_now">Register Now</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="login_as_guest_desc">login as Guest</string>
-    <string name="login_as_guest_text">login as Guest</string>
-    <string name="login_btn_text">login</string>
-    <string name="enter_your_password_hint">enter your password</string>
-    <string name="enter_your_email_hint">enter your email</string>
-    <string name="login_top_image">loginTopImage</string>
-    <string name="this_is_info_button">this is info button</string>
-    <string name="this_is_profile_picture">this is profile picture</string>
-    <string name="default_home_image">default home image</string>
-    <string name="welcome">Welcome 👋🏼</string>
-    <string name="user_name">user name</string>
-    <string name="item_name">Item Name</string>
+    <string name="register_confirmPassword">confirmar contraseña</string>
+    <string name="register_button_text">Aceptar y Registrarse</string>
+    <string name="register_fab_desc">navegar a iniciar sesión</string>
+    <string name="login_with_google_desc">iniciar sesión con Google</string>
+    <string name="register_now">Regístrate ahora</string>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="login_as_guest_desc">iniciar sesión como invitado</string>
+    <string name="login_as_guest_text">iniciar sesión como invitado</string>
+    <string name="login_btn_text">iniciar sesión</string>
+    <string name="enter_your_password_hint">introduce tu contraseña</string>
+    <string name="enter_your_email_hint">introduce tu correo electrónico</string>
+    <string name="login_top_image">Imagen superior de inicio de sesión</string>
+    <string name="this_is_info_button">este es el botón de información</string>
+    <string name="this_is_profile_picture">esta es la imagen de perfil</string>
+    <string name="saved">guardado</string>
+    <string name="default_home_image">imagen de inicio predeterminada</string>
+    <string name="welcome">Bienvenido 👋🏼</string>
+    <string name="user_name">nombre de usuario</string>
+    <string name="item_name">Nombre del artículo</string>
     <string name="clock_time">30 min</string>
     <string name="rate">(4.5)</string>
-    <string name="image_of_item_in_home_recycleview">image of item in home recycleView</string>
-    <string name="star_icon">star icon</string>
-    <string name="item_image_in_home_recycleview">item image in home recycleView</string>
-    <string name="save_icon">save icon</string>
-    <string name="shedule_icon">shedule icon</string>
-    <string name="rate_icon">rate icon</string>
-    <string name="thai_basil_pork">Thai Basil Pork</string>
-    <string name="favourite_item_image">favourite item image</string>
-    <string name="no_favorites">No Favorites...</string>
-    <string name="recipe_saved">Recipe Saved</string>
-    <string name="filter_your_recipes_by_first_letter">filter your recipes by first letter</string>
-    <string name="nav_to_profile">nav to profile</string>
-    <string name="logout_desc">logout</string>
-    <string name="settings_icon_title">Settings</string>
-    <string name="toast_icon">toast icon</string>
-    <string name="get_started">Get Started</string>
-    <string name="this_is_intro_image_desc">this is intro image</string>
-    <string name="thousands_of_tested_recipes">Thousands of tested recipes</string>
-    <string name="categories_fragment_title">Categories</string>
-    <string name="categories_bottom_nav_title">categories</string>
-    <string name="search_title">Search</string>
-    <string name="category_details_title">Recipes</string>
-    <string name="no_recipes_here">No Recipes here...</string>
+    <string name="image_of_item_in_home_recycleview">imagen del artículo en el reciclador de inicio</string>
+    <string name="star_icon">icono de estrella</string>
+    <string name="item_image_in_home_recycleview">imagen del artículo en el reciclador de inicio</string>
+    <string name="save_icon">icono de guardar</string>
+    <string name="shedule_icon">icono de programación</string>
+    <string name="rate_icon">icono de calificación</string>
+    <string name="thai_basil_pork">Cerdo con Albahaca Tailandesa</string>
+    <string name="favourite_item_image">imagen de artículo favorito</string>
+    <string name="no_favorites">No hay Favoritos…</string>
+    <string name="recipe_saved">Receta Guardada</string>
+    <string name="filter_your_recipes_by_first_letter">filtra tus recetas por la primera letra</string>
+    <string name="nav_to_profile">navegar al perfil</string>
+    <string name="logout_desc">cerrar sesión</string>
+    <string name="settings_icon_title">Configuraciones</string>
+    <string name="toast_icon">icono de notificación</string>
+
+    <string-array name="letters_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+
+    <string name="get_started">Comenzar</string>
+    <string name="this_is_intro_image_desc">esta es la imagen de introducción</string>
+    <string name="thousands_of_tested_recipes">Miles de recetas probadas</string>
+    <string name="categories_fragment_title">Categorías</string>
+    <string name="categories_bottom_nav_title">categorías</string>
+    <string name="search_title">Buscar</string>
+    <string name="category_details_title">Recetas</string>
+    <string name="no_recipes_here">No hay recetas aquí…</string>
+    <string name="watch_video">Ver Video</string>
+    <string name="description">Descripción</string>
+    <string name="description_title">Descripción</string>
+    <string name="recipe_detail_image">imagen de detalle de la receta</string>
+    <string name="this_float_button_to_back_to_home">este botón flotante para regresar a la página principal</string>
+    <string name="this_float_button_to_save_item">este botón flotante para guardar el elemento</string>
+    <string name="recipe_title">título</string>
 </resources>
