@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">QuickBite</string>
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+    <string name="hello_world">hello_world</string>
+    <string name="home">Startseite</string>
+    <string name="Search">Suche</string>
+    <string name="profile">Profil</string>
+    <string name="saved_snackBar">gespeichert</string>
+    <string name="hello">So beeinflusst dies das Ergebnis des Gerichts. Zum Beispiel könnte ein Mangosmoothie nicht so süß und geschmackvoll schmecken, wenn die Mangos sauer und nicht in der Saison waren.</string>
+    <string name="search_history">Suchverlauf</string>
+    <string name="last_Viewed">Zuletzt angesehen</string>
+    <string name="intro_desc_text">Es besteht keine Notwendigkeit, Angst vor Misserfolg zu haben. Getestete Rezepte sind durch unsere professionellen Köche garantiert erfolgreich.</string>
+    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
+    <string name="register_Text">Treten Sie bei</string>
+    <string name="register_imageDesc">Registrierungsbild</string>
+    <string name="register_username">Benutzername</string>
+    <string name="register_email">E-Mail</string>
+    <string name="register_password">Passwort</string>
+    <string name="register_confirmPassword">Passwort bestätigen</string>
+    <string name="register_button_text">Zustimmen und Registrieren</string>
+    <string name="register_fab_desc">zur Anmeldung navigieren</string>
+    <string name="login_with_google_desc">mit Google anmelden</string>
+    <string name="register_now">Jetzt registrieren</string>
+    <string name="don_t_have_an_account">Haben Sie kein Konto?</string>
+    <string name="login_as_guest_desc">als Gast anmelden</string>
+    <string name="login_as_guest_text">als Gast anmelden</string>
+    <string name="login_btn_text">Anmelden</string>
+    <string name="enter_your_password_hint">Geben Sie Ihr Passwort ein</string>
+    <string name="enter_your_email_hint">Geben Sie Ihre E-Mail ein</string>
+    <string name="login_top_image">Login-Top-Bild</string>
+    <string name="this_is_info_button">Dies ist die Info-Schaltfläche</string>
+    <string name="this_is_profile_picture">Dies ist das Profilbild</string>
+    <string name="saved">gespeichert</string>
+    <string name="default_home_image">Standard-Startbild</string>
+    <string name="welcome">Willkommen 👋🏼</string>
+    <string name="user_name">Benutzername</string>
+    <string name="item_name">Artikelname</string>
+    <string name="clock_time">30 min</string>
+    <string name="rate">(4.5)</string>
+    <string name="image_of_item_in_home_recycleview">Bild des Artikels im Start-RecycleView</string>
+    <string name="star_icon">Sternsymbol</string>
+    <string name="item_image_in_home_recycleview">Bild des Artikels im Start-RecycleView</string>
+    <string name="save_icon">Speichersymbol</string>
+    <string name="shedule_icon">Zeitplansymbol</string>
+    <string name="rate_icon">Bewertungssymbol</string>
+    <string name="thai_basil_pork">Thai-Basilikum-Schweinefleisch</string>
+    <string name="favourite_item_image">Bild des Favoritenartikels</string>
+    <string name="no_favorites">Keine Favoriten…</string>
+    <string name="recipe_saved">Rezept gespeichert</string>
+    <string name="filter_your_recipes_by_first_letter">Filtern Sie Ihre Rezepte nach dem ersten Buchstaben</string>
+    <string name="nav_to_profile">Zum Profil navigieren</string>
+    <string name="logout_desc">abmelden</string>
+    <string name="settings_icon_title">Einstellungen</string>
+    <string name="toast_icon">Toastsymbol</string>
+
+    <string-array name="letters_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <string name="get_started">Loslegen</string>
+    <string name="this_is_intro_image_desc">Das ist ein Einführung-Bild</string>
+    <string name="thousands_of_tested_recipes">Tausende getestete Rezepte</string>
+    <string name="categories_fragment_title">Kategorien</string>
+    <string name="categories_bottom_nav_title">Kategorien</string>
+    <string name="search_title">Suche</string>
+    <string name="category_details_title">Rezepte</string>
+    <string name="no_recipes_here">Keine Rezepte hier…</string>
+    <string name="watch_video">Video ansehen</string>
+    <string name="description">Beschreibung</string>
+    <string name="description_title">Beschreibung</string>
+    <string name="recipe_detail_image">Rezeptdetailbild</string>
+    <string name="this_float_button_to_back_to_home">Dieser Schwebebutton, um zur Startseite zurückzukehren</string>
+    <string name="this_float_button_to_save_item">Dieser Schwebebutton, um das Element zu speichern</string>
+    <string name="recipe_title">Titel</string>
+</resources>

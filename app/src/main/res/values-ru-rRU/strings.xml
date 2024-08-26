@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">QuickBite</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="hello_world">hello_world</string>
+    <string name="home">Главная</string>
+    <string name="Search">Поиск</string>
+    <string name="profile">Профиль</string>
+    <string name="saved_snackBar">сохранено</string>
+    <string name="hello">Итак, это влияет на результат блюда. Например, манговый смузи может быть не таким сладким и вкусным, если манго были кислые и были не в сезоне.</string>
+    <string name="search_history">история поиска</string>
+    <string name="last_Viewed">Последние просмотренные</string>
+    <string name="intro_desc_text">Не нужно бояться неудачи. Проверенные рецепты гарантированы нашими профессиональными шеф-поварами.</string>
+    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
+    <string name="register_Text">Присоединяйтесь к нам</string>
+    <string name="register_imageDesc">Изображение регистрации</string>
+    <string name="register_username">имя пользователя</string>
+    <string name="register_email">Эл. почта</string>
+    <string name="register_password">пароль</string>
+    <string name="register_confirmPassword">подтвердите пароль</string>
+    <string name="register_button_text">Принять и зарегистрироваться</string>
+    <string name="register_fab_desc">перейти к входу</string>
+    <string name="login_with_google_desc">войти через Google</string>
+    <string name="register_now">Зарегистрироваться сейчас</string>
+    <string name="don_t_have_an_account">Нет учетной записи?</string>
+    <string name="login_as_guest_desc">войти как гость</string>
+    <string name="login_as_guest_text">войти как гость</string>
+    <string name="login_btn_text">Войти</string>
+    <string name="enter_your_password_hint">введите ваш пароль</string>
+    <string name="enter_your_email_hint">введите вашу эл. почту</string>
+    <string name="login_top_image">изображение вверху экрана входа</string>
+    <string name="this_is_info_button">это кнопка информации</string>
+    <string name="this_is_profile_picture">это изображение профиля</string>
+    <string name="saved">сохранено</string>
+    <string name="default_home_image">изображение по умолчанию на главной странице</string>
+    <string name="welcome">Добро пожаловать 👋🏼</string>
+    <string name="user_name">имя пользователя</string>
+    <string name="item_name">название предмета</string>
+    <string name="clock_time">30 мин</string>
+    <string name="rate">(4.5)</string>
+    <string name="image_of_item_in_home_recycleview">изображение предмета в RecyclerView на главной странице</string>
+    <string name="star_icon">значок звезды</string>
+    <string name="item_image_in_home_recycleview">изображение предмета в RecyclerView на главной странице</string>
+    <string name="save_icon">значок сохранения</string>
+    <string name="shedule_icon">значок расписания</string>
+    <string name="rate_icon">значок рейтинга</string>
+    <string name="thai_basil_pork">Тайская свинина с базиликом</string>
+    <string name="favourite_item_image">изображение любимого предмета</string>
+    <string name="no_favorites">Нет избранного…</string>
+    <string name="recipe_saved">Рецепт сохранен</string>
+    <string name="filter_your_recipes_by_first_letter">отфильтруйте свои рецепты по первой букве</string>
+    <string name="nav_to_profile">перейти к профилю</string>
+    <string name="logout_desc">выйти</string>
+    <string name="settings_icon_title">Настройки</string>
+    <string name="toast_icon">значок тоста</string>
+
+    <string-array name="letters_array">
+        <item>A</item>
+        <item>B</item>
+        <item>D</item>
+        <item>C</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <string name="get_started">Начать</string>
+    <string name="this_is_intro_image_desc">это изображение вступления</string>
+    <string name="thousands_of_tested_recipes">Тысячи проверенных рецептов</string>
+    <string name="categories_fragment_title">Категории</string>
+    <string name="categories_bottom_nav_title">Категории</string>
+    <string name="search_title">Поиск</string>
+    <string name="category_details_title">Рецепты</string>
+    <string name="no_recipes_here">Здесь нет рецептов…</string>
+    <string name="watch_video">Смотреть видео</string>
+    <string name="description">Описание</string>
+    <string name="description_title">Описание</string>
+    <string name="recipe_detail_image">изображение детали рецепта</string>
+    <string name="this_float_button_to_back_to_home">эта плавающая кнопка для возврата на главную</string>
+    <string name="this_float_button_to_save_item">эта плавающая кнопка для сохранения элемента</string>
+    <string name="recipe_title">заголовок</string>
+</resources>
