@@ -27,6 +27,7 @@ class RecipeDetailFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var userPermissionSharedPreferences: SharedPreferences
     private val favouriteRecipesViewModel: FavouriteRecipesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,11 @@ class RecipeDetailFragment : Fragment() {
                 "favourite_recipes_details",
                 AppCompatActivity.MODE_PRIVATE
             )
+
+        userPermissionSharedPreferences = requireContext().getSharedPreferences(
+            "user_Info",
+            AppCompatActivity.MODE_PRIVATE
+        )
     }
 
 
@@ -98,28 +104,42 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.fabSaveItem.setOnClickListener {
+            val userType = userPermissionSharedPreferences.getString("userName", "Guest")
             val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
-            mealDetail?.let { meal ->
-                val mealEntity = MealInformationEntity(
-                    mealId = meal.idMeal,
-                    mealName = meal.strMeal,
-                    mealInstruction = meal.strInstructions,
-                    mealThumb = meal.strMealThumb,
-                    mealCategory = meal.strCategory,
-                    mealCountry = meal.strArea,
-                    mealYoutubeLink = meal.strYoutube
-                )
-                favouriteRecipesViewModel.insertFavoriteMeal(mealEntity)
 
-                showSnackBar(
-                    view = requireView(),
-                    message = "Item saved successfully",
-                    duration = Snackbar.LENGTH_LONG,
-                    actionText = getString(R.string.saved_snackBar),
-                    action = { findNavController().navigate(R.id.action_recipeDetailFragment_to_favouriteFragment) }
+            if (userType !== "Guest") {
+                mealDetail?.let { meal ->
+                    val mealEntity = MealInformationEntity(
+                        mealId = meal.idMeal,
+                        mealName = meal.strMeal,
+                        mealInstruction = meal.strInstructions,
+                        mealThumb = meal.strMealThumb,
+                        mealCategory = meal.strCategory,
+                        mealCountry = meal.strArea,
+                        mealYoutubeLink = meal.strYoutube
+                    )
+                    favouriteRecipesViewModel.insertFavoriteMeal(mealEntity)
+
+                    showSnackBar(
+                        view = requireView(),
+                        message = "Item saved successfully",
+                        duration = Snackbar.LENGTH_LONG,
+                        actionText = getString(R.string.saved_snackBar),
+                        action = { findNavController().navigate(R.id.action_recipeDetailFragment_to_favouriteFragment) }
+                    )
+                } ?: run {
+                    CustomToast(
+                        requireContext(),
+                        "Meal detail data is missing",
+                        R.drawable.error_24px
+                    )
+                }
+            } else {
+                CustomToast(
+                    requireContext(),
+                    "you should have an account first to save a Recipe",
+                    R.drawable.error_24px
                 )
-            } ?: run {
-                CustomToast(requireContext(), "Meal detail data is missing", R.drawable.error_24px)
             }
         }
 
