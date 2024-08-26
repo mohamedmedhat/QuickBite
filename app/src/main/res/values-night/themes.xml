@@ -10,8 +10,5 @@
         <item name="textFillColor">@color/lightGreen</item>
         <item name="android:statusBarColor">@color/black</item>
         <item name="navGraph">@color/black</item>
-
-
-
     </style>
 </resources>
