@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
-    android:padding="8dp"
+    android:layout_margin="@dimen/search_card_margin"
+    android:padding="@dimen/search_card_padding"
     tools:context=".presentation.fragment.SearchFragment">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -28,7 +28,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/no_recipes_here"
         android:textColor="@color/gray"
-        android:textSize="18sp"
+        android:textSize="@dimen/tv_no_recipes_text_size"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,11 +39,11 @@
         android:id="@+id/caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/caption_margin_top"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/search_title"
         android:textColor="?attr/colorAccent"
-        android:textSize="24sp"
+        android:textSize="@dimen/caption_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
@@ -52,9 +52,9 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/search_margin"
         android:focusableInTouchMode="true"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,9 +66,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_searchRecycleView"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/rv_searchRecycleView_margin_top"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"

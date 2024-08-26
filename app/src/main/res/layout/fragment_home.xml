@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="20dp"
+    android:layout_marginHorizontal="@dimen/home_card_margin_horizontal"
     tools:context=".presentation.fragment.HomeFragment">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -27,7 +27,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/no_recipes_here"
         android:textColor="@color/gray"
-        android:textSize="18sp"
+        android:textSize="@dimen/tv_no_recipes_text_size"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +37,9 @@
 
     <ImageView
         android:id="@+id/iv_userHomeImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/iv_userHomeImage_width_height"
+        android:layout_height="@dimen/iv_userHomeImage_width_height"
+        android:layout_marginTop="@dimen/iv_userHomeImage_margin_top"
         android:contentDescription="@string/default_home_image"
         android:src="@drawable/logo"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +47,9 @@
 
     <ImageView
         android:id="@+id/iv_homeLogoutImage"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/iv_homeLogoutImage_width_height"
+        android:layout_height="@dimen/iv_homeLogoutImage_width_height"
+        android:layout_marginTop="@dimen/iv_userHomeImage_margin_top"
         android:contentDescription="@string/default_home_image"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/logout_24px"
@@ -61,7 +61,7 @@
         android:id="@+id/tv_saluteUserText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/tv_saluteUserText_margin_start"
         android:text="@string/welcome"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/tv_userNameText"
@@ -72,7 +72,7 @@
         android:id="@+id/tv_userNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/tv_userNameText_margin_start"
         android:text="@string/user_name"
         android:textColor="?attr/textFillColor"
         android:textStyle="bold"
@@ -83,12 +83,12 @@
 
     <Spinner
         android:id="@+id/letterSpinnerFilter"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/letterSpinnerFilter_margin_top"
         android:entries="@array/letters_array"
         android:gravity="center"
-        android:padding="4dp"
+        android:padding="@dimen/letterSpinnerFilter_padding"
         app:layout_constraintBottom_toTopOf="@+id/rv_homeRecycleView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_userNameText"
@@ -97,9 +97,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_homeRecycleView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginTop="@dimen/rv_homeRecycleView_margin_top"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

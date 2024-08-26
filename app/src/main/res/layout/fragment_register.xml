@@ -7,8 +7,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="@dimen/register_constraint_layout_margin_horizontal"
+        android:layout_marginTop="@dimen/register_constraint_layout_margin_top"
         android:fontFamily="@font/poppins_medium">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,9 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="15dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="25dp"
+            android:layout_margin="@dimen/floating_action_button_margin"
+            android:layout_marginStart="@dimen/floating_action_button_margin_start"
+            android:layout_marginTop="@dimen/floating_action_button_margin_top"
             android:backgroundTint="?attr/buttonIcon"
             android:contentDescription="@string/register_fab_desc"
             app:layout_constraintStart_toStartOf="parent"
@@ -139,9 +139,8 @@
             android:fontFamily="@font/poppins_medium"
             android:paddingHorizontal="@dimen/btnSignUp_padding_horizontal"
             android:paddingVertical="@dimen/btnSignUp_padding_vertical"
-
-            android:textColor="?attr/colorButtonNormal"
             android:text="@string/register_button_text"
+            android:textColor="?attr/colorButtonNormal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvl_confirmPassword" />
