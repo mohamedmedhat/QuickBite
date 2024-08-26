@@ -38,4 +38,21 @@
         <item name="flow_horizontalGap">@dimen/auth_button_flow_horizontalGap</item>
         <item name="flow_verticalGap">@dimen/auth_button_flow_verticalGap</item>
     </style>
+
+    <style name="items_icons_text_style">
+        <item name="android:textSize">@dimen/tv_SearchlocationIconText_text_size</item>
+        <item name="android:layout_marginEnd">@dimen/tv_SearchlocationIconText_margin_end</item>
+        <item name="android:layout_marginBottom">@dimen/tv_SearchlocationIconText_margin_bottom</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="items_icons_img_style">
+        <item name="android:layout_width">@dimen/iv_locationIcon_width_height</item>
+        <item name="android:layout_height">@dimen/iv_locationIcon_width_height</item>
+        <item name="android:layout_marginStart">@dimen/iv_locationIcon_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/iv_locationIcon_margin_top</item>
+    </style>
+
+
 </resources>
