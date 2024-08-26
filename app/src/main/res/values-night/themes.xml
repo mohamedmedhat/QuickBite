@@ -2,6 +2,13 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.QuickBit" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+     <item name="colorPrimary">@color/lightGreen</item>
+        <item name="colorButtonNormal">#282C33</item>
+        <item name="color">#282C33</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="buttonIcon">@color/SemiDarkGreen</item>
+        <item name="textFillColor">@color/lightGreen</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="navGraph">@color/black</item>
     </style>
 </resources>

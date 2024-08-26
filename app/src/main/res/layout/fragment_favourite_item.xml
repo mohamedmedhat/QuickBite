@@ -10,13 +10,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="227dp"
-        android:layout_height="260dp">
+        android:layout_height="260dp"
+        android:background="?attr/color">
 
 
         <ImageView
             android:id="@+id/img_fav_meal"
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="174dp"
             android:contentDescription="@string/favourite_item_image"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/thai_basil_pork"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorAccent"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/rate"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorAccent"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/img_star"
             app:layout_constraintTop_toTopOf="@id/img_star" />
@@ -78,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/clock_time"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorAccent"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/img_time"
             app:layout_constraintTop_toTopOf="@id/img_star" />
@@ -87,11 +88,10 @@
             android:id="@+id/iv_saveIcon"
             android:layout_width="31dp"
             android:layout_height="28dp"
-            android:layout_marginTop="5dp"
             android:contentDescription="@string/save_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bookmark" />
+            app:srcCompat="@drawable/notification4" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

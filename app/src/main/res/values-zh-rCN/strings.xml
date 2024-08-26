@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">速咬</string>
+    <string name="hello_blank_fragment">你好，空白片段</string>
+    <string name="hello_world">hello_world</string>
+    <string name="home">首页</string>
+    <string name="Search">搜索</string>
+    <string name="profile">个人资料</string>
+    <string name="saved_snackBar">已保存</string>
+    <string name="hello">因此可能会影响菜肴的最终味道。例如，如果芒果很酸而且不在季节，芒果冰沙可能不会那么甜美和美味。</string>
+    <string name="search_history">搜索历史</string>
+    <string name="last_Viewed">最近查看</string>
+    <string name="intro_desc_text">无需害怕失败。经过测试的食谱由我们的专业厨师保证有效。</string>
+    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
+    <string name="register_Text">加入我们</string>
+    <string name="register_imageDesc">注册图片</string>
+    <string name="register_username">用户名</string>
+    <string name="register_email">电子邮件</string>
+    <string name="register_password">密码</string>
+    <string name="register_confirmPassword">确认密码</string>
+    <string name="register_button_text">同意并注册</string>
+    <string name="register_fab_desc">导航到登录</string>
+    <string name="login_with_google_desc">使用谷歌登录</string>
+    <string name="register_now">立即注册</string>
+    <string name="don_t_have_an_account">没有账户？</string>
+    <string name="login_as_guest_desc">作为访客登录</string>
+    <string name="login_as_guest_text">作为访客登录</string>
+    <string name="login_btn_text">登录</string>
+    <string name="enter_your_password_hint">输入您的密码</string>
+    <string name="enter_your_email_hint">输入您的电子邮件</string>
+    <string name="login_top_image">登录顶部图片</string>
+    <string name="this_is_info_button">这是信息按钮</string>
+    <string name="this_is_profile_picture">这是个人资料图片</string>
+    <string name="saved">已保存</string>
+    <string name="default_home_image">默认主页图片</string>
+    <string name="welcome">欢迎 👋🏼</string>
+    <string name="user_name">用户名</string>
+    <string name="item_name">项目名称</string>
+    <string name="clock_time">30 分钟</string>
+    <string name="rate">(4.5)</string>
+    <string name="image_of_item_in_home_recycleview">首页回收视图中的项目图片</string>
+    <string name="star_icon">星标图标</string>
+    <string name="item_image_in_home_recycleview">首页回收视图中的项目图片</string>
+    <string name="save_icon">保存图标</string>
+    <string name="shedule_icon">日程图标</string>
+    <string name="rate_icon">评分图标</string>
+    <string name="thai_basil_pork">泰式罗勒猪肉</string>
+    <string name="favourite_item_image">收藏项目图片</string>
+    <string name="no_favorites">没有收藏…</string>
+    <string name="recipe_saved">食谱已保存</string>
+    <string name="filter_your_recipes_by_first_letter">按首字母过滤您的食谱</string>
+    <string name="nav_to_profile">导航到个人资料</string>
+    <string name="logout_desc">注销</string>
+    <string name="settings_icon_title">设置</string>
+    <string name="toast_icon">通知图标</string>
+
+    <string-array name="letters_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+
+    <string name="get_started">开始</string>
+    <string name="this_is_intro_image_desc">这是介绍图片</string>
+    <string name="thousands_of_tested_recipes">成千上万经过测试的食谱</string>
+    <string name="categories_fragment_title">类别</string>
+    <string name="categories_bottom_nav_title">类别</string>
+    <string name="search_title">搜索</string>
+    <string name="category_details_title">食谱</string>
+    <string name="no_recipes_here">这里没有食谱…</string>
+    <string name="watch_video">观看视频</string>
+    <string name="description">描述</string>
+    <string name="description_title">描述</string>
+    <string name="recipe_detail_image">菜谱详情图片</string>
+    <string name="this_float_button_to_back_to_home">这个浮动按钮返回首页</string>
+    <string name="this_float_button_to_save_item">这个浮动按钮保存项目</string>
+    <string name="recipe_title">标题</string>
+</resources>

@@ -51,7 +51,8 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedPreferences = requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
+        sharedPreferences =
+            requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
     }
 
     override fun onCreateView(
@@ -122,6 +123,14 @@ class LoginFragment : Fragment() {
 
         binding.btnLoginWithGoogle.setOnClickListener {
             signInWithGoogle()
+        }
+
+        binding.btnLoginAsGuest.setOnClickListener {
+            val editor = sharedPreferences.edit()
+            editor.putString("userName", "Guest")
+            editor.apply()
+            val intent = Intent(requireContext(), RecipeActivity::class.java)
+            startActivity(intent)
         }
     }
 

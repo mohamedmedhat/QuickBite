@@ -136,14 +136,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47913eac-c665-4ae5-908e-7dcc5585bc41" name="Changes" comment="fix the 291 error which make by the last merge">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/images_placeholder.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/CategoryAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/CategoryAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/CategoryDetailsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/CategoryDetailsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/FavouriteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/FavouriteFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/FavouriteAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/FavouriteAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/HomeRecipesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/HomeRecipesAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/SearchAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/SearchAdapter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,22 +206,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ResourceManagerPrefKey.ModuleName": "QuickBit.app.main",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "develop",
-    "last_directory_selection": "E:/temporaryProjects/qqqqqqq/QuickBite/app/src/main/res/drawable",
-    "last_opened_file_path": "E:/projectsTwo/uuuuuuu/EasyFood",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "experimental"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ResourceManagerPrefKey.ModuleName&quot;: &quot;QuickBit.app.main&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/deleteMethods&quot;,
+    &quot;last_directory_selection&quot;: &quot;E:/temporaryProjects/qqqqqqq/QuickBite/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/projectsTwo/uuuuuuu/EasyFood&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\temporaryProjects\qqqqqqq\QuickBite\app\src\main\res\drawable" />

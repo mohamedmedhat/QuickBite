@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <dimen name="match_constraint">0dp</dimen>
+
     <dimen name="register_tv_joinUs_textSize">40sp</dimen>
     <dimen name="btn_login_textSize">17sp</dimen>
     <dimen name="loginAsGuest_textSize">17sp</dimen>
+    <dimen name="intro_tv_descTitle_text_size">13sp</dimen>
+    <dimen name="intro_tv_headTitle_text_size">16sp</dimen>
+    <dimen name="tv_no_recipes_text_size">18sp</dimen>
+    <dimen name="custom_toast_text_size">16sp</dimen>
+    <dimen name="tv_categoryFragment_title_text_size">24sp</dimen>
+    <dimen name="iv_CategoriesDetailsRecycleViewText_text_size">16sp</dimen>
+    <dimen name="tv_SearchlocationIconText_text_size">10sp</dimen>
+    <dimen name="iv_SearchRecycleViewText_text_size">16sp</dimen>
+    <dimen name="caption_text_size">24sp</dimen>
+    <dimen name="tv_fav_empty_text_size">20sp</dimen>
+
 
     <dimen name="splash_logo_width">220dp</dimen>
     <dimen name="splash_logo_height">220dp</dimen>
@@ -19,6 +32,11 @@
     <dimen name="btnSignUp_padding_vertical">15dp</dimen>
     <dimen name="notHaveAccount_margin_start">70dp</dimen>
     <dimen name="notHaveAccount_margin_bottom">16dp</dimen>
+    <dimen name="floating_action_button_margin">15dp</dimen>
+    <dimen name="floating_action_button_margin_start">16dp</dimen>
+    <dimen name="floating_action_button_margin_top">25dp</dimen>
+    <dimen name="register_constraint_layout_margin_top">30dp</dimen>
+    <dimen name="register_constraint_layout_margin_horizontal">20dp</dimen>
     <dimen name="login_image_height">364dp</dimen>
     <dimen name="login_logoImage_height">170dp</dimen>
     <dimen name="login_logoImage_margin_top">60dp</dimen>
@@ -38,4 +56,48 @@
     <dimen name="auth_button_flow_horizontalGap">10dp</dimen>
     <dimen name="auth_button_flow_verticalGap">10dp</dimen>
     <dimen name="intro_btn_cornerRadius">3dp</dimen>
+    <dimen name="intro_margin_horizontal">20dp</dimen>
+    <dimen name="iv_IntroImage_margin_top">160dp</dimen>
+    <dimen name="activity_recipe_elevation">4dp</dimen>
+    <dimen name="custom_toast_padding_start">8dp</dimen>
+    <dimen name="custom_toast_layout_padding">8dp</dimen>
+    <dimen name="rv_CategoriesRecycleView_margin_vertical">16dp</dimen>
+    <dimen name="rv_CategoriesRecycleView_padding">4dp</dimen>
+    <dimen name="rv_CategoriesRecycleView_constraintLayout_padding">10dp</dimen>
+    <dimen name="rv_CategoryDetailsRecycleView_margin_top">20dp</dimen>
+    <dimen name="rv_CategoryDetailsRecycleView_padding">10dp</dimen>
+    <dimen name="iv_CategoriesDetailsRecycleViewText_margin_start">10dp</dimen>
+    <dimen name="CategoriesDetailsCardLayout_padding">10dp</dimen>
+    <dimen name="CategoriesDetailsCardLayout_corner_radius">8dp</dimen>`
+    <dimen name="CategoriesDetailsCardLayout_margin_top">8dp</dimen>
+    <dimen name="iv_CategoriesDetailsRecycleViewImage_height">100dp</dimen>
+    <dimen name="iv_SearchRecycleViewImage_height">100dp</dimen>
+    <dimen name="tv_SearchlocationIconText_margin_bottom">-4dp</dimen>
+    <dimen name="tv_SearchlocationIconText_margin_end">10dp</dimen>
+    <dimen name="iv_locationIcon_width_height">12dp</dimen>
+    <dimen name="iv_locationIcon_margin_start">20dp</dimen>
+    <dimen name="iv_locationIcon_margin_top">12dp</dimen>
+    <dimen name="iv_SearchRecycleViewText_margin_start">10dp</dimen>
+    <dimen name="tv_clockIconText_margin_top">10dp</dimen>
+    <dimen name="SearchCardLayout_padding">10dp</dimen>
+    <dimen name="cardView_margin">8dp</dimen>
+    <dimen name="rv_searchRecycleView_margin_top">30dp</dimen>
+    <dimen name="search_margin">12dp</dimen>
+    <dimen name="caption_margin_top">16dp</dimen>
+    <dimen name="search_card_padding">8dp</dimen>
+    <dimen name="search_card_margin">5dp</dimen>
+    <dimen name="intro_tv_headTitle_margin_top">10dp</dimen>
+    <dimen name="home_card_margin_horizontal">20dp</dimen>
+    <dimen name="iv_userHomeImage_width_height">60dp</dimen>
+    <dimen name="iv_userHomeImage_margin_top">30dp</dimen>
+    <dimen name="iv_homeLogoutImage_width_height">24dp</dimen>
+    <dimen name="tv_saluteUserText_margin_start">10dp</dimen>
+    <dimen name="tv_userNameText_margin_start">10dp</dimen>
+    <dimen name="rv_homeRecycleView_margin_top">8dp</dimen>
+    <dimen name="letterSpinnerFilter_padding">4dp</dimen>
+    <dimen name="letterSpinnerFilter_margin_top">8dp</dimen>
+    <dimen name="no_recipe_found_favourite_margin_bottom">24dp</dimen>
+    <dimen name="fav_rec_view_padding">4dp</dimen>
+    <dimen name="fav_rec_view_margin_top">25dp</dimen>
+    <dimen name="fav_rec_view_margin_horizontal">10dp</dimen>
 </resources>
