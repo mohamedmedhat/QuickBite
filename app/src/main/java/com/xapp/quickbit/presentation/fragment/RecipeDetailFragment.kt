@@ -67,6 +67,8 @@ class RecipeDetailFragment : Fragment() {
             binding.apply {
                 Glide.with(this@RecipeDetailFragment)
                     .load(item.strMealThumb)
+                    .placeholder(R.drawable.images_placeholder)
+                    .error(R.drawable.error_24px)
                     .into(ivRecipeDetailImage)
                 tvRecipeDetailTitle.text = item.strMeal
                 tvRecipeDetailsDescContent.text = item.strInstructions
@@ -78,6 +80,8 @@ class RecipeDetailFragment : Fragment() {
                 binding.apply {
                     Glide.with(this@RecipeDetailFragment)
                         .load(meal.mealThumb)
+                        .placeholder(R.drawable.images_placeholder)
+                        .error(R.drawable.error_24px)
                         .into(ivRecipeDetailImage)
                     tvRecipeDetailTitle.text = meal.mealName
                     tvRecipeDetailsDescContent.text = meal.mealInstruction

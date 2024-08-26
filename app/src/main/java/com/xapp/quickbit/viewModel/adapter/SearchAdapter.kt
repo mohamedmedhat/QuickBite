@@ -37,6 +37,8 @@ class SearchAdapter(
         val item = items[position]
         Glide.with(holder.itemView.context)
             .load(item.strMealThumb)
+            .placeholder(R.drawable.images_placeholder)
+            .error(R.drawable.error_24px)
             .into(holder.cardImage)
         holder.cardTitle.text = item.strMeal
         holder.cardCategory.text = item.strCategory
