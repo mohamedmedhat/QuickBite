@@ -66,7 +66,7 @@ class FavouriteFragment : Fragment() {
         }
     }
 
-    private fun deleteMeal(meal: MealInformationEntity) {
+    fun deleteMeal(meal: MealInformationEntity) {
         favouriteRecipesViewModel.deleteMeal(meal)
         adapter.removeItem(meal)
     }

@@ -9,8 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -18,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
+import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentRecipeDetailBinding
 import com.xapp.quickbit.viewModel.FavouriteRecipesViewModel
@@ -31,6 +34,8 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var userPermissionSharedPreferences: SharedPreferences
     private val favouriteRecipesViewModel: FavouriteRecipesViewModel by viewModels()
+
+    private var isSaved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +51,6 @@ class RecipeDetailFragment : Fragment() {
             AppCompatActivity.MODE_PRIVATE
         )
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,43 +70,63 @@ class RecipeDetailFragment : Fragment() {
     private fun init() {
         val gson = Gson()
         val mealJson = sharedPreferences.getString("favouriteMealJson", null)
+
         val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
 
         val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
             ?: arguments?.getParcelable("searchMealDetail")
 
-        mealDetail?.let { item ->
-            binding.apply {
-                Glide.with(this@RecipeDetailFragment)
-                    .load(item.strMealThumb)
-                    .placeholder(R.drawable.images_placeholder)
-                    .error(R.drawable.error_24px)
-                    .into(ivRecipeDetailImage)
-                tvRecipeDetailTitle.text = item.strMeal
-                tvRecipeDetailsDescContent.text = item.strInstructions
-                tvCategoryIconText.text = item.strCategory
-                tvLocationIconText.text = item.strArea
-            }
-        } ?: run {
-            mealFromPrefs?.let { meal ->
-                binding.apply {
-                    Glide.with(this@RecipeDetailFragment)
-                        .load(meal.mealThumb)
-                        .placeholder(R.drawable.images_placeholder)
-                        .error(R.drawable.error_24px)
-                        .into(ivRecipeDetailImage)
-                    tvRecipeDetailTitle.text = meal.mealName
-                    tvRecipeDetailsDescContent.text = meal.mealInstruction
-                    tvCategoryIconText.text = meal.mealCategory
-                    tvLocationIconText.text = meal.mealCountry
-                }
-            } ?: run {
+        val mealDetailDescription = arguments?.getParcelable<Meal>("categoryDetailsDetails")
+
+        when {
+            mealDetail != null -> bindMealDetail(mealDetail)
+            mealFromPrefs != null -> bindMealInformation(mealFromPrefs)
+            mealDetailDescription != null -> bindCategoryDetailData(mealDetailDescription)
+            else -> {
                 CustomToast(requireContext(), "Meal detail data is missing", R.drawable.error_24px)
                 findNavController().popBackStack()
             }
         }
     }
 
+    private fun bindMealDetail(meal: MealDetail) {
+        binding.apply {
+            Glide.with(this@RecipeDetailFragment)
+                .load(meal.strMealThumb)
+                .placeholder(R.drawable.images_placeholder)
+                .error(R.drawable.error_24px)
+                .into(ivRecipeDetailImage)
+            tvRecipeDetailTitle.text = meal.strMeal
+            tvRecipeDetailsDescContent.text = meal.strInstructions
+            tvCategoryIconText.text = meal.strCategory
+            tvLocationIconText.text = meal.strArea
+        }
+    }
+
+    private fun bindMealInformation(meal: MealInformationEntity) {
+        binding.apply {
+            Glide.with(this@RecipeDetailFragment)
+                .load(meal.mealThumb)
+                .placeholder(R.drawable.images_placeholder)
+                .error(R.drawable.error_24px)
+                .into(ivRecipeDetailImage)
+            tvRecipeDetailTitle.text = meal.mealName
+            tvRecipeDetailsDescContent.text = meal.mealInstruction
+            tvCategoryIconText.text = meal.mealCategory
+            tvLocationIconText.text = meal.mealCountry
+        }
+    }
+
+    private fun bindCategoryDetailData(meal: Meal) {
+        binding.apply {
+            Glide.with(this@RecipeDetailFragment)
+                .load(meal.strMealThumb)
+                .placeholder(R.drawable.images_placeholder)
+                .error(R.drawable.error_24px)
+                .into(ivRecipeDetailImage)
+            tvRecipeDetailTitle.text = meal.strMeal
+        }
+    }
 
     private fun handleOnClick() {
         binding.fabBackToHome.setOnClickListener {
@@ -110,16 +134,16 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.fabSaveItem.setOnClickListener {
-            showConfirmationSaveDialog()
+            checkIfItemSaveOrNot()
         }
 
         binding.ivYoutubeRecipe.setOnClickListener {
             val youtubeUrl = arguments?.getParcelable<MealDetail>("mealDetail")?.strYoutube
             youtubeUrl?.let { url ->
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                try {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                     startActivity(intent)
-                } else {
+                } catch (e: Exception) {
                     CustomToast(
                         requireContext(),
                         "No app available to open this link",
@@ -130,11 +154,35 @@ class RecipeDetailFragment : Fragment() {
         }
     }
 
+    private fun checkIfItemSaveOrNot() {
+        // Get meal details and convert it to MealInformationEntity
+        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
+        mealDetail?.let {
+            val mealEntity = MealInformationEntity(
+                mealId = it.idMeal,
+                mealName = it.strMeal,
+                mealInstruction = it.strInstructions,
+                mealThumb = it.strMealThumb,
+                mealCategory = it.strCategory,
+                mealCountry = it.strArea,
+                mealYoutubeLink = it.strYoutube
+            )
+
+            isSaved = if (isSaved) {
+                showConfirmationDeleteDialog(mealEntity)
+                false
+            } else {
+                showConfirmationSaveDialog()
+                true
+            }
+        }
+    }
+
     private fun saveItemToFavourite() {
         val userType = userPermissionSharedPreferences.getString("userName", "Guest")
         val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
 
-        if (userType !== "Guest") {
+        if (userType != "Guest") {
             mealDetail?.let { meal ->
                 val mealEntity = MealInformationEntity(
                     mealId = meal.idMeal,
@@ -164,10 +212,49 @@ class RecipeDetailFragment : Fragment() {
         } else {
             CustomToast(
                 requireContext(),
-                "you should have an account first to save a Recipe",
+                "You should have an account first to save a Recipe",
                 R.drawable.error_24px
             )
         }
+    }
+
+    private fun deleteMealFromFavourite(meal: MealInformationEntity) {
+        favouriteRecipesViewModel.deleteMeal(meal)
+        showSnackBar(
+            view = requireView(),
+            message = "Item removed successfully",
+            duration = Snackbar.LENGTH_LONG,
+            action = { findNavController().navigate(R.id.action_recipeDetailFragment_to_favouriteFragment) }
+        )
+    }
+
+    private fun showConfirmationDeleteDialog(meal: MealInformationEntity) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_custom_save_recipe, null)
+        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setView(dialogView)
+
+        val alertDialog = dialogBuilder.create()
+
+        val btnCancel = dialogView.findViewById<Button>(R.id.btn_cancel)
+        val btndelete = dialogView.findViewById<Button>(R.id.btn_confirm)
+        val title = dialogView.findViewById<TextView>(R.id.dialog_title)
+        val message = dialogView.findViewById<TextView>(R.id.dialog_message)
+
+        btndelete.text = "Delete"
+        title.text = "Delete Item"
+        message.text = "Are you sure you want to delete this item?"
+        val redTint = ContextCompat.getColorStateList(requireContext(), R.color.red)
+        btndelete.backgroundTintList = redTint
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        btndelete.setOnClickListener {
+            deleteMealFromFavourite(meal)
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 
     private fun showConfirmationSaveDialog() {

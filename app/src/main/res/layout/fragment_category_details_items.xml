@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/CategoriesDetailsCardLayout_margin_top"
+    android:fitsSystemWindows="true"
     android:padding="5dp"
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="@dimen/CategoriesDetailsCardLayout_corner_radius"
     app:cardElevation="@dimen/activity_recipe_elevation">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CategoriesDetailsCardLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorButtonNormal"
         android:padding="@dimen/CategoriesDetailsCardLayout_padding">
 
         <ImageView
@@ -21,25 +22,29 @@
             android:layout_width="@dimen/iv_CategoriesDetailsRecycleViewImage_height"
             android:layout_height="@dimen/iv_CategoriesDetailsRecycleViewImage_height"
             android:contentDescription="@string/item_image_in_home_recycleview"
+            android:scaleType="centerCrop"
             android:src="@drawable/googleicon"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
             android:id="@+id/iv_CategoriesDetailsRecycleViewText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/iv_CategoriesDetailsRecycleViewText_margin_start"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center_vertical"
+            android:maxLines="1"
+            android:singleLine="true"
             android:text="@string/item_name"
             android:textSize="@dimen/iv_CategoriesDetailsRecycleViewText_text_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_CategoriesDetailsRecycleViewImage"
-            app:layout_goneMarginStart="10dp"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ class CategoryFragment : Fragment() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvCategoriesRecycleView.visibility = View.GONE
 
-        val gridLayoutManager = GridLayoutManager(context, 3)
+        val gridLayoutManager = GridLayoutManager(context, 2)
         binding.rvCategoriesRecycleView.layoutManager = gridLayoutManager
 
         categoryAdapter = CategoryAdapter(ArrayList()) { category ->

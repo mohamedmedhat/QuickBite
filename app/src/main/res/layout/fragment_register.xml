@@ -2,7 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,8 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/floating_action_button_margin"
-            android:layout_marginStart="@dimen/floating_action_button_margin_start"
-            android:layout_marginTop="@dimen/floating_action_button_margin_top"
             android:backgroundTint="?attr/buttonIcon"
             android:contentDescription="@string/register_fab_desc"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvl_email"
             style="@style/inputs_corner_Radius"
@@ -110,7 +109,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvl_confirmPassword"
             style="@style/inputs_corner_Radius"
@@ -146,6 +144,5 @@
             app:layout_constraintTop_toBottomOf="@id/tvl_confirmPassword" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>
