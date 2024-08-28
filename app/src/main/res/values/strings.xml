@@ -101,4 +101,6 @@
     <string name="this_float_button_to_back_to_home">this float button to back to home</string>
     <string name="this_float_button_to_save_item">this float button to save item</string>
     <string name="recipe_title">title</string>
+    <string name="navigation_drawer_open" translatable="false">open</string>
+    <string name="navigation_drawer_close" translatable="false">close</string>
 </resources>
