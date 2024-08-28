@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="180dp"
             android:contentDescription="@string/item_image_in_home_recycleview"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/googleicon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

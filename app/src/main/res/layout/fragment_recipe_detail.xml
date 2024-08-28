@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/recipe_detail_image"
             android:src="@drawable/illustration"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,28 +24,27 @@
             android:id="@+id/fab_backToHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/this_float_button_to_back_to_home"
             android:src="@drawable/baseline_keyboard_arrow_left_24"
             app:fabCustomSize="40dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorPrimary" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_saveItem"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/this_float_button_to_save_item"
             android:src="@drawable/bookmark"
-            app:cornerRadius="20dp"
             app:fabCustomSize="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorPrimary" />
 
         <TextView
             android:id="@+id/tv_recipeDetailTitle"
@@ -55,8 +55,9 @@
             android:text="@string/recipe_title"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_recipeDetailImage" />
+            app:layout_constraintTop_toBottomOf="@id/iv_recipeDetailImage" />
 
         <ImageView
             android:id="@+id/iv_starIcon"
@@ -66,18 +67,19 @@
             android:layout_marginVertical="10dp"
             android:foregroundGravity="center_horizontal"
             android:src="@drawable/star"
-            app:layout_constraintEnd_toStartOf="@+id/tv_starIconText"
-            app:layout_constraintTop_toBottomOf="@+id/iv_recipeDetailImage" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailTitle" />
 
         <TextView
             android:id="@+id/tv_starIconText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/clock_time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_recipeDetailImage" />
+            app:layout_constraintStart_toEndOf="@id/iv_starIcon"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailTitle" />
 
         <ImageView
             android:id="@+id/iv_categoryIcon"
@@ -87,8 +89,8 @@
             android:layout_marginTop="12dp"
             android:contentDescription="@string/image_of_item_in_home_recycleview"
             android:src="@drawable/category_24px"
-            app:layout_constraintEnd_toStartOf="@+id/tv_categoryIconText"
-            app:layout_constraintTop_toBottomOf="@+id/iv_starIcon" />
+            app:layout_constraintStart_toEndOf="@+id/tv_starIconText"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailTitle" />
 
         <TextView
             android:id="@+id/tv_categoryIconText"
@@ -100,19 +102,19 @@
             android:text="@string/clock_time"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_starIcon" />
+            app:layout_constraintStart_toEndOf="@id/iv_categoryIcon"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailTitle" />
 
         <ImageView
             android:id="@+id/iv_locationIcon"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="12dp"
             android:contentDescription="@string/image_of_item_in_home_recycleview"
             android:src="@drawable/location_on_24px"
-            app:layout_constraintEnd_toStartOf="@+id/tv_locationIconText"
-            app:layout_constraintTop_toBottomOf="@+id/iv_starIcon" />
+            app:layout_constraintStart_toEndOf="@id/tv_categoryIconText"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailTitle" />
 
         <TextView
             android:id="@+id/tv_locationIconText"
@@ -124,8 +126,8 @@
             android:text="@string/clock_time"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/iv_categoryIcon"
-            app:layout_constraintTop_toBottomOf="@+id/iv_starIcon" />
+            app:layout_constraintStart_toEndOf="@id/iv_locationIcon"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailTitle" />
 
         <TextView
             android:id="@+id/tv_recipeDetailsDesc"
@@ -136,9 +138,8 @@
             android:text="@string/description_title"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/iv_starIcon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_recipeDetailTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tv_locationIconText" />
 
         <TextView
             android:id="@+id/tv_recipeDetailsDescContent"
@@ -148,9 +149,8 @@
             android:fontFamily="@font/poppins_medium"
             android:text="@string/description"
             android:textColor="@color/gray"
-            app:layout_constraintStart_toEndOf="@+id/iv_starIcon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_recipeDetailsDesc" />
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailsDesc" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/iv_youtubeRecipe"
@@ -167,7 +167,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_recipeDetailsDescContent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailsDescContent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

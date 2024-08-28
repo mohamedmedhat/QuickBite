@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="5dp"
     app:cardCornerRadius="8dp"
     app:cardUseCompatPadding="true"
-    app:elevation="10dp">
+    app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="227dp"
-        android:layout_height="260dp"
-        android:background="?attr/color">
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        >
 
         <ImageView
             android:id="@+id/img_fav_meal"
             android:layout_width="0dp"
             android:layout_height="174dp"
             android:contentDescription="@string/favourite_item_image"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/tv_fav_meal_name"
@@ -34,10 +34,12 @@
             android:textColor="?attr/colorAccent"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_fav_meal" />
-
 
         <ImageView
             android:id="@+id/img_star"
@@ -48,7 +50,6 @@
             android:src="@drawable/star"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_fav_meal_name" />
-
 
         <TextView
             android:id="@+id/tv_rating"
@@ -61,7 +62,6 @@
             app:layout_constraintStart_toEndOf="@id/img_star"
             app:layout_constraintTop_toTopOf="@id/img_star" />
 
-
         <ImageView
             android:id="@+id/img_time"
             android:layout_width="20dp"
@@ -71,7 +71,6 @@
             android:src="@drawable/schedule_24px"
             app:layout_constraintStart_toEndOf="@id/tv_rating"
             app:layout_constraintTop_toTopOf="@id/img_star" />
-
 
         <TextView
             android:id="@+id/tv_time"
@@ -89,10 +88,9 @@
             android:layout_width="31dp"
             android:layout_height="28dp"
             android:contentDescription="@string/save_icon"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/notification4" />
-
+            app:srcCompat="@drawable/notification4"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

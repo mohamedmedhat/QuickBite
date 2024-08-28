@@ -54,5 +54,22 @@
         <item name="android:layout_marginTop">@dimen/iv_locationIcon_margin_top</item>
     </style>
 
+    <!-- Define a custom style for the AlertDialog -->
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <!-- Background color -->
+        <item name="android:background">#FFFFFF</item>
+        <!-- Title text appearance -->
+        <item name="android:textColorPrimary">#FF5722</item>
+        <!-- Message text appearance -->
+        <item name="android:textColorSecondary">#757575</item>
+        <item name="android:textSize">16sp</item>
+        <!-- Button text appearance -->
+        <item name="android:buttonStyle">@style/CustomDialogButton</item>
+    </style>
+
+    <!-- Custom style for dialog buttons -->
+    <style name="CustomDialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#FF5722</item>
+    </style>
 
 </resources>

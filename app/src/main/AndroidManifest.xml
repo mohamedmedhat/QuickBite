@@ -16,10 +16,12 @@
 
         <activity
             android:name=".presentation.activity.RecipeActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible"
             android:exported="false" />
 
         <activity
             android:name=".presentation.activity.AuthActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

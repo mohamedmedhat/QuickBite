@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.remote.model.Category
+import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.databinding.FragmentCategoryDetailsBinding
 import com.xapp.quickbit.viewModel.CategoryDetailsViewModel
 import com.xapp.quickbit.viewModel.adapter.CategoryDetailsAdapter
@@ -20,7 +22,7 @@ class CategoryDetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var categoryDetailsAdapter: CategoryDetailsAdapter
-    private  val categoryDetailsViewModel: CategoryDetailsViewModel by viewModels()
+    private val categoryDetailsViewModel: CategoryDetailsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +39,8 @@ class CategoryDetailsFragment : Fragment() {
 
         val categoryName = arguments?.getParcelable<Category>("categoryMeals")?.strCategory
 
-        categoryDetailsAdapter = CategoryDetailsAdapter(ArrayList()) {
-            // Handle item click if needed
+        categoryDetailsAdapter = CategoryDetailsAdapter(ArrayList()) { meal ->
+            goToDetails(meal)
         }
         binding.rvCategoryDetailsRecycleView.adapter = categoryDetailsAdapter
 
@@ -47,7 +49,7 @@ class CategoryDetailsFragment : Fragment() {
         }
 
         categoryDetailsViewModel.categoryDetails.observe(viewLifecycleOwner) { category ->
-            if(!category.isNullOrEmpty()){
+            if (!category.isNullOrEmpty()) {
                 binding.lottieLoading.visibility = View.GONE
                 binding.rvCategoryDetailsRecycleView.visibility = View.VISIBLE
                 categoryDetailsAdapter.updateData(category)
@@ -62,6 +64,16 @@ class CategoryDetailsFragment : Fragment() {
                 Log.e("CategoryDetails Fragment Error", it)
             }
         }
+    }
+
+    private fun goToDetails(meal: Meal) {
+        val bundle = Bundle().apply {
+            putParcelable("categoryDetailsDetails", meal)
+        }
+        findNavController().navigate(
+            R.id.action_categoryDetailsFragment_to_recipeDetailFragment,
+            bundle
+        )
     }
 
 }
