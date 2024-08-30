@@ -2,17 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:contentDescription="nav to profile"
-        android:icon="@drawable/profile"
-        android:title="@string/profile" />
+        android:id="@+id/myRecipesFragment"
+        android:contentDescription="nav to my recipes"
+        android:icon="@drawable/menu_book_24px"
+        android:title="My Recipes" />
 
     <item
-        android:contentDescription="nav to settings"
-        android:icon="@drawable/setting"
+        android:id="@+id/dashboardFragment"
+        android:contentDescription="nav to dashboard"
+        android:icon="@drawable/emoji_events_24px"
         android:iconTint="@color/gray"
-        android:title="settings" />
+        android:title="Dashboard" />
 
     <item
+        android:id="@+id/aboutFragment"
         android:contentDescription="nav to profile"
         android:icon="@drawable/profile"
         android:title="@string/profile" />

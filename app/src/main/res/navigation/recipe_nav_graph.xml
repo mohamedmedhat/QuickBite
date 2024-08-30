@@ -118,4 +118,19 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/createRecipeFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.CreateRecipeFragment"
+        android:label="fragment_create_recipe"
+        tools:layout="@layout/fragment_create_recipe" />
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/myRecipesFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.MyRecipesFragment"
+        android:label="fragment_my_recipes"
+        tools:layout="@layout/fragment_my_recipes" />
 </navigation>

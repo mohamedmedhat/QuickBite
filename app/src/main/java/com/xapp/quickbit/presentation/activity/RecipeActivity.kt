@@ -41,17 +41,18 @@ class RecipeActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false) // Remove the drawer icon
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     private fun setupNavigation() {
         navController = findNavController(R.id.fcv_recipeFragmentContainer)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment),
+            setOf(
+                R.id.myRecipesFragment, R.id.dashboardFragment, R.id.aboutFragment
+            ),
             binding.drawerLayout
         )
 
-        // Link the bottom navigation and drawer layout with the NavController
         NavigationUI.setupWithNavController(binding.navigationView, navController)
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
     }
@@ -63,12 +64,10 @@ class RecipeActivity : AppCompatActivity() {
     }
 
     private fun handleOnClick() {
-        // Open the drawer when the appbar image is clicked
         binding.ivAppbarProfileImage.setOnClickListener {
             binding.drawerLayout.openDrawer(binding.navigationView)
         }
 
-        // Handle menu click for sign-out
         binding.appbarMenu.setOnClickListener {
             showSignOutConfirmationDialog()
         }

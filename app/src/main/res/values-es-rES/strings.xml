@@ -98,4 +98,6 @@
     <string name="this_float_button_to_back_to_home">este botón flotante para regresar a la página principal</string>
     <string name="this_float_button_to_save_item">este botón flotante para guardar el elemento</string>
     <string name="recipe_title">título</string>
+    <string name="create_new_recipe">create new recipe</string>
+    <string name="add">add</string>
 </resources>

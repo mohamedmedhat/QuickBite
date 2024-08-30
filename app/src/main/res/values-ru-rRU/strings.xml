@@ -96,4 +96,6 @@
     <string name="this_float_button_to_back_to_home">эта плавающая кнопка для возврата на главную</string>
     <string name="this_float_button_to_save_item">эта плавающая кнопка для сохранения элемента</string>
     <string name="recipe_title">заголовок</string>
+    <string name="create_new_recipe">create new recipe</string>
+    <string name="add">add</string>
 </resources>

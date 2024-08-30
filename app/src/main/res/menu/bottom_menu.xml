@@ -10,12 +10,21 @@
         android:fontFamily="@font/poppins_medium"
         android:icon="@drawable/search"
         android:title="@string/Search" />
+
+    <item
+        android:id="@+id/createRecipeFragment"
+        android:contentDescription="@string/create_new_recipe"
+        android:fontFamily="@font/poppins_medium"
+        android:icon="@drawable/add_circle_24px"
+        android:title="@string/add" />
+
     <item
         android:id="@+id/favouriteFragment"
         android:fontFamily="@font/poppins_medium"
         android:icon="@drawable/bookmark"
         android:iconTint="@color/nav_bottom_icon"
         android:title="@string/saved" />
+
     <item
         android:id="@+id/categoryFragment"
         android:fontFamily="@font/poppins_medium"
