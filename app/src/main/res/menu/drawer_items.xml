@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/myRecipesFragment"
+        android:contentDescription="nav to my recipes"
+        android:icon="@drawable/menu_book_24px"
+        android:title="My Recipes" />
+
+    <item
+        android:id="@+id/dashboardFragment"
+        android:contentDescription="nav to dashboard"
+        android:icon="@drawable/emoji_events_24px"
+        android:iconTint="@color/gray"
+        android:title="Dashboard" />
+
+    <item
+        android:id="@+id/aboutFragment"
+        android:contentDescription="nav to profile"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
+
+    <item
+        android:contentDescription="logout"
+        android:icon="@drawable/logout_24px"
+        android:title="logout" />
+
+</menu>

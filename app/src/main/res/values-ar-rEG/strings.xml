@@ -98,4 +98,6 @@
     <string name="this_float_button_to_back_to_home">هذا الزر العائم للعودة إلى الصفحة الرئيسية</string>
     <string name="this_float_button_to_save_item">هذا الزر العائم لحفظ العنصر</string>
     <string name="recipe_title">العنوان</string>
+    <string name="create_new_recipe">create new recipe</string>
+    <string name="add">add</string>
 </resources>

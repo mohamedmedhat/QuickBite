@@ -96,4 +96,6 @@
     <string name="this_float_button_to_back_to_home">Dieser Schwebebutton, um zur Startseite zurückzukehren</string>
     <string name="this_float_button_to_save_item">Dieser Schwebebutton, um das Element zu speichern</string>
     <string name="recipe_title">Titel</string>
+    <string name="create_new_recipe">create new recipe</string>
+    <string name="add">add</string>
 </resources>

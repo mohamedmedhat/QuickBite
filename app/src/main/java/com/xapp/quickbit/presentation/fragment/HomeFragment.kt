@@ -1,7 +1,5 @@
 package com.xapp.quickbit.presentation.fragment
 
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,18 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentHomeBinding
-import com.xapp.quickbit.presentation.activity.AuthActivity
-import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.HomeRecipesViewModel
 import com.xapp.quickbit.viewModel.adapter.HomeRecipesAdapter
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
@@ -29,17 +22,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var homeRecipesViewModel: HomeRecipesViewModel
     private lateinit var homeRecipesAdapter: HomeRecipesAdapter
-    private lateinit var authViewModel: AuthViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        sharedPreferences =
-            requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +36,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         homeRecipesViewModel = ViewModelProvider(this)[HomeRecipesViewModel::class.java]
 
         binding.lottieLoading.visibility = View.VISIBLE
@@ -83,14 +66,8 @@ class HomeFragment : Fragment() {
         }
 
         setupSpinner()
-        welcomeUser()
-        handleOnCLick()
     }
 
-    private fun welcomeUser() {
-        val userName = sharedPreferences.getString("userName", "Guest")
-        binding.tvUserNameText.text = userName
-    }
 
     private fun navigateToItemFragment(mealDetail: MealDetail) {
         val bundle = Bundle().apply {
@@ -153,46 +130,6 @@ class HomeFragment : Fragment() {
                     // Handle case when nothing is selected if needed
                 }
             }
-    }
-
-    private fun handleOnCLick() {
-        binding.ivHomeLogoutImage.setOnClickListener {
-            showSignOutConfirmationDialog()
-        }
-
-    }
-
-    private fun showSignOutConfirmationDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_custom_sign_out, null)
-
-        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
-            .setView(dialogView)
-
-        val alertDialog = dialogBuilder.create()
-
-        val btnCancel = dialogView.findViewById<Button>(R.id.btn_cancel)
-        val btnConfirm = dialogView.findViewById<Button>(R.id.btn_confirm)
-
-        btnCancel.setOnClickListener {
-            alertDialog.dismiss()
-        }
-
-        btnConfirm.setOnClickListener {
-            signOutUser()
-            alertDialog.dismiss()
-        }
-
-        alertDialog.show()
-    }
-
-    private fun signOutUser() {
-        authViewModel.signOut()
-        val editor = sharedPreferences.edit()
-        editor.remove("userEmail")
-        editor.remove("userPassword")
-        editor.apply()
-        val intent = Intent(requireContext(), AuthActivity::class.java)
-        startActivity(intent)
     }
 
     override fun onDestroyView() {
