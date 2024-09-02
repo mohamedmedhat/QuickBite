@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
+import com.xapp.quickbit.data.source.local.entity.MyRecipesEntity
 import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentRecipeDetailBinding
@@ -67,27 +69,67 @@ class RecipeDetailFragment : Fragment() {
         handleOnClick()
     }
 
+//    private fun init() {
+//        val gson = Gson()
+//        val mealJson = sharedPreferences.getString("favouriteMealJson", null)
+//        val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
+//
+//        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
+//            ?: arguments?.getParcelable("searchMealDetail")
+//        val mealDetailDescription = arguments?.getParcelable<Meal>("categoryDetailsDetails")
+//        val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
+//
+//        Log.d("RecipeDetailFragment", "mealDetail: $mealDetail")
+//        Log.d("RecipeDetailFragment", "mealFromPrefs: $mealFromPrefs")
+//        Log.d("RecipeDetailFragment", "mealDetailDescription: $mealDetailDescription")
+//        Log.d("RecipeDetailFragment", "myCreatedRecipesDetails: $myCreatedRecipesDetails")
+//
+//        // Chain let/apply blocks to handle each case
+//        mealDetail?.let {
+//            bindMealDetail(it)
+//        } ?: mealFromPrefs?.let {
+//            bindMealInformation(it)
+//        } ?: mealDetailDescription?.let {
+//            bindCategoryDetailData(it)
+//        } ?: myCreatedRecipesDetails?.let {
+//            bindMyCreatedRecipesDetails(it)
+//        } ?: run {
+//            CustomToast(requireContext(), "Meal detail data is missing", R.drawable.error_24px)
+//            findNavController().popBackStack()
+//        }
+//    }
+
     private fun init() {
+        val mealData = getMealData() ?: run {
+            CustomToast(requireContext(), "Meal detail data is missing", R.drawable.error_24px)
+            findNavController().popBackStack()
+            return
+        }
+        bindData(mealData)
+    }
+
+    private fun getMealData(): Any? {
         val gson = Gson()
         val mealJson = sharedPreferences.getString("favouriteMealJson", null)
-
         val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
 
         val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
             ?: arguments?.getParcelable("searchMealDetail")
-
         val mealDetailDescription = arguments?.getParcelable<Meal>("categoryDetailsDetails")
+        val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
 
-        when {
-            mealDetail != null -> bindMealDetail(mealDetail)
-            mealFromPrefs != null -> bindMealInformation(mealFromPrefs)
-            mealDetailDescription != null -> bindCategoryDetailData(mealDetailDescription)
-            else -> {
-                CustomToast(requireContext(), "Meal detail data is missing", R.drawable.error_24px)
-                findNavController().popBackStack()
-            }
+        return mealDetail ?: mealFromPrefs ?: mealDetailDescription ?: myCreatedRecipesDetails
+    }
+
+    private fun bindData(mealData: Any) {
+        when (mealData) {
+            is MealDetail -> bindMealDetail(mealData)
+            is MealInformationEntity -> bindMealInformation(mealData)
+            is Meal -> bindCategoryDetailData(mealData)
+            is MyRecipesEntity -> bindMyCreatedRecipesDetails(mealData)
         }
     }
+
 
     private fun bindMealDetail(meal: MealDetail) {
         binding.apply {
@@ -128,6 +170,20 @@ class RecipeDetailFragment : Fragment() {
         }
     }
 
+    private fun bindMyCreatedRecipesDetails(recipe: MyRecipesEntity) {
+        binding.apply {
+            Glide.with(this@RecipeDetailFragment)
+                .load(recipe.mealThumb)
+                .placeholder(R.drawable.images_placeholder)
+                .error(R.drawable.error_24px)
+                .into(ivRecipeDetailImage)
+            tvRecipeDetailTitle.text = recipe.mealName
+            tvCategoryIconText.text = recipe.mealCategory
+            tvLocationIconText.text = recipe.mealCountry
+            tvRecipeDetailsDescContent.text = recipe.mealInstruction
+        }
+    }
+
     private fun handleOnClick() {
         binding.fabBackToHome.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
@@ -139,6 +195,7 @@ class RecipeDetailFragment : Fragment() {
 
         binding.ivYoutubeRecipe.setOnClickListener {
             val youtubeUrl = arguments?.getParcelable<MealDetail>("mealDetail")?.strYoutube
+                ?: arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")?.mealYoutubeLink
             youtubeUrl?.let { url ->
                 try {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))

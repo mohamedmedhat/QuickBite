@@ -5,17 +5,21 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 import com.xapp.quickbit.data.source.local.dao.FavouriteDao
+import com.xapp.quickbit.data.source.local.dao.MyRecipesDao
 import com.xapp.quickbit.data.source.local.dao.UserDao
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
+import com.xapp.quickbit.data.source.local.entity.MyRecipesEntity
 import com.xapp.quickbit.data.source.local.entity.UserEntity
 
 @Database(
-    entities = [UserEntity::class, MealInformationEntity::class],
-    version = 4
+    entities = [UserEntity::class, MealInformationEntity::class, MyRecipesEntity::class],
+    version = 6
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun favouriteDao(): FavouriteDao
+
+    abstract fun myRecipesDao(): MyRecipesDao
 
     companion object {
         @Volatile

@@ -1,60 +1,90 @@
 package com.xapp.quickbit.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.xapp.quickbit.R
+import com.xapp.quickbit.data.source.local.entity.MyRecipesEntity
+import com.xapp.quickbit.databinding.FragmentMyRecipesBinding
+import com.xapp.quickbit.viewModel.MyRecipesViewModel
+import com.xapp.quickbit.viewModel.adapter.MyRecipesAdapter
+import com.xapp.quickbit.viewModel.utils.CustomNotifications
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyRecipesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyRecipesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentMyRecipesBinding? = null
+    val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var myRecipesAdapter: MyRecipesAdapter
+    private val myRecipesViewModel: MyRecipesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_recipes, container, false)
+    ): View {
+        _binding = FragmentMyRecipesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyRecipesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyRecipesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.lottieLoading.visibility = View.VISIBLE
+        binding.rvMyRecipesRecycleView.visibility = View.GONE
+
+        myRecipesViewModel.allMyCreatedRecipes.observe(viewLifecycleOwner) { recipe ->
+            if (!recipe.isNullOrEmpty()) {
+                binding.lottieLoading.visibility = View.GONE
+                binding.rvMyRecipesRecycleView.visibility = View.VISIBLE
+                myRecipesAdapter = MyRecipesAdapter(recipe.toMutableList(), { rec ->
+                    goToDetails(rec)
+                }, { del ->
+                    deleteRecipe(del)
+                })
+                binding.rvMyRecipesRecycleView.adapter = myRecipesAdapter
+            } else {
+                binding.tvNoRecipes.visibility = View.VISIBLE
             }
+        }
+
+        myRecipesViewModel.error.observe(viewLifecycleOwner) { error ->
+            binding.lottieLoading.visibility = View.GONE
+            binding.rvMyRecipesRecycleView.visibility = View.GONE
+            error?.let {
+                CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
+                Log.e("My Recipes Fragment Error", it)
+            }
+        }
     }
+
+    private fun goToDetails(recipe: MyRecipesEntity) {
+        val bundle = Bundle().apply {
+            putParcelable("myCreateRecipe", recipe)
+        }
+        findNavController().navigate(R.id.action_myRecipesFragment_to_recipeDetailFragment, bundle)
+    }
+
+
+    private fun deleteRecipe(recipe: MyRecipesEntity) {
+        myRecipesViewModel.deleteRecipe(recipe)
+        myRecipesAdapter.removeItem(recipe)
+        CustomNotifications.showSnackBar(
+            view = requireView(),
+            message = "Item removed successfully",
+            duration = Snackbar.LENGTH_LONG,
+            action = {}
+        )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
