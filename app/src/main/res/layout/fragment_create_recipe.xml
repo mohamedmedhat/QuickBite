@@ -1,14 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="16dp"
     tools:context=".presentation.fragment.CreateRecipeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="create fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/iv_recipeImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="#16050505"
+            android:contentDescription="recipe_image_desc"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_addImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#00050505"
+            android:gravity="center_horizontal"
+            app:icon="@drawable/add_photo_alternate_24px"
+            app:iconGravity="textStart"
+            app:iconSize="36sp"
+            app:iconTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recipeImage"
+            app:layout_constraintEnd_toEndOf="@id/iv_recipeImage"
+            app:layout_constraintStart_toStartOf="@id/iv_recipeImage"
+            app:layout_constraintTop_toTopOf="@id/iv_recipeImage" />
+
+
+        <!-- Recipe Name Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvl_recipeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_recipeImage">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_recipeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter recipe name"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Recipe Description Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvl_recipeDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvl_recipeName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_recipeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter recipe description"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Video Upload Section -->
+        <TextView
+            android:id="@+id/tv_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Add Recipe Video"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvl_recipeDescription" />
+
+        <!-- Upload Video Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_uploadVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:icon="@drawable/play_circle_24px"
+            android:iconTint="@color/white"
+            android:text="Upload Video"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_video" />
+
+        <TextView
+            android:id="@+id/tv_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_uploadVideo" />
+
+        <!-- Video URL Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvl_videoUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_or">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_videoUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter video URL"
+                android:inputType="textUri" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Add an optional ImageView to preview the video thumbnail -->
+        <ImageView
+            android:id="@+id/iv_videoThumbnail"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="#16050505"
+            android:contentDescription="video_thumbnail_desc"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvl_videoUrl" />
+
+
+        <!-- Location Spinner -->
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:entries="@array/countries_array"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_videoThumbnail" />
+
+        <!-- Category Spinner -->
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/categories_array"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_location" />
+
+        <!-- Submit Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Add Recipe"
+            android:textColor="@color/white"
+            app:icon="@drawable/add_circle_24px"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_category" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
