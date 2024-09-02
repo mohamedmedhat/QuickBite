@@ -117,6 +117,7 @@ class RecipeDetailFragment : Fragment() {
             ?: arguments?.getParcelable("searchMealDetail")
         val mealDetailDescription = arguments?.getParcelable<Meal>("categoryDetailsDetails")
         val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
+            ?: arguments?.getParcelable<MyRecipesEntity>("dashboardRecipe")
 
         return mealDetail ?: mealFromPrefs ?: mealDetailDescription ?: myCreatedRecipesDetails
     }
