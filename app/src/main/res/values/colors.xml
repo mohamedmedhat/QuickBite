@@ -9,5 +9,9 @@
     <color name="darkGreen">#21412F</color>
     <color name="lightGreen">#30995A</color>
     <color name="SemiDarkGreen">#121915</color>
+    <color name="gold">#FFD700</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="bronze">#CD7F32</color>
+
 
 </resources>
