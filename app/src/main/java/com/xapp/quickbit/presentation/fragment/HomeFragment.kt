@@ -38,6 +38,10 @@ class HomeFragment : Fragment() {
 
         homeRecipesViewModel = ViewModelProvider(this)[HomeRecipesViewModel::class.java]
 
+        binding.homeSwipeRefresh.setOnRefreshListener {
+            refreshData()
+        }
+
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvHomeRecycleView.visibility = View.GONE
 
@@ -47,6 +51,8 @@ class HomeFragment : Fragment() {
         binding.rvHomeRecycleView.adapter = homeRecipesAdapter
 
         homeRecipesViewModel.mealRecipes.observe(viewLifecycleOwner) { recipes ->
+            binding.homeSwipeRefresh.isRefreshing = false
+
             if (recipes.isNotEmpty()) {
                 binding.lottieLoading.visibility = View.GONE
                 binding.rvHomeRecycleView.visibility = View.VISIBLE
@@ -55,10 +61,12 @@ class HomeFragment : Fragment() {
         }
 
         homeRecipesViewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+            binding.homeSwipeRefresh.isRefreshing = false
+
             binding.lottieLoading.visibility = View.GONE
             binding.rvHomeRecycleView.visibility = View.GONE
-
             binding.tvNoRecipes.visibility = View.VISIBLE
+
             errorMessage?.let {
                 CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
                 Log.e("Home Fragment Error", it)
@@ -68,6 +76,13 @@ class HomeFragment : Fragment() {
         setupSpinner()
     }
 
+    private fun refreshData() {
+        binding.lottieLoading.visibility = View.VISIBLE
+        binding.rvHomeRecycleView.visibility = View.GONE
+
+        val selectedLetter = binding.letterSpinnerFilter.selectedItem.toString()
+        homeRecipesViewModel.fetchRecipesByFirstLetter(selectedLetter)
+    }
 
     private fun navigateToItemFragment(mealDetail: MealDetail) {
         val bundle = Bundle().apply {
@@ -137,4 +152,5 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 }
+
 
