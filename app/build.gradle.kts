@@ -53,9 +53,6 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
 
-    // google maps
-    implementation("com.google.android.gms:play-services-maps:19.0.0")
-
     // lottie animation
     implementation("com.airbnb.android:lottie:6.0.0")
 

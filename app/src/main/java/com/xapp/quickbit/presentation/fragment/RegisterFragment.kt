@@ -82,7 +82,7 @@ class RegisterFragment : Fragment() {
             val confirmPassword = binding.tvConfirmPassword.text.toString()
 
             authViewModel.handleRegisterAction(userName, email, password, confirmPassword)
-            saveUserDataToSharedPreferences(userName)
+            saveUserDataToSharedPreferences(userName, email)
         }
 
         binding.floatingActionButton.setOnClickListener {
@@ -90,9 +90,10 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun saveUserDataToSharedPreferences(userName: String) {
+    private fun saveUserDataToSharedPreferences(userName: String, email: String) {
         val editor = sharedPreferences.edit()
         editor.putString("userName", userName)
+        editor.putString("email", email)
         editor.apply()
     }
 
