@@ -13,6 +13,7 @@
         android:layout_height="72dp"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerCrop"
+        android:background="@drawable/profile_image_background"
         android:src="@drawable/profile" />
 
     <TextView
@@ -24,7 +25,7 @@
         android:gravity="center_horizontal"
         android:text="User Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/textViewEmail"
@@ -33,6 +34,6 @@
         android:gravity="center_horizontal"
         android:text="user@example.com"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/black" />
 
 </LinearLayout>

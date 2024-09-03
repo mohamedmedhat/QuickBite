@@ -15,7 +15,7 @@
         android:title="Dashboard" />
 
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/profileFragment"
         android:contentDescription="nav to profile"
         android:icon="@drawable/profile"
         android:title="@string/profile" />

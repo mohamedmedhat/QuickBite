@@ -11,10 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentSplashBinding
 import com.xapp.quickbit.presentation.activity.RecipeActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SplashFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
@@ -49,14 +53,24 @@ class SplashFragment : Fragment() {
     }
 
     private fun checkIfUserIsLoggedInBefore() {
-        val userEmail = sharedPreferences.getString("userEmail", null)
-        val userPassword = sharedPreferences.getString("userPassword", null)
-        return if (!userEmail.isNullOrEmpty() && !userPassword.isNullOrEmpty()) {
-            val intent = Intent(requireContext(), RecipeActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        } else {
-            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+        lifecycleScope.launch(Dispatchers.IO) {
+            val userEmail = sharedPreferences.getString("userEmail", null)
+            val userPassword = sharedPreferences.getString("userPassword", null)
+
+            withContext(Dispatchers.Main) {
+                if (!userEmail.isNullOrEmpty() && !userPassword.isNullOrEmpty()) {
+                    navigateToRecipeActivity()
+                } else {
+                    findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                }
+            }
         }
+    }
+
+    private fun navigateToRecipeActivity() {
+        val intent = Intent(requireActivity(), RecipeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish()
     }
 }
