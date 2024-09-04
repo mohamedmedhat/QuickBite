@@ -1,5 +1,6 @@
 package com.xapp.quickbit.viewModel.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +46,13 @@ class FavouriteAdapter(
     }
 
     override fun getItemCount(): Int = items.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateMeals(newMeals: MutableList<MealInformationEntity>) {
+        items.clear()
+        items.addAll(newMeals)
+        notifyDataSetChanged()
+    }
 
     fun removeItem(meal: MealInformationEntity) {
         val position = items.indexOf(meal)

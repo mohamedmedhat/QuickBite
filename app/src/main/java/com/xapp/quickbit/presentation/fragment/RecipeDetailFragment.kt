@@ -67,37 +67,8 @@ class RecipeDetailFragment : Fragment() {
 
         init()
         handleOnClick()
+        handleSwipeRefresh()
     }
-
-//    private fun init() {
-//        val gson = Gson()
-//        val mealJson = sharedPreferences.getString("favouriteMealJson", null)
-//        val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
-//
-//        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
-//            ?: arguments?.getParcelable("searchMealDetail")
-//        val mealDetailDescription = arguments?.getParcelable<Meal>("categoryDetailsDetails")
-//        val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
-//
-//        Log.d("RecipeDetailFragment", "mealDetail: $mealDetail")
-//        Log.d("RecipeDetailFragment", "mealFromPrefs: $mealFromPrefs")
-//        Log.d("RecipeDetailFragment", "mealDetailDescription: $mealDetailDescription")
-//        Log.d("RecipeDetailFragment", "myCreatedRecipesDetails: $myCreatedRecipesDetails")
-//
-//        // Chain let/apply blocks to handle each case
-//        mealDetail?.let {
-//            bindMealDetail(it)
-//        } ?: mealFromPrefs?.let {
-//            bindMealInformation(it)
-//        } ?: mealDetailDescription?.let {
-//            bindCategoryDetailData(it)
-//        } ?: myCreatedRecipesDetails?.let {
-//            bindMyCreatedRecipesDetails(it)
-//        } ?: run {
-//            CustomToast(requireContext(), "Meal detail data is missing", R.drawable.error_24px)
-//            findNavController().popBackStack()
-//        }
-//    }
 
     private fun init() {
         val mealData = getMealData() ?: run {
@@ -115,11 +86,10 @@ class RecipeDetailFragment : Fragment() {
 
         val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
             ?: arguments?.getParcelable("searchMealDetail")
-        val mealDetailDescription = arguments?.getParcelable<Meal>("categoryDetailsDetails")
         val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
             ?: arguments?.getParcelable<MyRecipesEntity>("dashboardRecipe")
 
-        return mealDetail ?: mealFromPrefs ?: mealDetailDescription ?: myCreatedRecipesDetails
+        return mealDetail ?: mealFromPrefs ?: myCreatedRecipesDetails
     }
 
     private fun bindData(mealData: Any) {
@@ -298,9 +268,9 @@ class RecipeDetailFragment : Fragment() {
         val title = dialogView.findViewById<TextView>(R.id.dialog_title)
         val message = dialogView.findViewById<TextView>(R.id.dialog_message)
 
-        btndelete.text = "Delete"
-        title.text = "Delete Item"
-        message.text = "Are you sure you want to delete this item?"
+        btndelete.text = ContextCompat.getString(requireContext(), R.string.delete_dialog_btn_title)
+        title.text = ContextCompat.getString(requireContext(), R.string.delete_dialog_title)
+        message.text = ContextCompat.getString(requireContext(), R.string.delete_dialog_message)
         val redTint = ContextCompat.getColorStateList(requireContext(), R.color.red)
         btndelete.backgroundTintList = redTint
         btnCancel.setOnClickListener {
@@ -335,6 +305,26 @@ class RecipeDetailFragment : Fragment() {
         }
 
         alertDialog.show()
+    }
+
+    private fun handleSwipeRefresh() {
+        styleSwipeRefresh()
+        binding.recipeDetailSwipeRefresh.setOnRefreshListener {
+            refreshData()
+        }
+    }
+
+    private fun styleSwipeRefresh() {
+        binding.recipeDetailSwipeRefresh.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(), R.color.darkGreen),
+            ContextCompat.getColor(requireContext(), R.color.lightGreen),
+            ContextCompat.getColor(requireContext(), R.color.lighterGreen),
+        )
+    }
+
+    private fun refreshData() {
+        init()
+        binding.recipeDetailSwipeRefresh.isRefreshing = false
     }
 
     override fun onDestroyView() {

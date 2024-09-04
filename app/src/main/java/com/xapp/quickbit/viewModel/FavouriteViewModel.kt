@@ -20,7 +20,7 @@ class FavouriteRecipesViewModel(application: Application) : AndroidViewModel(app
             try {
                 repository.insertFavoriteMeal(meal)
             } catch (e: Exception) {
-                Log.e("Insert To Favourite failed", "$e")
+                Log.e(insertErrorTag, "$e")
             }
         }
     }
@@ -31,7 +31,7 @@ class FavouriteRecipesViewModel(application: Application) : AndroidViewModel(app
                 val meal = repository.getMealById(mealId)
                 callback(meal)
             } catch (e: Exception) {
-                Log.e("getMealById from Favourite failed", "$e")
+                Log.e(getMealByIdErrorTag, "$e")
             }
         }
     }
@@ -41,7 +41,7 @@ class FavouriteRecipesViewModel(application: Application) : AndroidViewModel(app
             try {
                 repository.deleteMealById(mealId)
             } catch (e: Exception) {
-                Log.e("deleteMealById from Favourite failed", "$e")
+                Log.e(deleteMealByIdErrorTag, "$e")
             }
         }
     }
@@ -51,9 +51,15 @@ class FavouriteRecipesViewModel(application: Application) : AndroidViewModel(app
             try {
                 repository.deleteMeal(meal)
             } catch (e: Exception) {
-                Log.e("deleteMeal from Favourite failed", "$e")
+                Log.e(deleteMealErrorTag, "$e")
             }
         }
     }
-}
 
+    companion object {
+        const val insertErrorTag = "Insert To Favourite failed"
+        const val getMealByIdErrorTag = "getMealById To Favourite failed"
+        const val deleteMealByIdErrorTag = "deleteMealById To Favourite failed"
+        const val deleteMealErrorTag = "deleteMeal To Favourite failed"
+    }
+}

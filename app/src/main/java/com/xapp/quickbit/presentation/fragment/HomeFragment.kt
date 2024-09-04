@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.remote.model.MealDetail
@@ -22,7 +23,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var homeRecipesViewModel: HomeRecipesViewModel
+    private val homeRecipesViewModel: HomeRecipesViewModel by viewModels()
     private lateinit var homeRecipesAdapter: HomeRecipesAdapter
 
     override fun onCreateView(
@@ -36,20 +37,29 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeRecipesViewModel = ViewModelProvider(this)[HomeRecipesViewModel::class.java]
+//        homeRecipesViewModel = ViewModelProvider(this)[HomeRecipesViewModel::class.java]  => old way
 
-        binding.homeSwipeRefresh.setOnRefreshListener {
-            refreshData()
-        }
+        showLoading()
+        setupAdapter()
+        handleHomeObserving()
+        setupSpinner()
+        handleSwipeRefresh()
+    }
 
+    private fun showLoading() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvHomeRecycleView.visibility = View.GONE
+    }
 
+    private fun setupAdapter() {
         homeRecipesAdapter = HomeRecipesAdapter(ArrayList()) { mealDetail ->
             navigateToItemFragment(mealDetail)
         }
         binding.rvHomeRecycleView.adapter = homeRecipesAdapter
 
+    }
+
+    private fun handleHomeObserving() {
         homeRecipesViewModel.mealRecipes.observe(viewLifecycleOwner) { recipes ->
             binding.homeSwipeRefresh.isRefreshing = false
 
@@ -72,8 +82,13 @@ class HomeFragment : Fragment() {
                 Log.e("Home Fragment Error", it)
             }
         }
+    }
 
-        setupSpinner()
+    private fun handleSwipeRefresh() {
+        styleSwipeRefresh()
+        binding.homeSwipeRefresh.setOnRefreshListener {
+            refreshData()
+        }
     }
 
     private fun refreshData() {
@@ -82,6 +97,14 @@ class HomeFragment : Fragment() {
 
         val selectedLetter = binding.letterSpinnerFilter.selectedItem.toString()
         homeRecipesViewModel.fetchRecipesByFirstLetter(selectedLetter)
+    }
+
+    private fun styleSwipeRefresh() {
+        binding.homeSwipeRefresh.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(), R.color.darkGreen),
+            ContextCompat.getColor(requireContext(), R.color.lightGreen),
+            ContextCompat.getColor(requireContext(), R.color.lighterGreen),
+        )
     }
 
     private fun navigateToItemFragment(mealDetail: MealDetail) {

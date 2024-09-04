@@ -1,80 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/saved_swipe_refresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.fragment.FavouriteFragment">
+    android:layout_height="match_parent">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/fetch_loading" />
-
-    <TextView
-        android:id="@+id/tv_no_recipes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/no_recipe_found_favourite_margin_bottom"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/no_recipes_here"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/tv_no_recipes_text_size"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/caption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/caption_margin_top"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/recipe_saved"
-        android:textColor="?attr/colorAccent"
-        android:textSize="@dimen/caption_text_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_fav_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_favorites"
-        android:textColor="@color/darkGreen"
-        android:textSize="@dimen/tv_fav_empty_text_size"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/caption"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fav_rec_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/match_constraint"
-        android:layout_marginHorizontal="@dimen/fav_rec_view_margin_horizontal"
-        android:layout_marginTop="@dimen/fav_rec_view_margin_top"
-        android:padding="@dimen/fav_rec_view_padding"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/caption"
-        tools:listitem="@layout/fragment_favourite_item" />
+        android:layout_height="wrap_content"
+        tools:context=".presentation.fragment.FavouriteFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/fetch_loading" />
+
+        <TextView
+            android:id="@+id/tv_no_recipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/no_recipe_found_favourite_margin_bottom"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/no_recipes_here"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_no_recipes_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/caption_margin_top"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/recipe_saved"
+            android:textColor="?attr/colorAccent"
+            android:textSize="@dimen/caption_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_fav_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_favorites"
+            android:textColor="@color/darkGreen"
+            android:textSize="@dimen/tv_fav_empty_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/caption"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fav_rec_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/match_constraint"
+            android:layout_marginHorizontal="@dimen/fav_rec_view_margin_horizontal"
+            android:layout_marginTop="@dimen/fav_rec_view_margin_top"
+            android:padding="@dimen/fav_rec_view_padding"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/caption"
+            tools:listitem="@layout/fragment_favourite_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

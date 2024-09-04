@@ -23,7 +23,7 @@ class CategoryViewModel : ViewModel() {
         fetchRecipes()
     }
 
-    private fun fetchRecipes() {
+    fun fetchRecipes() {
         viewModelScope.launch {
             try {
                 val recipeList = categoryRepository.getAllCategories()
