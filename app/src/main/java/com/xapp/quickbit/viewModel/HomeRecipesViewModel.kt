@@ -6,9 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xapp.quickbit.data.repository.HomeRecipesRepository
 import com.xapp.quickbit.data.source.remote.model.MealDetail
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeRecipesViewModel : ViewModel() {
+@HiltViewModel
+class HomeRecipesViewModel @Inject constructor(
+    private val categoryRepository: HomeRecipesRepository
+) : ViewModel() {
 
     private val _mealRecipes = MutableLiveData<List<MealDetail>>()
     val mealRecipes: LiveData<List<MealDetail>> get() = _mealRecipes
@@ -16,7 +21,6 @@ class HomeRecipesViewModel : ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
 
-    private val categoryRepository = HomeRecipesRepository()
 
     init {
         fetchRecipesByFirstLetter()
@@ -26,7 +30,7 @@ class HomeRecipesViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val data = categoryRepository.getMealsByFirstLetter(letter)
-                _mealRecipes.postValue(data.meals ?: emptyList())
+                _mealRecipes.postValue(data.meals)
             } catch (e: Exception) {
                 _error.postValue(e.message ?: "An error occurred when fetchRecipesByFirstLetter")
             }

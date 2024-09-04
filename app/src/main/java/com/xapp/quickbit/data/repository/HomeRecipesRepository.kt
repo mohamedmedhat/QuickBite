@@ -1,19 +1,23 @@
 package com.xapp.quickbit.data.repository
 
-import com.xapp.quickbit.data.source.remote.network.RetrofitModule
+import com.xapp.quickbit.data.source.remote.network.restapi.HomeRecipesService
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class HomeRecipesRepository {
-    private val homeApi = RetrofitModule.homeRecipeApi
+@Singleton
+class HomeRecipesRepository @Inject constructor(
+    private val homeRecipesService: HomeRecipesService
+) {
 
-    suspend fun getAllCategories() = homeApi.findAllCategories()
+    suspend fun getAllCategories() = homeRecipesService.findAllCategories()
 
-    suspend fun getMealsByCategory(category: String) = homeApi.findMealsByCategory(category)
+    suspend fun getMealsByCategory(category: String) = homeRecipesService.findMealsByCategory(category)
 
-    suspend fun getRandomMeal() = homeApi.findRandomMeal()
+    suspend fun getRandomMeal() = homeRecipesService.findRandomMeal()
 
-    suspend fun getMealsByFirstLetter(firstLetter: String) = homeApi.findMealsByFirstLetter(firstLetter)
+    suspend fun getMealsByFirstLetter(firstLetter: String) = homeRecipesService.findMealsByFirstLetter(firstLetter)
 
-    suspend fun getMealById(id: String) = homeApi.findMealById(id)
+    suspend fun getMealById(id: String) = homeRecipesService.findMealById(id)
 
-    suspend fun getMealByName(name: String) = homeApi.findMealByName(name)
+    suspend fun getMealByName(name: String) = homeRecipesService.findMealByName(name)
 }

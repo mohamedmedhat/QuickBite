@@ -16,7 +16,9 @@ import com.xapp.quickbit.databinding.FragmentCategoryBinding
 import com.xapp.quickbit.viewModel.CategoryViewModel
 import com.xapp.quickbit.viewModel.adapter.CategoryAdapter
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CategoryFragment : Fragment() {
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
