@@ -18,7 +18,9 @@ import com.xapp.quickbit.databinding.ActivityRecipeBinding
 import com.xapp.quickbit.databinding.DialogCustomSignOutBinding
 import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecipeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecipeBinding

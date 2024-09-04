@@ -6,9 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xapp.quickbit.data.repository.HomeRecipesRepository
 import com.xapp.quickbit.data.source.remote.model.Category
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CategoryViewModel : ViewModel() {
+@HiltViewModel
+class CategoryViewModel @Inject constructor(private val categoryRepository: HomeRecipesRepository) :
+    ViewModel() {
 
     private val _categoryRecipes = MutableLiveData<List<Category>>()
     val categoryRecipes: LiveData<List<Category>> get() = _categoryRecipes
@@ -17,7 +21,6 @@ class CategoryViewModel : ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
 
-    private val categoryRepository = HomeRecipesRepository()
 
     init {
         fetchRecipes()

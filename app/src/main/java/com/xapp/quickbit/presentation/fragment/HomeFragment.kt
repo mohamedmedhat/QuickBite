@@ -18,7 +18,9 @@ import com.xapp.quickbit.databinding.FragmentHomeBinding
 import com.xapp.quickbit.viewModel.HomeRecipesViewModel
 import com.xapp.quickbit.viewModel.adapter.HomeRecipesAdapter
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
