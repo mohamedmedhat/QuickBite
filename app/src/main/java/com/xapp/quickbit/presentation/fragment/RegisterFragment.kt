@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
@@ -26,7 +27,10 @@ class RegisterFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         sharedPreferences =
-            requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
+            requireContext().getSharedPreferences(
+                USER_SHARED_PREFERENCE_NAME,
+                AppCompatActivity.MODE_PRIVATE
+            )
     }
 
     override fun onCreateView(
@@ -40,9 +44,14 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        handleRegisterObserving()
         handleOnClicks()
+        handleSwipeRefresh()
+    }
 
+    private fun handleRegisterObserving() {
         authViewModel.registrationResult.observe(viewLifecycleOwner) { errors ->
+            binding.registerSwipeRefresh.isRefreshing = false
             val userNameError = errors["userName"]
             val emailError = errors["email"]
             val passwordError = errors["password"]
@@ -56,6 +65,7 @@ class RegisterFragment : Fragment() {
 
         authViewModel.registerState.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
+                binding.registerSwipeRefresh.isRefreshing = false
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
                 CustomToast(
                     requireContext(),
@@ -74,7 +84,6 @@ class RegisterFragment : Fragment() {
     }
 
     private fun handleOnClicks() {
-
         binding.btnSignUp.setOnClickListener {
             val userName = binding.tvUserName.text.toString()
             val email = binding.tvEmail.text.toString()
@@ -97,8 +106,41 @@ class RegisterFragment : Fragment() {
         editor.apply()
     }
 
+    private fun handleSwipeRefresh() {
+        styleSwipeRefresh()
+        binding.registerSwipeRefresh.setOnRefreshListener {
+            refreshScreen()
+        }
+    }
+
+    private fun styleSwipeRefresh() {
+        binding.registerSwipeRefresh.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(), R.color.darkGreen),
+            ContextCompat.getColor(requireContext(), R.color.lightGreen),
+            ContextCompat.getColor(requireContext(), R.color.lighterGreen),
+        )
+    }
+
+    private fun refreshScreen() {
+        binding.tvlUserName.error = null
+        binding.tvlEmail.error = null
+        binding.tvlPassword.error = null
+        binding.tvlConfirmPassword.error = null
+
+        binding.tvUserName.text?.clear()
+        binding.tvEmail.text?.clear()
+        binding.tvPassword.text?.clear()
+        binding.tvConfirmPassword.text?.clear()
+
+        binding.registerSwipeRefresh.isRefreshing = false
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val USER_SHARED_PREFERENCE_NAME = "user_Info"
     }
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -35,25 +36,40 @@ class MyRecipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showLoading()
+        handleMyRecipesObserving()
+        handleSwipeRefresh()
+    }
+
+    private fun showLoading() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvMyRecipesRecycleView.visibility = View.GONE
+    }
 
+    private fun setUpRecycleView(recipe: List<MyRecipesEntity>) {
+        myRecipesAdapter = MyRecipesAdapter(recipe.toMutableList(), { rec ->
+            goToDetails(rec)
+        }, { del ->
+            deleteRecipe(del)
+        })
+        binding.rvMyRecipesRecycleView.adapter = myRecipesAdapter
+    }
+
+    private fun handleMyRecipesObserving() {
         myRecipesViewModel.allMyCreatedRecipes.observe(viewLifecycleOwner) { recipe ->
+            binding.myRecipesSwipeRefresh.isRefreshing = false
             if (!recipe.isNullOrEmpty()) {
                 binding.lottieLoading.visibility = View.GONE
                 binding.rvMyRecipesRecycleView.visibility = View.VISIBLE
-                myRecipesAdapter = MyRecipesAdapter(recipe.toMutableList(), { rec ->
-                    goToDetails(rec)
-                }, { del ->
-                    deleteRecipe(del)
-                })
-                binding.rvMyRecipesRecycleView.adapter = myRecipesAdapter
+                setUpRecycleView(recipe)
             } else {
                 binding.tvNoRecipes.visibility = View.VISIBLE
+                binding.myRecipesSwipeRefresh.isRefreshing = false
             }
         }
 
         myRecipesViewModel.error.observe(viewLifecycleOwner) { error ->
+            binding.myRecipesSwipeRefresh.isRefreshing = false
             binding.lottieLoading.visibility = View.GONE
             binding.rvMyRecipesRecycleView.visibility = View.GONE
             error?.let {
@@ -61,6 +77,27 @@ class MyRecipesFragment : Fragment() {
                 Log.e("My Recipes Fragment Error", it)
             }
         }
+    }
+
+    private fun handleSwipeRefresh() {
+        styleSwipeRefresh()
+        binding.myRecipesSwipeRefresh.setOnRefreshListener {
+            refreshData()
+        }
+    }
+
+    private fun styleSwipeRefresh() {
+        binding.myRecipesSwipeRefresh.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(), R.color.darkGreen),
+            ContextCompat.getColor(requireContext(), R.color.lightGreen),
+            ContextCompat.getColor(requireContext(), R.color.lighterGreen),
+        )
+    }
+
+    private fun refreshData() {
+        binding.lottieLoading.visibility = View.VISIBLE
+        binding.rvMyRecipesRecycleView.visibility = View.GONE
+        myRecipesViewModel.allMyCreatedRecipes
     }
 
     private fun goToDetails(recipe: MyRecipesEntity) {

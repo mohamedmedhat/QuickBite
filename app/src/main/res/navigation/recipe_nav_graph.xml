@@ -40,9 +40,9 @@
     </fragment>
     <fragment
         android:id="@+id/recipeFragment"
-        android:name="com.xapp.quickbit.presentation.fragment.RecipeFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.CategoryRecipeDetailFragment"
         android:label="fragment_recipe"
-        tools:layout="@layout/fragment_recipe">
+        tools:layout="@layout/fragment_category_recipe_detail">
         <action
             android:id="@+id/action_recipeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />

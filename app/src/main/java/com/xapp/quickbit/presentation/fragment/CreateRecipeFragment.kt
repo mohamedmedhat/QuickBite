@@ -59,6 +59,10 @@ class CreateRecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        handleOnClick()
+    }
+
+    private fun handleOnClick() {
         binding.btnAddImage.setOnClickListener {
             getImageResult.launch("image/*")
         }

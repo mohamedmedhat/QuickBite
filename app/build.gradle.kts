@@ -56,6 +56,9 @@ dependencies {
     // lottie animation
     implementation("com.airbnb.android:lottie:6.0.0")
 
+    // swipe (pull to refresh)
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
     // Room dependencies
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")

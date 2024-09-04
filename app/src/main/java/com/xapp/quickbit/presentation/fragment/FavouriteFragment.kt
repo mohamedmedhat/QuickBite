@@ -1,11 +1,12 @@
 package com.xapp.quickbit.presentation.fragment
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -28,11 +29,10 @@ class FavouriteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences =
-            requireContext().getSharedPreferences(
-                "favourite_recipes_details",
-                AppCompatActivity.MODE_PRIVATE
-            )
+        sharedPreferences = requireContext().getSharedPreferences(
+            SHARED_PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
     }
 
     override fun onCreateView(
@@ -45,28 +45,44 @@ class FavouriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupRecyclerView()
+        showLoading()
+        handleFavouriteObserving()
+        handleSwipeRefresh()
+    }
+
+    private fun showLoading() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.favRecView.visibility = View.GONE
+    }
 
+    private fun setupRecyclerView() {
+        adapter = FavouriteAdapter(mutableListOf(), { meal ->
+            goToDetails(meal)
+        }, { meal ->
+            deleteMeal(meal)
+        })
+        binding.favRecView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.favRecView.adapter = adapter
+    }
+
+    private fun handleFavouriteObserving() {
         favouriteRecipesViewModel.allFavoriteMeals.observe(viewLifecycleOwner) { meals ->
+            binding.savedSwipeRefresh.isRefreshing = false
             if (!meals.isNullOrEmpty()) {
                 binding.lottieLoading.visibility = View.GONE
                 binding.favRecView.visibility = View.VISIBLE
-                adapter = FavouriteAdapter(meals.toMutableList(), { meal ->
-                    goToDetails(meal)
-                }, { meal ->
-                    deleteMeal(meal)
-                })
-                binding.favRecView.adapter = adapter
+                binding.tvNoRecipes.visibility = View.GONE
+                adapter.updateMeals(meals.toMutableList())
             } else {
+                binding.favRecView.visibility = View.GONE
                 binding.tvNoRecipes.visibility = View.VISIBLE
+                binding.savedSwipeRefresh.isRefreshing = false
             }
         }
     }
 
-    fun deleteMeal(meal: MealInformationEntity) {
+    private fun deleteMeal(meal: MealInformationEntity) {
         favouriteRecipesViewModel.deleteMeal(meal)
         adapter.removeItem(meal)
     }
@@ -75,21 +91,42 @@ class FavouriteFragment : Fragment() {
         val gson = Gson()
         val mealJson = gson.toJson(favourite)
 
-        val edit = sharedPreferences.edit()
-        edit.putString("favouriteMealJson", mealJson)
-        edit.apply()
+        sharedPreferences.edit().apply {
+            putString(KEY_FAVOURITE_MEAL_JSON, mealJson)
+            apply()
+        }
 
         findNavController().navigate(R.id.action_favouriteFragment_to_recipeDetailFragment)
     }
 
-    private fun setupRecyclerView() {
-        binding.favRecView.layoutManager = GridLayoutManager(requireContext(), 2)
+    private fun handleSwipeRefresh() {
+        styleSwipeRefresh()
+        binding.savedSwipeRefresh.setOnRefreshListener {
+            refreshData()
+        }
+    }
+
+    private fun styleSwipeRefresh() {
+        binding.savedSwipeRefresh.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(), R.color.darkGreen),
+            ContextCompat.getColor(requireContext(), R.color.lightGreen),
+            ContextCompat.getColor(requireContext(), R.color.lighterGreen),
+        )
+    }
+
+    private fun refreshData() {
+        binding.lottieLoading.visibility = View.VISIBLE
+        binding.favRecView.visibility = View.GONE
+        favouriteRecipesViewModel.allFavoriteMeals
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        const val SHARED_PREFS_NAME = "favourite_recipes_details"
+        const val KEY_FAVOURITE_MEAL_JSON = "favouriteMealJson"
+    }
 }
-
-

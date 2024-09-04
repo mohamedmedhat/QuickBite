@@ -2,7 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recipe_detail_swipe_refresh"
+    android:id="@+id/category_recipe_detail_swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +13,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".presentation.fragment.RecipeDetailFragment">
+            tools:context=".presentation.fragment.CategoryRecipeDetailFragment">
 
             <ImageView
                 android:id="@+id/iv_recipeDetailImage"
@@ -180,3 +180,4 @@
     </ScrollView>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

@@ -114,6 +114,7 @@ class ProfileFragment : Fragment() {
         userViewModel.getUserData(email)
         userViewModel.userData.observe(viewLifecycleOwner) { user ->
             user?.let {
+                binding.profileSwipeRefresh.isRefreshing = false
                 Glide.with(this)
                     .load(it.image)
                     .placeholder(R.drawable.profile)
@@ -130,6 +131,7 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
