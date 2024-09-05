@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.QuickBit" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-     <item name="colorPrimary">@color/lightGreen</item>
+        <item name="colorPrimary">@color/lightGreen</item>
         <item name="colorButtonNormal">#282C33</item>
         <item name="color">#282C33</item>
         <item name="colorAccent">@color/white</item>

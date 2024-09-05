@@ -78,7 +78,7 @@ class SearchFragment : Fragment() {
             binding.tvNoRecipes.visibility = View.VISIBLE
             error?.let {
                 CustomToast(requireContext(), it, R.drawable.error_24px)
-                Log.e("Search Fragment Error", it)
+                Log.e(ERROR_TAG, it)
             }
         }
     }
@@ -149,6 +149,7 @@ class SearchFragment : Fragment() {
     }
 
     companion object {
+        private const val ERROR_TAG = "Search Fragment Error"
         const val SEARCH_MEAL_DETAIL_KEY = "searchMealDetail"
     }
 }

@@ -14,7 +14,7 @@
     =
     <string name="last_Viewed">Last_Viewed</string>
     <string name="intro_desc_text">There is no need to fear failure. Tested recipes are guaranteed to work by our professional chefs.</string>
-    <string name="default_web_client_id">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">604432015919-4rf7ue3tc3um421hjacseg293s4e2922.apps.googleusercontent.com</string>
     <string name="register_Text">Join Us</string>
     <string name="register_imageDesc">register Image</string>
     <string name="register_username">username</string>
@@ -88,7 +88,7 @@
     </string-array>
 
 
-    <string-array name="countries_array" translatable="false">
+    <string-array name="countries_array">
         <item>Afghanistan</item>
         <item>Albania</item>
         <item>Algeria</item>
@@ -286,7 +286,7 @@
         <item>Zimbabwe</item>
     </string-array>
 
-    <string-array name="categories_array" translatable="false">
+    <string-array name="categories_array">
         <item>Dessert</item>
         <item>Beef</item>
         <item>Chicken</item>
@@ -359,7 +359,18 @@
     <string name="profile_image">profile image</string>
     <string name="profile_cover">profile cover</string>
     <string name="recipe_details_star_rate">recipe details star rate</string>
-    <string name="delete_dialog_btn_title" translatable="false">Delete</string>
-    <string name="delete_dialog_title" translatable="false">Delete Item</string>
-    <string name="delete_dialog_message" translatable="false">Are you sure you want to delete this item?</string>
+    <string name="delete_dialog_btn_title">Delete</string>
+    <string name="login_success_msg">"you have login successfully"</string>
+    <string name="auth_failed_msg">Authentication failed.</string>
+    <string name="google_signin_failed_msg">Google sign-in failed</string>
+    <string name="register_success_msg">You have registered successfully</string>
+    <string name="register_failed_msg">Registration failed. Please try again.</string>
+    <string name="failed_get_data_msg">Failed to get data</string>
+    <string name="delete_dialog_title">Delete Item</string>
+    <string name="delete_dialog_message">Are you sure you want to delete this item?</string>
+    <string name="item_created_successfully_msg">Item created successfully</string>
+    <string name="item_removed_successfully_msg">Item removed successfully</string>
+    <string name="please_provide_video_url_msg">Please provide a video URL or upload a video.</string>
+    <string name="choose_video_or_url_msg">Please choose either a video file or a video URL, not both.</string>
+    <string name="name_and_desc_cant_be_empty">Name and Description cannot be empty</string>
 </resources>

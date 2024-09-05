@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -88,7 +89,7 @@ class CreateRecipeFragment : Fragment() {
         if (name.isEmpty() || description.isEmpty()) {
             Snackbar.make(
                 requireView(),
-                "Name and Description cannot be empty",
+                ContextCompat.getString(requireContext(), R.string.name_and_desc_cant_be_empty),
                 Snackbar.LENGTH_SHORT
             ).show()
             return
@@ -97,7 +98,7 @@ class CreateRecipeFragment : Fragment() {
         if (videoUriString.isNotEmpty() && videoUrl.isNotEmpty()) {
             Snackbar.make(
                 requireView(),
-                "Please choose either a video file or a video URL, not both.",
+                ContextCompat.getString(requireContext(), R.string.choose_video_or_url_msg),
                 Snackbar.LENGTH_SHORT
             ).show()
             return
@@ -106,7 +107,7 @@ class CreateRecipeFragment : Fragment() {
         if (videoUriString.isEmpty() && videoUrl.isEmpty()) {
             Snackbar.make(
                 requireView(),
-                "Please provide a video URL or upload a video.",
+                ContextCompat.getString(requireContext(), R.string.please_provide_video_url_msg),
                 Snackbar.LENGTH_SHORT
             ).show()
             return
@@ -124,7 +125,10 @@ class CreateRecipeFragment : Fragment() {
         viewModel.insertRecipe(recipe)
         showSnackBar(
             view = requireView(),
-            message = "Item created successfully",
+            message = ContextCompat.getString(
+                requireContext(),
+                R.string.item_created_successfully_msg
+            ),
             duration = Snackbar.LENGTH_LONG,
             actionText = getString(R.string.saved_snackBar),
             action = { findNavController().navigate(R.id.action_createRecipeFragment_to_myRecipesFragment) }

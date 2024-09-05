@@ -84,7 +84,7 @@ class DashboardFragment : Fragment() {
 
     private fun goToDetails(recipe: MyRecipesEntity) {
         val bundle = Bundle().apply {
-            putParcelable("dashboardRecipe", recipe)
+            putParcelable(DASHBOARD_BUNDLE_KEY, recipe)
         }
         findNavController().navigate(R.id.action_dashboardFragment_to_recipeDetailFragment, bundle)
     }
@@ -92,6 +92,10 @@ class DashboardFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val DASHBOARD_BUNDLE_KEY = "dashboardRecipe"
     }
 
 }

@@ -52,7 +52,7 @@ class CategoryRecipeDetailFragment : Fragment() {
             }
         } ?: CustomNotifications.CustomToast(
             requireContext(),
-            "Failed to get data",
+            ContextCompat.getString(requireContext(), R.string.failed_get_data_msg),
             R.drawable.error_24px
         )
     }

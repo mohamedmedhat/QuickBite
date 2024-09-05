@@ -74,7 +74,7 @@ class MyRecipesFragment : Fragment() {
             binding.rvMyRecipesRecycleView.visibility = View.GONE
             error?.let {
                 CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
-                Log.e("My Recipes Fragment Error", it)
+                Log.e(ERROR_TAG, it)
             }
         }
     }
@@ -102,7 +102,7 @@ class MyRecipesFragment : Fragment() {
 
     private fun goToDetails(recipe: MyRecipesEntity) {
         val bundle = Bundle().apply {
-            putParcelable("myCreateRecipe", recipe)
+            putParcelable(CREATED_RECIPE_BUNDLE_KEY, recipe)
         }
         findNavController().navigate(R.id.action_myRecipesFragment_to_recipeDetailFragment, bundle)
     }
@@ -113,7 +113,10 @@ class MyRecipesFragment : Fragment() {
         myRecipesAdapter.removeItem(recipe)
         CustomNotifications.showSnackBar(
             view = requireView(),
-            message = "Item removed successfully",
+            message = ContextCompat.getString(
+                requireContext(),
+                R.string.item_removed_successfully_msg
+            ),
             duration = Snackbar.LENGTH_LONG,
             action = {}
         )
@@ -122,6 +125,11 @@ class MyRecipesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val ERROR_TAG = "My Recipes Fragment Error"
+        const val CREATED_RECIPE_BUNDLE_KEY = "myCreateRecipe"
     }
 
 }
