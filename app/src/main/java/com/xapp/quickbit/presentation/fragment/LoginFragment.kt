@@ -3,6 +3,7 @@ package com.xapp.quickbit.presentation.fragment
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import com.google.android.gms.common.api.ApiException
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentLoginBinding
 import com.xapp.quickbit.presentation.activity.RecipeActivity
+import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USERNAME_SHARED_PREFERENCE_KEY
 import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
 import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
@@ -44,9 +46,10 @@ class LoginFragment : Fragment() {
             } catch (e: ApiException) {
                 CustomToast(
                     requireContext(),
-                    "Google sign-in failed: ${e.message}",
+                    ContextCompat.getString(requireContext(), R.string.google_signin_failed_msg),
                     R.drawable.error_24px
                 )
+                e.message?.let { Log.e(LOGIN_ERROR_TAG, it) }
             }
         }
 
@@ -54,7 +57,10 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         sharedPreferences =
-            requireContext().getSharedPreferences(USER_SHARED_PREFERENCE_NAME, AppCompatActivity.MODE_PRIVATE)
+            requireContext().getSharedPreferences(
+                USER_SHARED_PREFERENCE_NAME,
+                AppCompatActivity.MODE_PRIVATE
+            )
     }
 
     override fun onCreateView(
@@ -90,12 +96,16 @@ class LoginFragment : Fragment() {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
                 CustomToast(
                     requireContext(),
-                    "you have login successfully",
+                    ContextCompat.getString(requireContext(), R.string.login_success_msg),
                     R.drawable.task_alt_24px
                 )
                 goToIntroFragment()
             } else {
-                CustomToast(requireContext(), "Authentication failed.", R.drawable.error_24px)
+                CustomToast(
+                    requireContext(),
+                    ContextCompat.getString(requireContext(), R.string.auth_failed_msg),
+                    R.drawable.error_24px
+                )
             }
         }
 
@@ -135,7 +145,7 @@ class LoginFragment : Fragment() {
 
         binding.btnLoginAsGuest.setOnClickListener {
             val editor = sharedPreferences.edit()
-            editor.putString("userName", "Guest")
+            editor.putString(USERNAME_SHARED_PREFERENCE_KEY, "Guest")
             editor.apply()
             val intent = Intent(requireContext(), RecipeActivity::class.java)
             startActivity(intent)
@@ -182,5 +192,9 @@ class LoginFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val LOGIN_ERROR_TAG = "LogIn"
     }
 }

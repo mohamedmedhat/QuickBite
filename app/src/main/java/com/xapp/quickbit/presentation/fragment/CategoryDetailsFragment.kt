@@ -86,7 +86,7 @@ class CategoryDetailsFragment : Fragment() {
             binding.tvNoRecipes.visibility = View.VISIBLE
             error?.let {
                 CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
-                Log.e("CategoryDetails Fragment Error", it)
+                Log.e(ERROR_TAG, it)
             }
         }
     }
@@ -128,6 +128,7 @@ class CategoryDetailsFragment : Fragment() {
     }
 
     companion object {
+        private const val ERROR_TAG = "CategoryDetails Fragment"
         const val CATEGORY_DETAILS_DETAILS_KEY = "categoryDetailsDetails"
     }
 }

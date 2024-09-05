@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
 
             errorMessage?.let {
                 CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
-                Log.e("Home Fragment Error", it)
+                Log.e(ERROR_TAG, it)
             }
         }
     }
@@ -111,7 +111,7 @@ class HomeFragment : Fragment() {
 
     private fun navigateToItemFragment(mealDetail: MealDetail) {
         val bundle = Bundle().apply {
-            putParcelable("mealDetail", mealDetail)
+            putParcelable(HOME_BUNDLE_KEY, mealDetail)
         }
         findNavController().navigate(R.id.action_homeFragment_to_recipeDetailFragment, bundle)
     }
@@ -175,6 +175,11 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val ERROR_TAG = "Home Fragment Error"
+        const val HOME_BUNDLE_KEY = "mealDetail"
     }
 }
 

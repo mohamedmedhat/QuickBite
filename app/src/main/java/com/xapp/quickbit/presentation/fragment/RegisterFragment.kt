@@ -69,14 +69,14 @@ class RegisterFragment : Fragment() {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
                 CustomToast(
                     requireContext(),
-                    "You have registered successfully",
+                    ContextCompat.getString(requireContext(), R.string.register_success_msg),
                     R.drawable.task_alt_24px
                 )
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             } else {
                 CustomToast(
                     requireContext(),
-                    "Registration failed. Please try again.",
+                    ContextCompat.getString(requireContext(), R.string.register_failed_msg),
                     R.drawable.error_24px
                 )
             }
@@ -101,8 +101,8 @@ class RegisterFragment : Fragment() {
 
     private fun saveUserDataToSharedPreferences(userName: String, email: String) {
         val editor = sharedPreferences.edit()
-        editor.putString("userName", userName)
-        editor.putString("email", email)
+        editor.putString(USERNAME_SHARED_PREFERENCE_KEY, userName)
+        editor.putString(EMAIL_PREFERENCE_KEY, email)
         editor.apply()
     }
 
@@ -142,5 +142,7 @@ class RegisterFragment : Fragment() {
 
     companion object {
         const val USER_SHARED_PREFERENCE_NAME = "user_Info"
+        const val USERNAME_SHARED_PREFERENCE_KEY = "userName"
+        const val EMAIL_PREFERENCE_KEY = "email"
     }
 }

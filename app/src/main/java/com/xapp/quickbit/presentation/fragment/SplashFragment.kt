@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.FragmentSplashBinding
 import com.xapp.quickbit.presentation.activity.RecipeActivity
+import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,7 +31,10 @@ class SplashFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         sharedPreferences =
-            requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
+            requireContext().getSharedPreferences(
+                USER_SHARED_PREFERENCE_NAME,
+                AppCompatActivity.MODE_PRIVATE
+            )
     }
 
     override fun onCreateView(
@@ -53,7 +57,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun checkIfUserIsLoggedInBefore() {
-        lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch(Dispatchers.Default) {
             val userEmail = sharedPreferences.getString("userEmail", null)
             val userPassword = sharedPreferences.getString("userPassword", null)
 
@@ -65,12 +69,15 @@ class SplashFragment : Fragment() {
                 }
             }
         }
+
     }
 
     private fun navigateToRecipeActivity() {
         val intent = Intent(requireActivity(), RecipeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+        requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         requireActivity().finish()
     }
+
 }

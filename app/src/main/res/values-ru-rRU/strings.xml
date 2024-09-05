@@ -96,37 +96,51 @@
     <string name="this_float_button_to_back_to_home">эта плавающая кнопка для возврата на главную</string>
     <string name="this_float_button_to_save_item">эта плавающая кнопка для сохранения элемента</string>
     <string name="recipe_title">заголовок</string>
-    <string name="create_new_recipe">create new recipe</string>
-    <string name="add">add</string>
-    <string name="add_recipe">Add Recipe</string>
-    <string name="video_thumbnail_desc">video_thumbnail_desc</string>
-    <string name="enter_video_url">Enter video URL</string>
-    <string name="upload_video">Upload Video</string>
-    <string name="or">OR</string>
-    <string name="add_recipe_video">Add Recipe Video</string>
-    <string name="enter_recipe_description">Enter recipe description</string>
-    <string name="enter_recipe_name">Enter recipe name</string>
-    <string name="recipe_image_desc">recipe_image_desc</string>
-    <string name="add_image_button">add image button</string>
-    <string name="top_rank">Top Rank</string>
-    <string name="my_recipes">My Recipes</string>
-    <string name="save_changes">Save Changes</string>
-    <string name="user_s_name">User\'s Name</string>
-    <string name="enter_your_name">Enter your name</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="bronze_count">3 times</string>
-    <string name="bronze_title">3rd Place</string>
-    <string name="bronze_start">bronze start</string>
-    <string name="edit_profile_image">edit profile image</string>
-    <string name="edit_profile_cover">edit profile cover</string>
-    <string name="silver_count">5 times</string>
-    <string name="silver_title">2nd Place</string>
-    <string name="silver_star">silver star</string>
-    <string name="gold_count">10 times</string>
-    <string name="gold_title">1st Place</string>
-    <string name="gold_star">gold star</string>
-    <string name="username">Username</string>
-    <string name="profile_image">profile image</string>
-    <string name="profile_cover">profile cover</string>
-    <string name="recipe_details_star_rate">recipe details star rate</string>
+    <string name="create_new_recipe">Создать новый рецепт</string>
+    <string name="add">Добавить</string>
+    <string name="add_recipe">Добавить рецепт</string>
+    <string name="video_thumbnail_desc">Описание миниатюры видео</string>
+    <string name="enter_video_url">Введите URL видео</string>
+    <string name="upload_video">Загрузить видео</string>
+    <string name="or">ИЛИ</string>
+    <string name="add_recipe_video">Добавить видео рецепта</string>
+    <string name="enter_recipe_description">Введите описание рецепта</string>
+    <string name="enter_recipe_name">Введите название рецепта</string>
+    <string name="recipe_image_desc">Описание изображения рецепта</string>
+    <string name="add_image_button">Кнопка добавления изображения</string>
+    <string name="top_rank">Топ-рейтинг</string>
+    <string name="my_recipes">Мои рецепты</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="user_s_name">Имя пользователя</string>
+    <string name="enter_your_name">Введите ваше имя</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="bronze_count">3 раза</string>
+    <string name="bronze_title">3 место</string>
+    <string name="bronze_start">Начало бронзы</string>
+    <string name="edit_profile_image">Редактировать изображение профиля</string>
+    <string name="edit_profile_cover">Редактировать обложку профиля</string>
+    <string name="silver_count">5 раз</string>
+    <string name="silver_title">2 место</string>
+    <string name="silver_star">Серебряная звезда</string>
+    <string name="gold_count">10 раз</string>
+    <string name="gold_title">1 место</string>
+    <string name="gold_star">Золотая звезда</string>
+    <string name="username">Имя пользователя</string>
+    <string name="profile_image">Изображение профиля</string>
+    <string name="profile_cover">Обложка профиля</string>
+    <string name="recipe_details_star_rate">Рейтинг рецепта по звездам</string>
+    <string name="delete_dialog_btn_title" translatable="false">Удалить</string>
+    <string name="login_success_msg" translatable="false">"Вы успешно вошли"</string>
+    <string name="auth_failed_msg" translatable="false">Ошибка аутентификации.</string>
+    <string name="google_signin_failed_msg" translatable="false">Не удалось войти через Google</string>
+    <string name="register_success_msg" translatable="false">Вы успешно зарегистрировались</string>
+    <string name="register_failed_msg" translatable="false">Регистрация не удалась. Пожалуйста, попробуйте снова.</string>
+    <string name="failed_get_data_msg" translatable="false">Не удалось получить данные</string>
+    <string name="delete_dialog_title" translatable="false">Удалить элемент</string>
+    <string name="delete_dialog_message" translatable="false">Вы уверены, что хотите удалить этот элемент?</string>
+    <string name="item_created_successfully_msg" translatable="false">Элемент успешно создан</string>
+    <string name="item_removed_successfully_msg" translatable="false">Элемент успешно удален</string>
+    <string name="please_provide_video_url_msg" translatable="false">Пожалуйста, предоставьте URL видео или загрузите видео.</string>
+    <string name="choose_video_or_url_msg" translatable="false">Пожалуйста, выберите либо видеофайл, либо URL видео, но не оба.</string>
+    <string name="name_and_desc_cant_be_empty" translatable="false">Имя и описание не могут быть пустыми</string>
 </resources>

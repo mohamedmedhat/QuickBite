@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.ActivityRecipeBinding
 import com.xapp.quickbit.databinding.DialogCustomSignOutBinding
+import com.xapp.quickbit.presentation.fragment.RegisterFragment
+import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
 import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +37,7 @@ class RecipeActivity : AppCompatActivity() {
         binding = ActivityRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreference = getSharedPreferences("user_Info", MODE_PRIVATE)
+        sharedPreference = getSharedPreferences(USER_SHARED_PREFERENCE_NAME, MODE_PRIVATE)
 
         setupToolbar()
         setupNavigation()
@@ -138,7 +140,7 @@ class RecipeActivity : AppCompatActivity() {
 
     private fun signOutUser() {
         authViewModel.signOut()
-        with(getSharedPreferences("user_Info", MODE_PRIVATE).edit()) {
+        with(getSharedPreferences(USER_SHARED_PREFERENCE_NAME, MODE_PRIVATE).edit()) {
             clear()
             apply()
         }

@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.local.entity.UserEntity
 import com.xapp.quickbit.databinding.FragmentProfileBinding
+import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
 import com.xapp.quickbit.viewModel.UserViewModel
 
 class ProfileFragment : Fragment() {
@@ -53,7 +54,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences =
-            requireContext().getSharedPreferences("user_Info", AppCompatActivity.MODE_PRIVATE)
+            requireContext().getSharedPreferences(USER_SHARED_PREFERENCE_NAME, AppCompatActivity.MODE_PRIVATE)
 
         init()
         handleOnClicks()
