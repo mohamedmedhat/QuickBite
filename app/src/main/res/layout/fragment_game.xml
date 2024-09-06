@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="16dp"
+    tools:context=".presentation.fragment.GameFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/random_count_lottie"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/game_loading" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/starter_lottie"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/fetch_loading" />
+
+    <TextView
+        android:id="@+id/tv_GameFragment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Game"
+        android:textSize="@dimen/tv_categoryFragment_title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Generate your Random Recipe"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recipe_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/recipe_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardView_margin"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/CategoriesDetailsCardLayout_corner_radius"
+        app:cardElevation="@dimen/activity_recipe_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/CardLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorButtonNormal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_RecycleViewImage"
+                android:layout_width="@dimen/iv_SearchRecycleViewImage_height"
+                android:layout_height="@dimen/iv_SearchRecycleViewImage_height"
+                android:contentDescription="@string/item_image_in_home_recycleview"
+                android:src="@drawable/logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_starIcon"
+                style="@style/items_icons_img_style"
+                android:contentDescription="@string/star_icon"
+                android:src="@drawable/star"
+                app:layout_constraintStart_toEndOf="@+id/iv_RecycleViewImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_starIconText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/rate"
+                android:textSize="@dimen/tv_SearchlocationIconText_text_size"
+                app:layout_constraintStart_toEndOf="@+id/iv_starIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_clockIcon"
+                style="@style/items_icons_img_style"
+                android:contentDescription="@string/image_of_item_in_home_recycleview"
+                android:src="@drawable/schedule_24px"
+                app:layout_constraintStart_toEndOf="@+id/tv_starIconText"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_clockIconText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/clock_time"
+                android:textSize="@dimen/tv_SearchlocationIconText_text_size"
+                app:layout_constraintStart_toEndOf="@+id/iv_clockIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/iv_RecycleViewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center_vertical"
+                android:text="@string/item_name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/iv_RecycleViewImage"
+                app:layout_constraintTop_toBottomOf="@+id/iv_starIcon" />
+
+            <ImageView
+                android:id="@+id/iv_categoryIcon"
+                style="@style/items_icons_img_style"
+                android:contentDescription="@string/image_of_item_in_home_recycleview"
+                android:src="@drawable/category_24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_categoryIconText" />
+
+            <TextView
+                android:id="@+id/tv_categoryIconText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/tv_SearchlocationIconText_margin_bottom"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/clock_time"
+                android:textSize="@dimen/tv_SearchlocationIconText_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_locationIcon"
+                style="@style/items_icons_img_style"
+                android:contentDescription="@string/image_of_item_in_home_recycleview"
+                android:src="@drawable/location_on_24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_locationIconText" />
+
+            <TextView
+                android:id="@+id/tv_locationIconText"
+                style="@style/items_icons_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clock_time"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_categoryIcon" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_generate_recipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="generate"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_card" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

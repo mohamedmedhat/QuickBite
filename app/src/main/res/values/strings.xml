@@ -373,4 +373,7 @@
     <string name="please_provide_video_url_msg">Please provide a video URL or upload a video.</string>
     <string name="choose_video_or_url_msg">Please choose either a video file or a video URL, not both.</string>
     <string name="name_and_desc_cant_be_empty">Name and Description cannot be empty</string>
+    <string name="voice_recognaizing_failed_msg" translatable="false">Speech recognition is not supported on your device.</string>
+    <string name="unknown_command" translatable="false">Unknown command</string>
+    <string name="recognition_failed_msg" translatable="false">Recognition Failed</string>
 </resources>

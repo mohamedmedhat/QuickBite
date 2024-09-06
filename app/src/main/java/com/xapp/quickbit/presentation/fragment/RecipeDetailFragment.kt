@@ -25,6 +25,7 @@ import com.xapp.quickbit.data.source.local.entity.MyRecipesEntity
 import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentRecipeDetailBinding
+import com.xapp.quickbit.presentation.fragment.GameFragment.Companion.GAME_PARCELABLE_KEY
 import com.xapp.quickbit.viewModel.FavouriteRecipesViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.showSnackBar
@@ -85,7 +86,8 @@ class RecipeDetailFragment : Fragment() {
         val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
 
         val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
-            ?: arguments?.getParcelable("searchMealDetail")
+            ?: arguments?.getParcelable("searchMealDetail") ?: arguments?.getParcelable(GAME_PARCELABLE_KEY)
+
         val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
             ?: arguments?.getParcelable<MyRecipesEntity>("dashboardRecipe")
 
