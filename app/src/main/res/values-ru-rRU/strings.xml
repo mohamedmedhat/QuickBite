@@ -143,4 +143,6 @@
     <string name="please_provide_video_url_msg" translatable="false">Пожалуйста, предоставьте URL видео или загрузите видео.</string>
     <string name="choose_video_or_url_msg" translatable="false">Пожалуйста, выберите либо видеофайл, либо URL видео, но не оба.</string>
     <string name="name_and_desc_cant_be_empty" translatable="false">Имя и описание не могут быть пустыми</string>
+    <string name="area">area</string>
+    <string name="recommended">recommended</string>
 </resources>

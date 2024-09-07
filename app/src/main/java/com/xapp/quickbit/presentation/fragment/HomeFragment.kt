@@ -12,10 +12,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.xapp.quickbit.R
+import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentHomeBinding
+import com.xapp.quickbit.viewModel.HomeAreaViewModel
 import com.xapp.quickbit.viewModel.HomeRecipesViewModel
+import com.xapp.quickbit.viewModel.RecipeDetailsViewModel
+import com.xapp.quickbit.viewModel.adapter.HomeAreaAdapter
+import com.xapp.quickbit.viewModel.adapter.HomeAreaResultAdapter
 import com.xapp.quickbit.viewModel.adapter.HomeRecipesAdapter
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +32,12 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val homeRecipesViewModel: HomeRecipesViewModel by viewModels()
+    private val homeAreaViewModel: HomeAreaViewModel by viewModels()
+    private val recipeDetailsViewModel: RecipeDetailsViewModel by viewModels()
+
     private lateinit var homeRecipesAdapter: HomeRecipesAdapter
+    private lateinit var homeAreaAdapter: HomeAreaAdapter
+    private lateinit var homeAreaResultAdapter: HomeAreaResultAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +53,9 @@ class HomeFragment : Fragment() {
 //        homeRecipesViewModel = ViewModelProvider(this)[HomeRecipesViewModel::class.java]  => old way
 
         showLoading()
-        setupAdapter()
+        setupAdapters()
+        handleHomeAreaObserving()
+        handleHomeAreaResultObserving()
         handleHomeObserving()
         setupSpinner()
         handleSwipeRefresh()
@@ -51,15 +64,31 @@ class HomeFragment : Fragment() {
     private fun showLoading() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvHomeRecycleView.visibility = View.GONE
+        binding.rvAreaRecycleView.visibility = View.GONE
+        binding.rvAreaResultRecycleView.visibility = View.GONE
     }
 
-    private fun setupAdapter() {
+    private fun setupAdapters() {
         homeRecipesAdapter = HomeRecipesAdapter(ArrayList()) { mealDetail ->
             navigateToItemFragment(mealDetail)
         }
         binding.rvHomeRecycleView.adapter = homeRecipesAdapter
 
+        homeAreaAdapter = HomeAreaAdapter(ArrayList()) { area ->
+            showRecipesByArea(area.strArea)
+        }
+        binding.rvAreaRecycleView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvAreaRecycleView.adapter = homeAreaAdapter
+
+        homeAreaResultAdapter = HomeAreaResultAdapter(ArrayList()) { meal ->
+            navigateToDetails(meal)
+        }
+        binding.rvAreaResultRecycleView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvAreaResultRecycleView.adapter = homeAreaResultAdapter
     }
+
 
     private fun handleHomeObserving() {
         homeRecipesViewModel.mealRecipes.observe(viewLifecycleOwner) { recipes ->
@@ -80,10 +109,59 @@ class HomeFragment : Fragment() {
             binding.tvNoRecipes.visibility = View.VISIBLE
 
             errorMessage?.let {
-                CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
-                Log.e(ERROR_TAG, it)
+                handleError(it)
             }
         }
+    }
+
+    private fun handleHomeAreaObserving() {
+        homeAreaViewModel.area.observe(viewLifecycleOwner) { area ->
+            binding.homeSwipeRefresh.isRefreshing = false
+            if (!area.isNullOrEmpty()) {
+                binding.lottieLoading.visibility = View.GONE
+                binding.rvAreaRecycleView.visibility = View.VISIBLE
+                homeAreaAdapter.updateData(area)
+            }
+        }
+
+        homeAreaViewModel.error.observe(viewLifecycleOwner) { error ->
+            binding.homeSwipeRefresh.isRefreshing = false
+
+            binding.lottieLoading.visibility = View.GONE
+            binding.rvAreaRecycleView.visibility = View.GONE
+            binding.tvNoRecipes.visibility = View.VISIBLE
+
+            error?.let {
+                handleError(it)
+            }
+        }
+    }
+
+    private fun handleHomeAreaResultObserving() {
+        homeAreaViewModel.recipe.observe(viewLifecycleOwner) { recipe ->
+            binding.homeSwipeRefresh.isRefreshing = false
+            if (!recipe.isNullOrEmpty()) {
+                binding.lottieLoading.visibility = View.GONE
+                binding.rvAreaResultRecycleView.visibility = View.VISIBLE
+                homeAreaResultAdapter.updateData(recipe)
+            }
+        }
+
+        homeAreaViewModel.error.observe(viewLifecycleOwner) { error ->
+            binding.homeSwipeRefresh.isRefreshing = false
+
+            binding.lottieLoading.visibility = View.GONE
+            binding.rvAreaResultRecycleView.visibility = View.GONE
+            binding.tvNoRecipes.visibility = View.VISIBLE
+
+            error?.let {
+                handleError(it)
+            }
+        }
+    }
+
+    private fun showRecipesByArea(area: String) {
+        homeAreaViewModel.getRecipesByArea(area)
     }
 
     private fun handleSwipeRefresh() {
@@ -96,9 +174,13 @@ class HomeFragment : Fragment() {
     private fun refreshData() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvHomeRecycleView.visibility = View.GONE
+        binding.rvAreaRecycleView.visibility = View.GONE
+        binding.rvAreaResultRecycleView.visibility = View.GONE
 
         val selectedLetter = binding.letterSpinnerFilter.selectedItem.toString()
         homeRecipesViewModel.fetchRecipesByFirstLetter(selectedLetter)
+        homeAreaViewModel.getAllArea()
+        homeAreaViewModel.getRecipesByArea()
     }
 
     private fun styleSwipeRefresh() {
@@ -115,6 +197,21 @@ class HomeFragment : Fragment() {
         }
         findNavController().navigate(R.id.action_homeFragment_to_recipeDetailFragment, bundle)
     }
+
+    private fun navigateToDetails(meal: Meal) {
+        recipeDetailsViewModel.getMealDetailsById(meal.idMeal) { mealDetail ->
+            if (mealDetail != null) {
+                val bundle = Bundle().apply {
+                    putParcelable(HOME_AREA_BUNDLE_KEY, mealDetail)
+                }
+                findNavController().navigate(
+                    R.id.action_homeFragment_to_recipeDetailFragment,
+                    bundle
+                )
+            }
+        }
+    }
+
 
     private fun setupSpinner() {
         val letters = resources.getStringArray(R.array.letters_array)
@@ -172,6 +269,13 @@ class HomeFragment : Fragment() {
             }
     }
 
+    private fun handleError(message: String) {
+        CustomNotifications.CustomToast(requireContext(), message, R.drawable.error_24px)
+        binding.tvNoRecipes.visibility = View.VISIBLE
+        Log.e(ERROR_TAG, message)
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -180,6 +284,7 @@ class HomeFragment : Fragment() {
     companion object {
         private const val ERROR_TAG = "Home Fragment Error"
         const val HOME_BUNDLE_KEY = "mealDetail"
+        const val HOME_AREA_BUNDLE_KEY = "area_meals"
     }
 }
 

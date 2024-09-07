@@ -25,7 +25,9 @@ import com.xapp.quickbit.data.source.local.entity.MyRecipesEntity
 import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentRecipeDetailBinding
+import com.xapp.quickbit.presentation.fragment.CategoryDetailsFragment.Companion.CATEGORY_DETAILS_DETAILS_BUNDLE_KEY
 import com.xapp.quickbit.presentation.fragment.GameFragment.Companion.GAME_PARCELABLE_KEY
+import com.xapp.quickbit.presentation.fragment.HomeFragment.Companion.HOME_AREA_BUNDLE_KEY
 import com.xapp.quickbit.viewModel.FavouriteRecipesViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.showSnackBar
@@ -85,8 +87,18 @@ class RecipeDetailFragment : Fragment() {
         val mealJson = sharedPreferences.getString("favouriteMealJson", null)
         val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
 
-        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
-            ?: arguments?.getParcelable("searchMealDetail") ?: arguments?.getParcelable(GAME_PARCELABLE_KEY)
+        val keys = listOf(
+            "mealDetail",
+            "searchMealDetail",
+            GAME_PARCELABLE_KEY,
+            HOME_AREA_BUNDLE_KEY,
+            CATEGORY_DETAILS_DETAILS_BUNDLE_KEY
+        )
+
+        val mealDetail = keys.asSequence()
+            .mapNotNull { key -> arguments?.getParcelable<MealDetail>(key) }
+            .firstOrNull()
+
 
         val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
             ?: arguments?.getParcelable<MyRecipesEntity>("dashboardRecipe")

@@ -15,6 +15,7 @@ import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.databinding.FragmentCategoryDetailsBinding
 import com.xapp.quickbit.presentation.fragment.CategoryFragment.Companion.CATEGORY_MEALS_KEY
 import com.xapp.quickbit.viewModel.CategoryDetailsViewModel
+import com.xapp.quickbit.viewModel.RecipeDetailsViewModel
 import com.xapp.quickbit.viewModel.adapter.CategoryDetailsAdapter
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +28,7 @@ class CategoryDetailsFragment : Fragment() {
     private lateinit var categoryDetailsAdapter: CategoryDetailsAdapter
 
     private val categoryDetailsViewModel: CategoryDetailsViewModel by viewModels()
+    private val recipeDetailsViewModel: RecipeDetailsViewModel by viewModels()
     private var categoryName: String? = null
 
     override fun onCreateView(
@@ -113,13 +115,17 @@ class CategoryDetailsFragment : Fragment() {
     }
 
     private fun goToDetails(meal: Meal) {
-        val bundle = Bundle().apply {
-            putParcelable(CATEGORY_DETAILS_DETAILS_KEY, meal)
+        recipeDetailsViewModel.getMealDetailsById(meal.idMeal) { mealDetail ->
+            if (mealDetail != null) {
+                val bundle = Bundle().apply {
+                    putParcelable(CATEGORY_DETAILS_DETAILS_BUNDLE_KEY, mealDetail)
+                }
+                findNavController().navigate(
+                    R.id.action_categoryDetailsFragment_to_recipeDetailFragment,
+                    bundle
+                )
+            }
         }
-        findNavController().navigate(
-            R.id.action_categoryDetailsFragment_to_recipeDetailFragment,
-            bundle
-        )
     }
 
     override fun onDestroyView() {
@@ -129,6 +135,6 @@ class CategoryDetailsFragment : Fragment() {
 
     companion object {
         private const val ERROR_TAG = "CategoryDetails Fragment"
-        const val CATEGORY_DETAILS_DETAILS_KEY = "categoryDetailsDetails"
+        const val CATEGORY_DETAILS_DETAILS_BUNDLE_KEY = "categoryDetailsDetails"
     }
 }

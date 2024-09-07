@@ -376,4 +376,6 @@
     <string name="voice_recognaizing_failed_msg" translatable="false">Speech recognition is not supported on your device.</string>
     <string name="unknown_command" translatable="false">Unknown command</string>
     <string name="recognition_failed_msg" translatable="false">Recognition Failed</string>
+    <string name="area">area</string>
+    <string name="recommended">recommended</string>
 </resources>

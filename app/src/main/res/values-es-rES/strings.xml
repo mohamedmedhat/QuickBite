@@ -145,4 +145,6 @@
     <string name="please_provide_video_url_msg">Proporcione una URL de video o suba un video.</string>
     <string name="choose_video_or_url_msg">Elija un archivo de video o una URL de video, no ambos.</string>
     <string name="name_and_desc_cant_be_empty">El nombre y la descripción no pueden estar vacíos</string>
+    <string name="area">area</string>
+    <string name="recommended">recommended</string>
 </resources>

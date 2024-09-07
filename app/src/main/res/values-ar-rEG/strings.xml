@@ -145,5 +145,7 @@
     <string name="please_provide_video_url_msg">يرجى توفير رابط الفيديو أو رفع فيديو.</string>
     <string name="choose_video_or_url_msg">يرجى اختيار ملف فيديو أو رابط فيديو، وليس كلاهما.</string>
     <string name="name_and_desc_cant_be_empty">الاسم والوصف لا يمكن أن يكونا فارغين</string>
+    <string name="area">area</string>
+    <string name="recommended">recommended</string>
 
 </resources>

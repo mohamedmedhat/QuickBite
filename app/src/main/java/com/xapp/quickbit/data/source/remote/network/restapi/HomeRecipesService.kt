@@ -1,5 +1,6 @@
 package com.xapp.quickbit.data.source.remote.network.restapi
 
+import com.xapp.quickbit.data.source.remote.model.response.AreaResponse
 import com.xapp.quickbit.data.source.remote.model.response.CategoryResponse
 import com.xapp.quickbit.data.source.remote.model.response.MealDetailResponse
 import com.xapp.quickbit.data.source.remote.model.response.MealsResponse
@@ -13,8 +14,14 @@ interface HomeRecipesService {
     @GET("filter.php?")
     suspend fun findMealsByCategory(@Query("c") category: String): MealsResponse
 
+    @GET("filter.php?")
+    suspend fun findMealsByArea(@Query("a") area: String): MealsResponse
+
     @GET("random.php")
     suspend fun findRandomMeal(): MealDetailResponse
+
+    @GET("list.php?a=list")
+    suspend fun findAllArea(): AreaResponse
 
     @GET("lookup.php?")
     suspend fun findMealById(@Query("i") id: String): MealDetailResponse
