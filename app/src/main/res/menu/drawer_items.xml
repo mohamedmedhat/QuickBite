@@ -18,11 +18,13 @@
         android:id="@+id/profileFragment"
         android:contentDescription="nav to profile"
         android:icon="@drawable/profile"
-        android:title="@string/profile" />
+        android:title="Profile" />
 
     <item
-        android:contentDescription="logout"
-        android:icon="@drawable/logout_24px"
-        android:title="logout" />
+        android:id="@+id/gameFragment"
+        android:contentDescription="game"
+        android:icon="@drawable/toys_and_games_24px"
+        android:iconTint="@color/gray"
+        android:title="Game" />
 
 </menu>

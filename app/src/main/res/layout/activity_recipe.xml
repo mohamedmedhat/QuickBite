@@ -11,6 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/speech_recognition_lottie"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="30dp"
+            android:elevation="11dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/speech_reconizing" />
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -86,7 +100,7 @@
                         android:clickable="true"
                         android:contentDescription="appabr menu"
                         android:focusable="true"
-                        android:src="@drawable/logout_24px" />
+                        android:src="@drawable/mic_24px" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -124,9 +138,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
-        app:headerLayout="@layout/drawer_header"
         app:menu="@menu/drawer_items" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

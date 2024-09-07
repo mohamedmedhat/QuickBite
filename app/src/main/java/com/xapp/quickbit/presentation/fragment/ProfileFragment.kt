@@ -1,5 +1,6 @@
 package com.xapp.quickbit.presentation.fragment
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
@@ -8,13 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.local.entity.UserEntity
+import com.xapp.quickbit.databinding.DialogCustomSignOutBinding
 import com.xapp.quickbit.databinding.FragmentProfileBinding
+import com.xapp.quickbit.presentation.activity.AuthActivity
 import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
+import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.UserViewModel
 
 class ProfileFragment : Fragment() {
@@ -24,6 +29,8 @@ class ProfileFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
 
     private val userViewModel: UserViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
+
     private var profileImageUri: Uri? = null
     private var coverImageUri: Uri? = null
 
@@ -43,6 +50,15 @@ class ProfileFragment : Fragment() {
             }
         }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedPreferences =
+            requireContext().getSharedPreferences(
+                USER_SHARED_PREFERENCE_NAME,
+                AppCompatActivity.MODE_PRIVATE
+            )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,7 +70,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences =
-            requireContext().getSharedPreferences(USER_SHARED_PREFERENCE_NAME, AppCompatActivity.MODE_PRIVATE)
+            requireContext().getSharedPreferences(
+                USER_SHARED_PREFERENCE_NAME,
+                AppCompatActivity.MODE_PRIVATE
+            )
 
         init()
         handleOnClicks()
@@ -84,6 +103,10 @@ class ProfileFragment : Fragment() {
         binding.btnSaveChanges.setOnClickListener {
             updateUserData()
             binding.layoutEdit.visibility = View.GONE
+        }
+
+        binding.btnLogout.setOnClickListener {
+            showSignOutConfirmationDialog()
         }
     }
 
@@ -131,6 +154,40 @@ class ProfileFragment : Fragment() {
                 binding.tvProfileName.text = it.name
             }
         }
+    }
+
+    private fun showSignOutConfirmationDialog() {
+        val dialogBinding = DialogCustomSignOutBinding.inflate(layoutInflater)
+
+        val alertDialog = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setView(dialogBinding.root)
+            .create()
+
+        dialogBinding.btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        dialogBinding.btnConfirm.setOnClickListener {
+            signOutUser()
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+    private fun signOutUser() {
+        authViewModel.signOut()
+        with(
+            requireContext().getSharedPreferences(
+                USER_SHARED_PREFERENCE_NAME,
+                AppCompatActivity.MODE_PRIVATE
+            ).edit()
+        ) {
+            clear()
+            apply()
+        }
+        startActivity(Intent(requireContext(), AuthActivity::class.java))
+        requireActivity().finish()
     }
 
 

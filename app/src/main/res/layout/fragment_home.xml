@@ -7,67 +7,110 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/home_card_margin_horizontal">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.fragment.HomeFragment">
+        android:fillViewport="true">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie_loading"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/fetch_loading" />
+            tools:context=".presentation.fragment.HomeFragment">
 
-        <TextView
-            android:id="@+id/tv_no_recipes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/no_recipes_here"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/tv_no_recipes_text_size"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/fetch_loading" />
 
+            <TextView
+                android:id="@+id/tv_no_recipes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/no_recipes_here"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_no_recipes_text_size"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/letterSpinnerFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/letterSpinnerFilter_margin_top"
-            android:entries="@array/letters_array"
-            android:gravity="center"
-            android:padding="@dimen/letterSpinnerFilter_padding"
-            app:layout_constraintBottom_toTopOf="@+id/rv_homeRecycleView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_areaRecycleView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/area_items" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_area_resultRecycleView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_areaRecycleView"
+                tools:listitem="@layout/area_result_item" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_homeRecycleView"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="@dimen/match_constraint"
-            android:layout_marginTop="@dimen/rv_homeRecycleView_margin_top"
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/letterSpinnerFilter"
-            tools:listitem="@layout/home_recipes_item" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/recommended"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/rv_homeRecycleView"
+                app:layout_constraintEnd_toStartOf="@+id/letterSpinnerFilter"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_area_resultRecycleView" />
 
+            <Spinner
+                android:id="@+id/letterSpinnerFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/letterSpinnerFilter_margin_top"
+                android:entries="@array/letters_array"
+                android:gravity="center"
+                android:padding="@dimen/letterSpinnerFilter_padding"
+                app:layout_constraintBottom_toTopOf="@+id/rv_homeRecycleView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_area_resultRecycleView"
+                tools:ignore="TouchTargetSizeCheck" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_homeRecycleView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/rv_homeRecycleView_margin_top"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/letterSpinnerFilter"
+                tools:listitem="@layout/home_recipes_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

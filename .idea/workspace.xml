@@ -19,6 +19,16 @@
           <theme>@style/Theme.QuickBit</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/area_items.xml">
+        <config>
+          <theme>@style/Theme.QuickBit</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/area_result_item.xml">
+        <config>
+          <theme>@style/Theme.QuickBit</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/custom_toast.xml">
         <config>
           <theme>@style/Theme.QuickBit</theme>
@@ -85,6 +95,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_favourite_item.xml">
+        <config>
+          <theme>@style/Theme.QuickBit</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game.xml">
         <config>
           <theme>@style/Theme.QuickBit</theme>
         </config>
@@ -186,27 +201,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47913eac-c665-4ae5-908e-7dcc5585bc41" name="Changes" comment="fix the 291 error which make by the last merge">
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/activity/RecipeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/activity/RecipeActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryDetailsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryRecipeDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryRecipeDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CreateRecipeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CreateRecipeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/DashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/DashboardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/LoginFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/MyRecipesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/MyRecipesFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/ProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RegisterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RegisterFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SearchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SplashFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SplashFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ar-rEG/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ar-rEG/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-de-rDE/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-de-rDE/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-pt-rBR/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-pt-rBR/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rCN/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rCN/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,9 +252,9 @@
         <option value="valueResourceFile" />
         <option value="Kotlin Object" />
         <option value="resourceFile" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
+        <option value="Kotlin Data Class" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
       </list>
@@ -288,7 +291,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/dagger__hilt&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/voiceRecognation&quot;,
     &quot;last_directory_selection&quot;: &quot;E:/temporaryProjects/qqqqqqq/QuickBite/app/src/main/res/drawable&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/projectsTwo/uuuuuuu/EasyFood&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -479,12 +482,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt</url>
-          <line>226</line>
+          <line>240</line>
           <properties class="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt</url>
+          <line>215</line>
+          <properties class="com.xapp.quickbit.presentation.fragment.HomeFragment" method="setupSpinner">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt</url>
+          <line>116</line>
+          <properties class="com.xapp.quickbit.presentation.fragment.HomeFragment" method="handleHomeAreaObserving">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt</url>
+          <line>139</line>
+          <properties class="com.xapp.quickbit.presentation.fragment.HomeFragment" method="handleHomeAreaResultObserving">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt</url>
+          <line>185</line>
+          <properties class="com.xapp.quickbit.presentation.fragment.HomeFragment" method="styleSwipeRefresh">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt</url>
+          <line>92</line>
+          <properties class="com.xapp.quickbit.presentation.fragment.HomeFragment" method="handleHomeObserving">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

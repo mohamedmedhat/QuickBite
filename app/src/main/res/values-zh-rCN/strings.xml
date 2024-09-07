@@ -145,4 +145,7 @@
     <string name="please_provide_video_url_msg">请提供视频链接或上传视频。</string>
     <string name="choose_video_or_url_msg">请选择视频文件或视频链接，而不是两者。</string>
     <string name="name_and_desc_cant_be_empty">名称和描述不能为空</string>
+    <string name="area">area</string>
+    <string name="recommended">recommended</string>
+    <string name="signout">SignOut</string>
 </resources>

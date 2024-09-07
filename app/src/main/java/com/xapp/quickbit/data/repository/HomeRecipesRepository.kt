@@ -1,5 +1,6 @@
 package com.xapp.quickbit.data.repository
 
+import com.xapp.quickbit.data.source.remote.model.response.MealDetailResponse
 import com.xapp.quickbit.data.source.remote.network.restapi.HomeRecipesService
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -11,11 +12,19 @@ class HomeRecipesRepository @Inject constructor(
 
     suspend fun getAllCategories() = homeRecipesService.findAllCategories()
 
-    suspend fun getMealsByCategory(category: String) = homeRecipesService.findMealsByCategory(category)
+    suspend fun getMealsByCategory(category: String) =
+        homeRecipesService.findMealsByCategory(category)
 
-    suspend fun getRandomMeal() = homeRecipesService.findRandomMeal()
+    suspend fun getMealsByArea(area: String) = homeRecipesService.findMealsByArea(area)
 
-    suspend fun getMealsByFirstLetter(firstLetter: String) = homeRecipesService.findMealsByFirstLetter(firstLetter)
+    suspend fun getRandomMeal(): MealDetailResponse {
+        return homeRecipesService.findRandomMeal()
+    }
+
+    suspend fun getAllArea() = homeRecipesService.findAllArea()
+
+    suspend fun getMealsByFirstLetter(firstLetter: String) =
+        homeRecipesService.findMealsByFirstLetter(firstLetter)
 
     suspend fun getMealById(id: String) = homeRecipesService.findMealById(id)
 
