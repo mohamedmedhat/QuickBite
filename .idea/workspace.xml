@@ -201,26 +201,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47913eac-c665-4ae5-908e-7dcc5585bc41" name="Changes" comment="fix the 291 error which make by the last merge">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/source/remote/model/Area.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/source/remote/model/response/AreaResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/HomeAreaViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/RecipeDetailsViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/HomeAreaAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/adapter/HomeAreaResultAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/area_items.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/area_result_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/repository/FavouriteRecipesRepositoy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/repository/FavouriteRecipesRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/repository/HomeRecipesRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/repository/HomeRecipesRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/repository/UserRepositoiry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/repository/UserRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/source/remote/network/restapi/HomeRecipesService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/data/source/remote/network/restapi/HomeRecipesService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryDetailsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/CategoryRecipeDetailFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/FavouriteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/viewModel/FavouriteRecipesViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_category_recipe_detail.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ar-rEG/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ar-rEG/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-de-rDE/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-de-rDE/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" afterDir="false" />

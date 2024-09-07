@@ -145,5 +145,6 @@
     <string name="name_and_desc_cant_be_empty">Name und Beschreibung dürfen nicht leer sein</string>
     <string name="area">area</string>
     <string name="recommended">recommended</string>
+    <string name="signout">SignOut</string>
 
 </resources>

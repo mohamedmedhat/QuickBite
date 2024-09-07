@@ -11,7 +11,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,9 +22,7 @@ import com.bumptech.glide.Glide
 import android.Manifest
 import com.xapp.quickbit.R
 import com.xapp.quickbit.databinding.ActivityRecipeBinding
-import com.xapp.quickbit.databinding.DialogCustomSignOutBinding
 import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
-import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.UserViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +36,6 @@ class RecipeActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var sharedPreference: SharedPreferences
     private lateinit var speechRecognizer: SpeechRecognizer
-    private val authViewModel: AuthViewModel by viewModels()
     private val userViewModel: UserViewModel by viewModels()
 
     private val audioPermissionRequestCode = 100
@@ -132,38 +128,15 @@ class RecipeActivity : AppCompatActivity() {
         }
 
         binding.appbarMenu.setOnClickListener {
-            showSignOutConfirmationDialog()
-        }
-
-        binding.fabShowVoiceRecognizing.setOnClickListener {
             binding.speechRecognitionLottie.visibility = View.VISIBLE
-            binding.fabShowVoiceRecognizing.visibility = View.GONE
+            binding.appbarMenu.visibility = View.GONE
             checkAudioPermission()
         }
 
         binding.speechRecognitionLottie.setOnClickListener {
             binding.speechRecognitionLottie.visibility = View.GONE
-            binding.fabShowVoiceRecognizing.visibility = View.VISIBLE
+            binding.appbarMenu.visibility = View.VISIBLE
         }
-    }
-
-    private fun showSignOutConfirmationDialog() {
-        val dialogBinding = DialogCustomSignOutBinding.inflate(layoutInflater)
-
-        val alertDialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
-            .setView(dialogBinding.root)
-            .create()
-
-        dialogBinding.btnCancel.setOnClickListener {
-            alertDialog.dismiss()
-        }
-
-        dialogBinding.btnConfirm.setOnClickListener {
-            signOutUser()
-            alertDialog.dismiss()
-        }
-
-        alertDialog.show()
     }
 
     private fun initSpeechRecognizer() {
@@ -324,16 +297,6 @@ class RecipeActivity : AppCompatActivity() {
             R.id.action_homeFragment_to_searchFragment,
             bundle
         )
-    }
-
-    private fun signOutUser() {
-        authViewModel.signOut()
-        with(getSharedPreferences(USER_SHARED_PREFERENCE_NAME, MODE_PRIVATE).edit()) {
-            clear()
-            apply()
-        }
-        startActivity(Intent(this, AuthActivity::class.java))
-        finish()
     }
 
     override fun onDestroy() {

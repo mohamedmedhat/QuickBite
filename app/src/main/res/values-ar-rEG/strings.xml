@@ -147,5 +147,6 @@
     <string name="name_and_desc_cant_be_empty">الاسم والوصف لا يمكن أن يكونا فارغين</string>
     <string name="area">area</string>
     <string name="recommended">recommended</string>
+    <string name="signout">SignOut</string>
 
 </resources>
