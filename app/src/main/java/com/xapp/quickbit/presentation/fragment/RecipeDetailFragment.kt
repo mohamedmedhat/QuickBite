@@ -26,8 +26,13 @@ import com.xapp.quickbit.data.source.remote.model.Meal
 import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentRecipeDetailBinding
 import com.xapp.quickbit.presentation.fragment.CategoryDetailsFragment.Companion.CATEGORY_DETAILS_DETAILS_BUNDLE_KEY
+import com.xapp.quickbit.presentation.fragment.DashboardFragment.Companion.DASHBOARD_BUNDLE_KEY
+import com.xapp.quickbit.presentation.fragment.FavouriteFragment.Companion.KEY_FAVOURITE_MEAL_BUNDLE_KEY
 import com.xapp.quickbit.presentation.fragment.GameFragment.Companion.GAME_PARCELABLE_KEY
 import com.xapp.quickbit.presentation.fragment.HomeFragment.Companion.HOME_AREA_BUNDLE_KEY
+import com.xapp.quickbit.presentation.fragment.HomeFragment.Companion.HOME_BUNDLE_KEY
+import com.xapp.quickbit.presentation.fragment.MyRecipesFragment.Companion.CREATED_RECIPE_BUNDLE_KEY
+import com.xapp.quickbit.presentation.fragment.SearchFragment.Companion.SEARCH_MEAL_DETAIL_BUNDLE_KEY
 import com.xapp.quickbit.viewModel.FavouriteRecipesViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.showSnackBar
@@ -82,26 +87,32 @@ class RecipeDetailFragment : Fragment() {
         bindData(mealData)
     }
 
-    private fun getMealData(): Any? {
-        val gson = Gson()
-        val mealJson = sharedPreferences.getString("favouriteMealJson", null)
-        val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
-
+    private fun getMealDetailFromArguments(): MealDetail? {
         val keys = listOf(
-            "mealDetail",
-            "searchMealDetail",
+            HOME_BUNDLE_KEY,
+            SEARCH_MEAL_DETAIL_BUNDLE_KEY,
             GAME_PARCELABLE_KEY,
             HOME_AREA_BUNDLE_KEY,
             CATEGORY_DETAILS_DETAILS_BUNDLE_KEY
         )
 
-        val mealDetail = keys.asSequence()
+        return keys.asSequence()
             .mapNotNull { key -> arguments?.getParcelable<MealDetail>(key) }
             .firstOrNull()
+    }
 
 
-        val myCreatedRecipesDetails = arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")
-            ?: arguments?.getParcelable<MyRecipesEntity>("dashboardRecipe")
+    private fun getMealData(): Any? {
+        val gson = Gson()
+        val mealJson = sharedPreferences.getString(KEY_FAVOURITE_MEAL_BUNDLE_KEY, null)
+        val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
+
+
+        val mealDetail = getMealDetailFromArguments()
+
+        val myCreatedRecipesDetails =
+            arguments?.getParcelable<MyRecipesEntity>(CREATED_RECIPE_BUNDLE_KEY)
+                ?: arguments?.getParcelable(DASHBOARD_BUNDLE_KEY)
 
         return mealDetail ?: mealFromPrefs ?: myCreatedRecipesDetails
     }
@@ -174,12 +185,16 @@ class RecipeDetailFragment : Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
+        binding.fabShareSocial.setOnClickListener {
+            shareRecipe()
+        }
+
         binding.fabSaveItem.setOnClickListener {
             checkIfItemSaveOrNot()
         }
 
         binding.ivYoutubeRecipe.setOnClickListener {
-            val youtubeUrl = arguments?.getParcelable<MealDetail>("mealDetail")?.strYoutube
+            val youtubeUrl = arguments?.getParcelable<MealDetail>(HOME_BUNDLE_KEY)?.strYoutube
                 ?: arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")?.mealYoutubeLink
             youtubeUrl?.let { url ->
                 try {
@@ -197,8 +212,7 @@ class RecipeDetailFragment : Fragment() {
     }
 
     private fun checkIfItemSaveOrNot() {
-        // Get meal details and convert it to MealInformationEntity
-        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
+        val mealDetail = getMealDetailFromArguments()
         mealDetail?.let {
             val mealEntity = MealInformationEntity(
                 mealId = it.idMeal,
@@ -222,8 +236,7 @@ class RecipeDetailFragment : Fragment() {
 
     private fun saveItemToFavourite() {
         val userType = userPermissionSharedPreferences.getString("userName", "Guest")
-        val mealDetail = arguments?.getParcelable<MealDetail>("mealDetail")
-
+        val mealDetail = getMealDetailFromArguments()
         if (userType != "Guest") {
             mealDetail?.let { meal ->
                 val mealEntity = MealInformationEntity(
@@ -255,6 +268,42 @@ class RecipeDetailFragment : Fragment() {
             CustomToast(
                 requireContext(),
                 "You should have an account first to save a Recipe",
+                R.drawable.error_24px
+            )
+        }
+    }
+
+    private fun shareRecipe() {
+        val mealDetail = getMealDetailFromArguments()
+
+        mealDetail?.let { meal ->
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "image/*"
+
+                val shareText = """
+                Check out this recipe:
+                
+                Recipe Name: ${meal.strMeal}
+                Description: ${meal.strInstructions}
+                Category: ${meal.strCategory}
+                Area: ${meal.strArea}
+                Watch Video: ${meal.strYoutube}
+            """.trimIndent()
+
+                putExtra(Intent.EXTRA_SUBJECT, "Check out this recipe: ${meal.strMeal}")
+                putExtra(Intent.EXTRA_TEXT, shareText)
+
+                meal.strMealThumb.let { thumbUrl ->
+                    val imageUri = Uri.parse(thumbUrl)
+                    putExtra(Intent.EXTRA_STREAM, imageUri)
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+            }
+            startActivity(Intent.createChooser(shareIntent, "Share Recipe via"))
+        } ?: run {
+            CustomToast(
+                requireContext(),
+                "Meal detail data is missing",
                 R.drawable.error_24px
             )
         }

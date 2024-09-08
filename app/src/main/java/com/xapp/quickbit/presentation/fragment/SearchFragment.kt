@@ -138,7 +138,7 @@ class SearchFragment : Fragment() {
 
     private fun navigateToItemFragment(mealDetail: MealDetail) {
         val bundle = Bundle().apply {
-            putParcelable(SEARCH_MEAL_DETAIL_KEY, mealDetail)
+            putParcelable(SEARCH_MEAL_DETAIL_BUNDLE_KEY, mealDetail)
         }
         findNavController().navigate(R.id.action_searchFragment_to_recipeDetailFragment, bundle)
     }
@@ -150,7 +150,7 @@ class SearchFragment : Fragment() {
 
     companion object {
         private const val ERROR_TAG = "Search Fragment Error"
-        const val SEARCH_MEAL_DETAIL_KEY = "searchMealDetail"
+        const val SEARCH_MEAL_DETAIL_BUNDLE_KEY = "searchMealDetail"
     }
 }
 

@@ -92,7 +92,7 @@ class FavouriteFragment : Fragment() {
         val mealJson = gson.toJson(favourite)
 
         sharedPreferences.edit().apply {
-            putString(KEY_FAVOURITE_MEAL_JSON, mealJson)
+            putString(KEY_FAVOURITE_MEAL_BUNDLE_KEY, mealJson)
             apply()
         }
 
@@ -127,6 +127,6 @@ class FavouriteFragment : Fragment() {
 
     companion object {
         const val SHARED_PREFS_NAME = "favourite_recipes_details"
-        const val KEY_FAVOURITE_MEAL_JSON = "favouriteMealJson"
+        const val KEY_FAVOURITE_MEAL_BUNDLE_KEY = "favouriteMealJson"
     }
 }

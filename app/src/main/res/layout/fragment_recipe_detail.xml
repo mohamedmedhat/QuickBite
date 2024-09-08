@@ -26,6 +26,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_share_social"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/this_float_button_to_save_item"
+                android:src="@drawable/share_24px"
+                app:fabCustomSize="40dp"
+                app:layout_constraintEnd_toStartOf="@+id/fab_saveItem"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="?attr/colorPrimary" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_backToHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -157,8 +170,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/description"
                 android:textColor="@color/gray"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailsDesc" />
 
             <com.google.android.material.button.MaterialButton
