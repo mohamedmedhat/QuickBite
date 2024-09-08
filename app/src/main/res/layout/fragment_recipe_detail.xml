@@ -53,10 +53,11 @@
 
             <TextView
                 android:id="@+id/tv_recipeDetailTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/poppins_medium"
+                android:maxLines="3"
                 android:text="@string/recipe_title"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -150,13 +151,14 @@
 
             <TextView
                 android:id="@+id/tv_recipeDetailsDescContent"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/description"
                 android:textColor="@color/gray"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_recipeDetailsDesc" />
 
             <com.google.android.material.button.MaterialButton

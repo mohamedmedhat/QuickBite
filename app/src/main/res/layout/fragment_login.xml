@@ -89,6 +89,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvl_password" />
 
+            <ProgressBar
+                android:id="@+id/login_progress_bar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_login"
+                app:layout_constraintEnd_toEndOf="@+id/btn_login"
+                app:layout_constraintStart_toStartOf="@+id/btn_login"
+                app:layout_constraintTop_toTopOf="@+id/btn_login" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_loginWithGoogle"
                 android:layout_width="wrap_content"
@@ -108,6 +120,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_login"
                 app:strokeColor="@color/darkGreen"
                 app:strokeWidth="@dimen/loginBtn_stroke_width" />
+
+            <ProgressBar
+                android:id="@+id/loginWithGoogle_progress_bar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/darkGreen"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_loginWithGoogle"
+                app:layout_constraintEnd_toEndOf="@+id/btn_loginWithGoogle"
+                app:layout_constraintStart_toStartOf="@+id/btn_loginWithGoogle"
+                app:layout_constraintTop_toTopOf="@+id/btn_loginWithGoogle" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_loginAsGuest"
@@ -131,6 +155,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_login"
                 app:strokeColor="@color/darkGreen"
                 app:strokeWidth="@dimen/loginBtn_stroke_width" />
+
+            <ProgressBar
+                android:id="@+id/loginAsGuest_progress_bar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/darkGreen"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_loginAsGuest"
+                app:layout_constraintEnd_toEndOf="@+id/btn_loginAsGuest"
+                app:layout_constraintStart_toStartOf="@+id/btn_loginAsGuest"
+                app:layout_constraintTop_toTopOf="@+id/btn_loginAsGuest" />
 
             <TextView
                 android:id="@+id/tv_notHaveAccount"
