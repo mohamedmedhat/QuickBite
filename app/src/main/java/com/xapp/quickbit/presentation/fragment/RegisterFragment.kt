@@ -53,6 +53,8 @@ class RegisterFragment : Fragment() {
         authViewModel.registrationResult.observe(viewLifecycleOwner) { errors ->
             binding.registerSwipeRefresh.isRefreshing = false
 
+            hideProgressBar()
+
             val userNameError = errors["userName"]
             val emailError = errors["email"]
             val passwordError = errors["password"]
@@ -135,6 +137,8 @@ class RegisterFragment : Fragment() {
         binding.tvEmail.text?.clear()
         binding.tvPassword.text?.clear()
         binding.tvConfirmPassword.text?.clear()
+
+        hideProgressBar()
 
         binding.registerSwipeRefresh.isRefreshing = false
     }

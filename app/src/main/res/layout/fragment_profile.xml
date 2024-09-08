@@ -271,6 +271,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/til_edit_name" />
+
+                <ProgressBar
+                    android:id="@+id/btn_save_changes_progress_bar"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_save_changes"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_save_changes"
+                    app:layout_constraintStart_toStartOf="@+id/btn_save_changes"
+                    app:layout_constraintTop_toTopOf="@+id/btn_save_changes" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

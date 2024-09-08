@@ -118,6 +118,13 @@ class LoginFragment : Fragment() {
 
         authViewModel.loginError.observe(viewLifecycleOwner) { errorMessage ->
             binding.loginSwipeRefresh.isRefreshing = false
+
+            hideProgressBar(
+                binding.loginProgressBar,
+                binding.btnLogin,
+                ContextCompat.getString(requireContext(), R.string.login_btn_text)
+            )
+
             val emailError = errorMessage["email"]
             val passwordError = errorMessage["password"]
 
@@ -144,6 +151,7 @@ class LoginFragment : Fragment() {
             editor.putString("userEmail", email)
             editor.putString("userPassword", password)
             editor.apply()
+
         }
 
         binding.tvRegisterLink.setOnClickListener {
@@ -209,6 +217,19 @@ class LoginFragment : Fragment() {
         binding.tvlPassword.error = null
         binding.tvEmail.text?.clear()
         binding.tvPassword.text?.clear()
+
+        hideProgressBar(
+            binding.loginProgressBar,
+            binding.btnLogin,
+            ContextCompat.getString(requireContext(), R.string.login_btn_text)
+        )
+        hideProgressBar(
+            binding.loginAsGuestProgressBar,
+            binding.btnLoginAsGuest,
+            ContextCompat.getString(requireContext(), R.string.login_as_guest_text)
+        )
+        hideProgressBar(binding.loginWithGoogleProgressBar, binding.btnLoginWithGoogle)
+
         binding.loginSwipeRefresh.isRefreshing = false
     }
 

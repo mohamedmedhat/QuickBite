@@ -193,6 +193,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinner_category" />
 
+            <ProgressBar
+                android:id="@+id/btn_submit_progress_bar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_submit"
+                app:layout_constraintEnd_toEndOf="@+id/btn_submit"
+                app:layout_constraintStart_toStartOf="@+id/btn_submit"
+                app:layout_constraintTop_toTopOf="@+id/btn_submit" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

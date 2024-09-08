@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:text="Game"
+        android:text="@string/game"
         android:textSize="@dimen/tv_categoryFragment_title_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Generate your Random Recipe"
+        android:text="@string/generate_your_random_recipe"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recipe_card"
@@ -183,11 +183,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="generate"
+        android:text="@string/generate"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipe_card" />
+
+    <ProgressBar
+        android:id="@+id/btn_generate_recipe_progress_bar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_generate_recipe"
+        app:layout_constraintEnd_toEndOf="@+id/btn_generate_recipe"
+        app:layout_constraintStart_toStartOf="@+id/btn_generate_recipe"
+        app:layout_constraintTop_toTopOf="@+id/btn_generate_recipe" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
