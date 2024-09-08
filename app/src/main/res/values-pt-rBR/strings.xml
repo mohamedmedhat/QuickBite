@@ -146,5 +146,8 @@
     <string name="area">area</string>
     <string name="recommended">recommended</string>
     <string name="signout">SignOut</string>
+    <string name="generate">Generate</string>
+    <string name="generate_your_random_recipe">Generate your Random Recipe</string>
+    <string name="game">Game</string>
 
 </resources>

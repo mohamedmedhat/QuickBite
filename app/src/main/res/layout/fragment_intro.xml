@@ -58,4 +58,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/introBtn_progress_bar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/introBtn_goToHome"
+        app:layout_constraintEnd_toEndOf="@+id/introBtn_goToHome"
+        app:layout_constraintStart_toStartOf="@+id/introBtn_goToHome"
+        app:layout_constraintTop_toTopOf="@+id/introBtn_goToHome" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

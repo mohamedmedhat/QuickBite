@@ -52,6 +52,9 @@ class RegisterFragment : Fragment() {
     private fun handleRegisterObserving() {
         authViewModel.registrationResult.observe(viewLifecycleOwner) { errors ->
             binding.registerSwipeRefresh.isRefreshing = false
+
+            hideProgressBar()
+
             val userNameError = errors["userName"]
             val emailError = errors["email"]
             val passwordError = errors["password"]
@@ -67,6 +70,7 @@ class RegisterFragment : Fragment() {
             if (isSuccess) {
                 binding.registerSwipeRefresh.isRefreshing = false
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
+                hideProgressBar()
                 CustomToast(
                     requireContext(),
                     ContextCompat.getString(requireContext(), R.string.register_success_msg),
@@ -85,6 +89,8 @@ class RegisterFragment : Fragment() {
 
     private fun handleOnClicks() {
         binding.btnSignUp.setOnClickListener {
+            showProgressBar()
+
             val userName = binding.tvUserName.text.toString()
             val email = binding.tvEmail.text.toString()
             val password = binding.tvPassword.text.toString()
@@ -132,8 +138,24 @@ class RegisterFragment : Fragment() {
         binding.tvPassword.text?.clear()
         binding.tvConfirmPassword.text?.clear()
 
+        hideProgressBar()
+
         binding.registerSwipeRefresh.isRefreshing = false
     }
+
+    private fun hideProgressBar() {
+        binding.registerProgressBar.visibility = View.GONE
+        binding.btnSignUp.text =
+            ContextCompat.getString(requireContext(), R.string.register_button_text)
+        binding.btnSignUp.isEnabled = true
+    }
+
+    private fun showProgressBar() {
+        binding.registerProgressBar.visibility = View.VISIBLE
+        binding.btnSignUp.text = ""
+        binding.btnSignUp.isEnabled = false
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

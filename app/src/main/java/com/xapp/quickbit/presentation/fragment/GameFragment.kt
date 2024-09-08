@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -14,6 +15,8 @@ import com.xapp.quickbit.data.source.remote.model.MealDetail
 import com.xapp.quickbit.databinding.FragmentGameBinding
 import com.xapp.quickbit.viewModel.GameViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications
+import com.xapp.quickbit.viewModel.utils.ProgressBarUtils.hideProgressBar
+import com.xapp.quickbit.viewModel.utils.ProgressBarUtils.showProgressBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +44,7 @@ class GameFragment : Fragment() {
 
     private fun handleOnClick() {
         binding.btnGenerateRecipe.setOnClickListener {
+            showProgressBar(binding.btnGenerateRecipeProgressBar, binding.btnGenerateRecipe)
             binding.starterLottie.visibility = View.GONE
             binding.randomCountLottie.visibility = View.VISIBLE
             gameViewModel.getRandomMeal()
@@ -67,11 +71,21 @@ class GameFragment : Fragment() {
                     Log.e(ERROR_TAG, "No meals received")
                 }
             } ?: Log.e(ERROR_TAG, "Meal details list is null")
+            hideProgressBar(
+                binding.btnGenerateRecipeProgressBar,
+                binding.btnGenerateRecipe,
+                ContextCompat.getString(requireContext(), R.string.generate)
+            )
             binding.randomCountLottie.visibility = View.GONE
             binding.starterLottie.visibility = View.GONE
         }
 
         gameViewModel.error.observe(viewLifecycleOwner) { error ->
+            hideProgressBar(
+                binding.btnGenerateRecipeProgressBar,
+                binding.btnGenerateRecipe,
+                ContextCompat.getString(requireContext(), R.string.generate)
+            )
             error?.let {
                 CustomNotifications.CustomToast(requireContext(), it, R.drawable.error_24px)
                 Log.e(ERROR_TAG, it)

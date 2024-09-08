@@ -25,6 +25,8 @@ import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USERNA
 import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
 import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
+import com.xapp.quickbit.viewModel.utils.ProgressBarUtils.hideProgressBar
+import com.xapp.quickbit.viewModel.utils.ProgressBarUtils.showProgressBar
 
 
 class LoginFragment : Fragment() {
@@ -94,6 +96,11 @@ class LoginFragment : Fragment() {
             binding.loginSwipeRefresh.isRefreshing = false
             if (isSuccess) {
                 authViewModel.saveUserToPreferences(authViewModel.user.value, requireContext())
+                hideProgressBar(
+                    binding.loginProgressBar,
+                    binding.btnLogin,
+                    ContextCompat.getString(requireContext(), R.string.login_btn_text)
+                )
                 CustomToast(
                     requireContext(),
                     ContextCompat.getString(requireContext(), R.string.login_success_msg),
@@ -111,6 +118,13 @@ class LoginFragment : Fragment() {
 
         authViewModel.loginError.observe(viewLifecycleOwner) { errorMessage ->
             binding.loginSwipeRefresh.isRefreshing = false
+
+            hideProgressBar(
+                binding.loginProgressBar,
+                binding.btnLogin,
+                ContextCompat.getString(requireContext(), R.string.login_btn_text)
+            )
+
             val emailError = errorMessage["email"]
             val passwordError = errorMessage["password"]
 
@@ -125,6 +139,10 @@ class LoginFragment : Fragment() {
     private fun handleOnClicks() {
         val editor = sharedPreferences.edit()
         binding.btnLogin.setOnClickListener {
+            showProgressBar(
+                binding.loginProgressBar,
+                binding.btnLogin,
+            )
             binding.tvlEmail.error = null
             binding.tvlPassword.error = null
             val email = binding.tvEmail.text.toString()
@@ -133,6 +151,7 @@ class LoginFragment : Fragment() {
             editor.putString("userEmail", email)
             editor.putString("userPassword", password)
             editor.apply()
+
         }
 
         binding.tvRegisterLink.setOnClickListener {
@@ -140,16 +159,28 @@ class LoginFragment : Fragment() {
         }
 
         binding.btnLoginWithGoogle.setOnClickListener {
+            showProgressBar(binding.loginWithGoogleProgressBar, binding.btnLoginWithGoogle)
             signInWithGoogle()
+            hideProgressBar(binding.loginWithGoogleProgressBar, binding.btnLoginWithGoogle)
         }
 
         binding.btnLoginAsGuest.setOnClickListener {
+            showProgressBar(binding.loginAsGuestProgressBar, binding.btnLoginAsGuest)
             val editor = sharedPreferences.edit()
             editor.putString(USERNAME_SHARED_PREFERENCE_KEY, "Guest")
             editor.apply()
-            val intent = Intent(requireContext(), RecipeActivity::class.java)
-            startActivity(intent)
+            navToRecipeActivity()
+            hideProgressBar(
+                binding.loginAsGuestProgressBar,
+                binding.btnLoginAsGuest,
+                ContextCompat.getString(requireContext(), R.string.login_as_guest_text)
+            )
         }
+    }
+
+    private fun navToRecipeActivity() {
+        val intent = Intent(requireContext(), RecipeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun signInWithGoogle() {
@@ -186,6 +217,19 @@ class LoginFragment : Fragment() {
         binding.tvlPassword.error = null
         binding.tvEmail.text?.clear()
         binding.tvPassword.text?.clear()
+
+        hideProgressBar(
+            binding.loginProgressBar,
+            binding.btnLogin,
+            ContextCompat.getString(requireContext(), R.string.login_btn_text)
+        )
+        hideProgressBar(
+            binding.loginAsGuestProgressBar,
+            binding.btnLoginAsGuest,
+            ContextCompat.getString(requireContext(), R.string.login_as_guest_text)
+        )
+        hideProgressBar(binding.loginWithGoogleProgressBar, binding.btnLoginWithGoogle)
+
         binding.loginSwipeRefresh.isRefreshing = false
     }
 

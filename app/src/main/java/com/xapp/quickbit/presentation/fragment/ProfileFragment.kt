@@ -1,16 +1,21 @@
 package com.xapp.quickbit.presentation.fragment
 
+import android.Manifest
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.xapp.quickbit.R
@@ -21,6 +26,9 @@ import com.xapp.quickbit.presentation.activity.AuthActivity
 import com.xapp.quickbit.presentation.fragment.RegisterFragment.Companion.USER_SHARED_PREFERENCE_NAME
 import com.xapp.quickbit.viewModel.AuthViewModel
 import com.xapp.quickbit.viewModel.UserViewModel
+import com.xapp.quickbit.viewModel.utils.CustomNotifications.showSnackBar
+import com.xapp.quickbit.viewModel.utils.ProgressBarUtils.hideProgressBar
+import com.xapp.quickbit.viewModel.utils.ProgressBarUtils.showProgressBar
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -33,6 +41,8 @@ class ProfileFragment : Fragment() {
 
     private var profileImageUri: Uri? = null
     private var coverImageUri: Uri? = null
+
+    private var isProfileImageRequest = false
 
     private val getProfileImage =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -49,6 +59,24 @@ class ProfileFragment : Fragment() {
                 binding.ivEditProfileCover.setImageURI(it)
             }
         }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            if (isProfileImageRequest) {
+                getProfileImage.launch("image/*")
+            } else {
+                getCoverImage.launch("image/*")
+            }
+        } else {
+            showSnackBar(
+                requireView(),
+                "Permission is required to access gallery.",
+            )
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +95,7 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences =
@@ -87,27 +116,75 @@ class ProfileFragment : Fragment() {
         showUserData(email)
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun handleOnClicks() {
         binding.btnEdit.setOnClickListener {
             binding.layoutEdit.visibility = View.VISIBLE
         }
 
-        binding.ivEditProfileCover.setOnClickListener {
-            getCoverImage.launch("image/*")
+        binding.ivEditProfileImage.setOnClickListener {
+            checkPermissionAndPickImage(true)
         }
 
-        binding.ivEditProfileImage.setOnClickListener {
-            getProfileImage.launch("image/*")
+        binding.ivEditProfileCover.setOnClickListener {
+            checkPermissionAndPickImage(false)
         }
 
         binding.btnSaveChanges.setOnClickListener {
             updateUserData()
+            hideProgressBar(
+                binding.btnSaveChangesProgressBar,
+                binding.btnSaveChanges,
+                ContextCompat.getString(requireContext(), R.string.save_changes)
+            )
             binding.layoutEdit.visibility = View.GONE
         }
 
         binding.btnLogout.setOnClickListener {
             showSignOutConfirmationDialog()
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun checkPermissionAndPickImage(isProfileImageRequest: Boolean) {
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                launchContentPicker(isProfileImageRequest)
+            }
+
+            shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_IMAGES) -> {
+                showPermissionRationale()
+            }
+
+            else -> {
+                requestPermissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+            }
+        }
+    }
+
+    private fun launchContentPicker(isProfileImageRequest: Boolean) {
+        if (isProfileImageRequest) {
+            getProfileImage.launch("image/*")
+        } else {
+            getCoverImage.launch("image/*")
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun showPermissionRationale() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Permission Required")
+            .setMessage("The app needs access to your gallery to upload images.")
+            .setPositiveButton("Grant Permission") { _, _ ->
+                requestPermissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
+            .show()
     }
 
     private fun saveUser(name: String, email: String) {
@@ -119,6 +196,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateUserData() {
+        showProgressBar(binding.btnSaveChangesProgressBar, binding.btnSaveChanges)
         val editName = binding.etEditName.text.toString()
         val email = sharedPreferences.getString("email", null) ?: return
         val profileImageUriString = profileImageUri?.toString() ?: ""
