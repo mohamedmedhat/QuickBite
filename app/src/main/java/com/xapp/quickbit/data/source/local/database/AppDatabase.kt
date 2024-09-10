@@ -13,7 +13,7 @@ import com.xapp.quickbit.data.source.local.entity.UserEntity
 
 @Database(
     entities = [UserEntity::class, MealInformationEntity::class, MyRecipesEntity::class],
-    version = 11
+    version = 12
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao

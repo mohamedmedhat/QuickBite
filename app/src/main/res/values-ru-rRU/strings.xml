@@ -149,4 +149,5 @@
     <string name="generate">Generate</string>
     <string name="generate_your_random_recipe">Generate your Random Recipe</string>
     <string name="game">Game</string>
+    <string name="voice_search">voice_search</string>
 </resources>

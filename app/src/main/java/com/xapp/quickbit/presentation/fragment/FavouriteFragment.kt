@@ -1,7 +1,5 @@
 package com.xapp.quickbit.presentation.fragment
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.gson.Gson
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
 import com.xapp.quickbit.databinding.FragmentFavouriteBinding
@@ -25,15 +22,6 @@ class FavouriteFragment : Fragment() {
 
     private val favouriteRecipesViewModel: FavouriteRecipesViewModel by viewModels()
     private lateinit var adapter: FavouriteAdapter
-    private lateinit var sharedPreferences: SharedPreferences
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sharedPreferences = requireContext().getSharedPreferences(
-            SHARED_PREFS_NAME,
-            Context.MODE_PRIVATE
-        )
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -88,15 +76,10 @@ class FavouriteFragment : Fragment() {
     }
 
     private fun goToDetails(favourite: MealInformationEntity) {
-        val gson = Gson()
-        val mealJson = gson.toJson(favourite)
-
-        sharedPreferences.edit().apply {
-            putString(KEY_FAVOURITE_MEAL_BUNDLE_KEY, mealJson)
-            apply()
+        val bundle = Bundle().apply {
+            putParcelable(KEY_FAVOURITE_MEAL_BUNDLE_KEY, favourite)
         }
-
-        findNavController().navigate(R.id.action_favouriteFragment_to_recipeDetailFragment)
+        findNavController().navigate(R.id.action_favouriteFragment_to_recipeDetailFragment, bundle)
     }
 
     private fun handleSwipeRefresh() {
@@ -126,7 +109,6 @@ class FavouriteFragment : Fragment() {
     }
 
     companion object {
-        const val SHARED_PREFS_NAME = "favourite_recipes_details"
         const val KEY_FAVOURITE_MEAL_BUNDLE_KEY = "favouriteMealJson"
     }
 }

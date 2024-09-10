@@ -63,11 +63,14 @@ class SearchFragment : Fragment() {
             binding.searchSwipeRefresh.isRefreshing = false
             if (!searchRecipes.isNullOrEmpty()) {
                 binding.lottieLoading.visibility = View.GONE
+                binding.tvNoRecipes.visibility = View.GONE
                 binding.rvSearchRecycleView.visibility = View.VISIBLE
                 searchAdapter.updateData(searchRecipes)
             } else {
+                searchAdapter.updateData(emptyList())
                 binding.lottieLoading.visibility = View.VISIBLE
                 binding.rvSearchRecycleView.visibility = View.GONE
+                binding.tvNoRecipes.visibility = View.VISIBLE
                 binding.searchSwipeRefresh.isRefreshing = false
             }
         }
@@ -76,6 +79,7 @@ class SearchFragment : Fragment() {
             binding.searchSwipeRefresh.isRefreshing = false
             binding.rvSearchRecycleView.visibility = View.GONE
             binding.tvNoRecipes.visibility = View.VISIBLE
+            searchAdapter.updateData(emptyList())
             error?.let {
                 CustomToast(requireContext(), it, R.drawable.error_24px)
                 Log.e(ERROR_TAG, it)

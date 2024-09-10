@@ -57,6 +57,9 @@ dependencies {
     // lottie animation
     implementation("com.airbnb.android:lottie:6.0.0")
 
+    // youtube video player
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+
     // swipe (pull to refresh)
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 

@@ -68,6 +68,19 @@
             app:queryHint="Type ingredients..."
             app:searchHintIcon="@null" />
 
+        <ImageButton
+            android:id="@+id/btn_voice_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/voice_search"
+            android:foregroundGravity="center_vertical"
+            android:src="@drawable/mic_24px"
+            app:layout_constraintBottom_toBottomOf="@id/search"
+            app:layout_constraintEnd_toEndOf="@id/search"
+            app:layout_constraintTop_toTopOf="@id/search" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_searchRecycleView"
