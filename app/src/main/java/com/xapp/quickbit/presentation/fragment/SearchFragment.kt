@@ -1,7 +1,10 @@
 package com.xapp.quickbit.presentation.fragment
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +21,9 @@ import com.xapp.quickbit.viewModel.utils.CustomNotifications.CustomToast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.activity.result.contract.ActivityResultContracts
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -27,6 +32,17 @@ class SearchFragment : Fragment() {
 
     private lateinit var searchAdapter: SearchAdapter
     private val searchViewModel: SearchViewModel by viewModels()
+
+    private val voiceSearchLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == android.app.Activity.RESULT_OK) {
+            val voiceData = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            voiceData?.let {
+                binding.search.setQuery(it[0], true)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +59,19 @@ class SearchFragment : Fragment() {
         setUpRecycleView()
         handleSearchObserving()
         handleSearchFunctionality()
+        handleOnClick()
         handleSwipeRefresh()
     }
 
     private fun showLoading() {
         binding.lottieLoading.visibility = View.VISIBLE
         binding.rvSearchRecycleView.visibility = View.GONE
+    }
+
+    private fun showNoRecipesMessage(){
+        binding.lottieLoading.visibility = View.GONE
+        binding.rvSearchRecycleView.visibility = View.GONE
+        binding.tvNoRecipes.visibility = View.VISIBLE
     }
 
     private fun setUpRecycleView() {
@@ -68,17 +91,14 @@ class SearchFragment : Fragment() {
                 searchAdapter.updateData(searchRecipes)
             } else {
                 searchAdapter.updateData(emptyList())
-                binding.lottieLoading.visibility = View.VISIBLE
-                binding.rvSearchRecycleView.visibility = View.GONE
-                binding.tvNoRecipes.visibility = View.VISIBLE
+                showNoRecipesMessage()
                 binding.searchSwipeRefresh.isRefreshing = false
             }
         }
 
         searchViewModel.error.observe(viewLifecycleOwner) { error ->
             binding.searchSwipeRefresh.isRefreshing = false
-            binding.rvSearchRecycleView.visibility = View.GONE
-            binding.tvNoRecipes.visibility = View.VISIBLE
+            showNoRecipesMessage()
             searchAdapter.updateData(emptyList())
             error?.let {
                 CustomToast(requireContext(), it, R.drawable.error_24px)
@@ -109,6 +129,33 @@ class SearchFragment : Fragment() {
             val imm =
                 requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT)
+        }
+    }
+
+    private fun handleOnClick() {
+        binding.btnVoiceSearch.setOnClickListener {
+            handleVoiceSearch()
+        }
+    }
+
+    private fun handleVoiceSearch() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            putExtra(RecognizerIntent.EXTRA_PROMPT, "Say a recipe name")
+        }
+
+        try {
+            voiceSearchLauncher.launch(intent)
+        } catch (e: ActivityNotFoundException) {
+            CustomToast(
+                requireContext(),
+                "Voice search not supported on your device",
+                R.drawable.error_24px
+            )
         }
     }
 
@@ -157,6 +204,3 @@ class SearchFragment : Fragment() {
         const val SEARCH_MEAL_DETAIL_BUNDLE_KEY = "searchMealDetail"
     }
 }
-
-
-
