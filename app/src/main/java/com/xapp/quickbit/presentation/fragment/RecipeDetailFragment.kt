@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.xapp.quickbit.R
 import com.xapp.quickbit.data.source.local.entity.MealInformationEntity
 import com.xapp.quickbit.data.source.local.entity.MyRecipesEntity
@@ -41,20 +42,15 @@ class RecipeDetailFragment : Fragment() {
     private var _binding: FragmentRecipeDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var userPermissionSharedPreferences: SharedPreferences
+    private lateinit var youtubePlayerView: YouTubePlayerView
+
     private val favouriteRecipesViewModel: FavouriteRecipesViewModel by viewModels()
 
     private var isSaved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        sharedPreferences =
-            requireContext().getSharedPreferences(
-                "favourite_recipes_details",
-                AppCompatActivity.MODE_PRIVATE
-            )
 
         userPermissionSharedPreferences = requireContext().getSharedPreferences(
             "user_Info",
@@ -73,9 +69,15 @@ class RecipeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ensureYoutubePlayerObservingLifeCycle()
         init()
         handleOnClick()
         handleSwipeRefresh()
+    }
+
+    private fun ensureYoutubePlayerObservingLifeCycle() {
+        youtubePlayerView = binding.recipeDetailYoutubePlayer
+        lifecycle.addObserver(youtubePlayerView)
     }
 
     private fun init() {
@@ -101,18 +103,24 @@ class RecipeDetailFragment : Fragment() {
             .firstOrNull()
     }
 
+    private fun getMealInformationEntityFromArguments(): MyRecipesEntity? {
+        val keys = listOf(
+            CREATED_RECIPE_BUNDLE_KEY,
+            DASHBOARD_BUNDLE_KEY
+        )
+        return keys.asSequence()
+            .mapNotNull { key -> arguments?.getParcelable<MyRecipesEntity>(key) }
+            .firstOrNull()
+    }
 
     private fun getMealData(): Any? {
-        val gson = Gson()
-        val mealJson = sharedPreferences.getString(KEY_FAVOURITE_MEAL_BUNDLE_KEY, null)
-        val mealFromPrefs = gson.fromJson(mealJson, MealInformationEntity::class.java)
 
+        val mealFromPrefs =
+            arguments?.getParcelable<MealInformationEntity>(KEY_FAVOURITE_MEAL_BUNDLE_KEY)
 
         val mealDetail = getMealDetailFromArguments()
 
-        val myCreatedRecipesDetails =
-            arguments?.getParcelable<MyRecipesEntity>(CREATED_RECIPE_BUNDLE_KEY)
-                ?: arguments?.getParcelable(DASHBOARD_BUNDLE_KEY)
+        val myCreatedRecipesDetails = getMealInformationEntityFromArguments()
 
         return mealDetail ?: mealFromPrefs ?: myCreatedRecipesDetails
     }
@@ -194,21 +202,37 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.ivYoutubeRecipe.setOnClickListener {
-            val youtubeUrl = arguments?.getParcelable<MealDetail>(HOME_BUNDLE_KEY)?.strYoutube
-                ?: arguments?.getParcelable<MyRecipesEntity>("myCreateRecipe")?.mealYoutubeLink
-            youtubeUrl?.let { url ->
-                try {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                    startActivity(intent)
-                } catch (e: Exception) {
-                    CustomToast(
-                        requireContext(),
-                        "No app available to open this link",
-                        R.drawable.error_24px
-                    )
-                }
-            } ?: CustomToast(requireContext(), "No YouTube link available", R.drawable.error_24px)
+            showYouTubePlayer()
         }
+
+    }
+
+    private fun showYouTubePlayer() {
+        val youtubeUrl = getMealDetailFromArguments()?.strYoutube
+            ?: getMealInformationEntityFromArguments()?.mealYoutubeLink
+            ?: arguments?.getParcelable<MealInformationEntity>(KEY_FAVOURITE_MEAL_BUNDLE_KEY)?.mealYoutubeLink
+
+        youtubeUrl?.let { url ->
+            val videoId = extractYoutubeVideoId(url)
+            if (videoId != null) {
+                youtubePlayerView.addYouTubePlayerListener(object :
+                    AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        youTubePlayer.cueVideo(videoId, 0f)
+                    }
+                })
+                binding.recipeDetailYoutubePlayer.visibility = View.VISIBLE
+            } else {
+                CustomToast(requireContext(), "Invalid YouTube link", R.drawable.error_24px)
+            }
+        } ?: CustomToast(requireContext(), "No YouTube link available", R.drawable.error_24px)
+    }
+
+    private fun extractYoutubeVideoId(youtubeUrl: String): String? {
+        val regex =
+            "(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|\\/e\\/|watch\\?v%3D|watch\\?v%3D|^youtu.be\\/|\\/embed\\/)([^#&?\\n]+)".toRegex()
+        val match = regex.find(youtubeUrl)
+        return match?.value
     }
 
     private fun checkIfItemSaveOrNot() {
@@ -393,5 +417,10 @@ class RecipeDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        youtubePlayerView.release()
     }
 }
