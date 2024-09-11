@@ -89,6 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/letterSpinnerFilter_margin_top"
+                android:background="?attr/color"
                 android:entries="@array/letters_array"
                 android:gravity="center"
                 android:padding="@dimen/letterSpinnerFilter_padding"

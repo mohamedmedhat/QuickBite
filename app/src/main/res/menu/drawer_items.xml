@@ -27,4 +27,11 @@
         android:iconTint="@color/gray"
         android:title="Game" />
 
+    <item
+        android:id="@+id/settingsFragment"
+        android:contentDescription="settings"
+        android:icon="@drawable/setting"
+        android:iconTint="@color/gray"
+        android:title="settings" />
+
 </menu>

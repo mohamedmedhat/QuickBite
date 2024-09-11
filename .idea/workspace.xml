@@ -9,11 +9,6 @@
       </config>
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/dialog_background_rounded.xml">
-        <config>
-          <theme>@style/Theme.QuickBit</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_auth.xml">
         <config>
           <theme>@style/Theme.QuickBit</theme>
@@ -144,6 +139,11 @@
           <theme>@style/Theme.QuickBit</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
+        <config>
+          <theme>@style/Theme.QuickBit</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_splash.xml">
         <config>
           <theme>@style/Theme.QuickBit</theme>
@@ -194,6 +194,11 @@
           <theme>@style/Theme.QuickBit</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/xml/preferences.xml">
+        <config>
+          <theme>@style/Theme.QuickBit</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -201,8 +206,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47913eac-c665-4ae5-908e-7dcc5585bc41" name="Changes" comment="fix the 291 error which make by the last merge">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SettingsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/SearchFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/activity/RecipeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/activity/RecipeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_items.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/recipe_nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/recipe_nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,19 +256,19 @@
         <option value="navigationResourceFile" />
         <option value="valueResourceFile" />
         <option value="Kotlin Object" />
-        <option value="resourceFile" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/AlertDialog" />
+        <entry key="$PROJECT_DIR$" value="feature/UnitTesting" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -284,7 +296,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "feature/videoPlayer",
+    "git-widget-placeholder": "feature/settings",
     "last_directory_selection": "E:/temporaryProjects/qqqqqqq/QuickBite/app/src/main/res/drawable",
     "last_opened_file_path": "E:/projectsTwo/uuuuuuu/EasyFood",
     "project.structure.last.edited": "Dependencies",
@@ -535,7 +547,7 @@
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt</url>
           <line>396</line>
-          <properties class="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment" method="handleSwipeRefresh">
+          <properties class="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -544,7 +556,7 @@
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/xapp/quickbit/presentation/fragment/RecipeDetailFragment.kt</url>
           <line>82</line>
-          <properties class="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment" method="init">
+          <properties class="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

@@ -14,6 +14,7 @@
     <color name="silver">#C0C0C0</color>
     <color name="bronze">#CD7F32</color>
     <color name="light_gray">#81E6D8D8</color>
+    <color name="lighter_gray">#16050505</color>
 
     <array name="swipe_refresh_colors">
         <item>@color/darkGreen</item>

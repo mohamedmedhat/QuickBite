@@ -32,7 +32,6 @@
                 android:id="@+id/tv_no_recipes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/no_recipes_here"
                 android:textColor="@color/gray"

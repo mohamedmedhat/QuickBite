@@ -145,12 +145,49 @@
     <string name="please_provide_video_url_msg">يرجى توفير رابط الفيديو أو رفع فيديو.</string>
     <string name="choose_video_or_url_msg">يرجى اختيار ملف فيديو أو رابط فيديو، وليس كلاهما.</string>
     <string name="name_and_desc_cant_be_empty">الاسم والوصف لا يمكن أن يكونا فارغين</string>
-    <string name="area">area</string>
-    <string name="recommended">recommended</string>
-    <string name="signout">SignOut</string>
-    <string name="generate">Generate</string>
-    <string name="generate_your_random_recipe">Generate your Random Recipe</string>
-    <string name="game">Game</string>
-    <string name="voice_search">voice_search</string>
+    <string name="area">منطقة</string>
+    <string name="recommended">موصى به</string>
+    <string name="signout">تسجيل الخروج</string>
+    <string name="generate">إنشاء</string>
+    <string name="generate_your_random_recipe">إنشاء وصفة عشوائية</string>
+    <string name="game">لعبة</string>
+    <string name="voice_search">بحث صوتي</string>
+    <string name="no_content_currently">لا يوجد محتوى حاليًا..</string>
 
+    <string-array name="theme_names">
+        <item>أخضر</item>
+        <item>أبيض</item>
+        <item>أحمر</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>green</item>
+        <item>white</item>
+        <item>red</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>عربي</item>
+        <item>إنجليزي</item>
+        <item>إسباني</item>
+        <item>ألماني</item>
+        <item>صيني</item>
+        <item>برتغالي</item>
+        <item>روسي</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>ar</item>
+        <item>en</item>
+        <item>es</item>
+        <item>de</item>
+        <item>zh</item>
+        <item>pt</item>
+        <item>ru</item>
+    </string-array>
+
+    <string name="voice_recognaizing_failed_msg">التحقق من الصوت غير مدعوم على جهازك.</string>
+    <string name="unknown_command">أمر غير معروف</string>
+    <string name="recognition_failed_msg">فشل التعرف</string>
+    <string name="permission_denied_msg">تم رفض الإذن لقراءة التخزين الخاص بك</string>
 </resources>

@@ -129,25 +129,63 @@
     <string name="profile_image">Изображение профиля</string>
     <string name="profile_cover">Обложка профиля</string>
     <string name="recipe_details_star_rate">Рейтинг рецепта по звездам</string>
-    <string name="delete_dialog_btn_title" translatable="false">Удалить</string>
-    <string name="login_success_msg" translatable="false">"Вы успешно вошли"</string>
-    <string name="auth_failed_msg" translatable="false">Ошибка аутентификации.</string>
-    <string name="google_signin_failed_msg" translatable="false">Не удалось войти через Google</string>
-    <string name="register_success_msg" translatable="false">Вы успешно зарегистрировались</string>
-    <string name="register_failed_msg" translatable="false">Регистрация не удалась. Пожалуйста, попробуйте снова.</string>
-    <string name="failed_get_data_msg" translatable="false">Не удалось получить данные</string>
-    <string name="delete_dialog_title" translatable="false">Удалить элемент</string>
-    <string name="delete_dialog_message" translatable="false">Вы уверены, что хотите удалить этот элемент?</string>
-    <string name="item_created_successfully_msg" translatable="false">Элемент успешно создан</string>
-    <string name="item_removed_successfully_msg" translatable="false">Элемент успешно удален</string>
-    <string name="please_provide_video_url_msg" translatable="false">Пожалуйста, предоставьте URL видео или загрузите видео.</string>
-    <string name="choose_video_or_url_msg" translatable="false">Пожалуйста, выберите либо видеофайл, либо URL видео, но не оба.</string>
-    <string name="name_and_desc_cant_be_empty" translatable="false">Имя и описание не могут быть пустыми</string>
-    <string name="area">area</string>
-    <string name="recommended">recommended</string>
-    <string name="signout">SignOut</string>
-    <string name="generate">Generate</string>
-    <string name="generate_your_random_recipe">Generate your Random Recipe</string>
-    <string name="game">Game</string>
-    <string name="voice_search">voice_search</string>
+    <string name="delete_dialog_btn_title">Удалить</string>
+    <string name="login_success_msg">"Вы успешно вошли"</string>
+    <string name="auth_failed_msg">Ошибка аутентификации.</string>
+    <string name="google_signin_failed_msg">Не удалось войти через Google</string>
+    <string name="register_success_msg">Вы успешно зарегистрировались</string>
+    <string name="register_failed_msg">Регистрация не удалась. Пожалуйста, попробуйте снова.</string>
+    <string name="failed_get_data_msg">Не удалось получить данные</string>
+    <string name="delete_dialog_title">Удалить элемент</string>
+    <string name="delete_dialog_message">Вы уверены, что хотите удалить этот элемент?</string>
+    <string name="item_created_successfully_msg">Элемент успешно создан</string>
+    <string name="item_removed_successfully_msg">Элемент успешно удален</string>
+    <string name="please_provide_video_url_msg">Пожалуйста, предоставьте URL видео или загрузите видео.</string>
+    <string name="choose_video_or_url_msg">Пожалуйста, выберите либо видеофайл, либо URL видео, но не оба.</string>
+    <string name="name_and_desc_cant_be_empty">Имя и описание не могут быть пустыми</string>
+    <string name="area">Область</string>
+    <string name="recommended">Рекомендуется</string>
+    <string name="signout">Выйти</string>
+    <string name="generate">Создать</string>
+    <string name="generate_your_random_recipe">Создать случайный рецепт</string>
+    <string name="game">Игра</string>
+    <string name="voice_search">Поиск голосом</string>
+    <string name="no_content_currently">В данный момент нет контента..</string>
+
+    <string-array name="theme_names">
+        <item>Зеленый</item>
+        <item>Белый</item>
+        <item>Красный</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>green</item>
+        <item>white</item>
+        <item>red</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>Арабский</item>
+        <item>Английский</item>
+        <item>Испанский</item>
+        <item>Немецкий</item>
+        <item>Китайский</item>
+        <item>Португальский</item>
+        <item>Русский</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>ar</item>
+        <item>en</item>
+        <item>es</item>
+        <item>de</item>
+        <item>zh</item>
+        <item>pt</item>
+        <item>ru</item>
+    </string-array>
+
+    <string name="voice_recognaizing_failed_msg">Распознавание речи не поддерживается на вашем устройстве.</string>
+    <string name="unknown_command">Неизвестная команда</string>
+    <string name="recognition_failed_msg">Ошибка распознавания</string>
+    <string name="permission_denied_msg">Разрешение на чтение вашего хранилища отклонено</string>
 </resources>

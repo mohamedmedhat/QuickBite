@@ -145,11 +145,50 @@
     <string name="please_provide_video_url_msg">请提供视频链接或上传视频。</string>
     <string name="choose_video_or_url_msg">请选择视频文件或视频链接，而不是两者。</string>
     <string name="name_and_desc_cant_be_empty">名称和描述不能为空</string>
-    <string name="area">area</string>
-    <string name="recommended">recommended</string>
-    <string name="signout">SignOut</string>
-    <string name="generate">Generate</string>
-    <string name="generate_your_random_recipe">Generate your Random Recipe</string>
-    <string name="game">Game</string>
-    <string name="voice_search">voice_search</string>
+    <string name="area">区域</string>
+    <string name="recommended">推荐</string>
+    <string name="signout">登出</string>
+    <string name="generate">生成</string>
+    <string name="generate_your_random_recipe">生成随机食谱</string>
+    <string name="game">游戏</string>
+    <string name="voice_search">语音搜索</string>
+    <string name="no_content_currently">当前没有内容..</string>
+
+    <string-array name="theme_names">
+        <item>绿色</item>
+        <item>白色</item>
+        <item>红色</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>green</item>
+        <item>white</item>
+        <item>red</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>阿拉伯语</item>
+        <item>英语</item>
+        <item>西班牙语</item>
+        <item>德语</item>
+        <item>中文</item>
+        <item>葡萄牙语</item>
+        <item>俄语</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>ar</item>
+        <item>en</item>
+        <item>es</item>
+        <item>de</item>
+        <item>zh</item>
+        <item>pt</item>
+        <item>ru</item>
+    </string-array>
+
+    <string name="voice_recognaizing_failed_msg">您的设备不支持语音识别。</string>
+    <string name="unknown_command">未知命令</string>
+    <string name="recognition_failed_msg">识别失败</string>
+    <string name="permission_denied_msg">未授权读取您的存储</string>
+
 </resources>

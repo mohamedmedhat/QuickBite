@@ -74,7 +74,8 @@ class RecipeActivity : AppCompatActivity() {
                 R.id.myRecipesFragment,
                 R.id.dashboardFragment,
                 R.id.profileFragment,
-                R.id.gameFragment
+                R.id.gameFragment,
+                R.id.settingsFragment
             ),
             binding.drawerLayout
         )

@@ -176,4 +176,22 @@
             android:id="@+id/action_gameFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_guideFragment"
+            app:destination="@id/guideFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/guideFragment"
+        android:name="com.xapp.quickbit.presentation.fragment.GuideFragment"
+        android:label="fragment_guide"
+        tools:layout="@layout/fragment_guide" />
 </navigation>
