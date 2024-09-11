@@ -143,12 +143,49 @@
     <string name="please_provide_video_url_msg">Forneça uma URL de vídeo ou carregue um vídeo.</string>
     <string name="choose_video_or_url_msg">Escolha um arquivo de vídeo ou uma URL de vídeo, não ambos.</string>
     <string name="name_and_desc_cant_be_empty">O nome e a descrição não podem estar vazios</string>
-    <string name="area">area</string>
-    <string name="recommended">recommended</string>
-    <string name="signout">SignOut</string>
-    <string name="generate">Generate</string>
-    <string name="generate_your_random_recipe">Generate your Random Recipe</string>
-    <string name="game">Game</string>
-    <string name="voice_search">voice_search</string>
+    <string name="area">Área</string>
+    <string name="recommended">Recomendado</string>
+    <string name="signout">Sair</string>
+    <string name="generate">Gerar</string>
+    <string name="generate_your_random_recipe">Gere sua Receita Aleatória</string>
+    <string name="game">Jogo</string>
+    <string name="voice_search">Busca por voz</string>
+    <string name="no_content_currently">Nenhum conteúdo no momento..</string>
 
+    <string-array name="theme_names">
+        <item>Verde</item>
+        <item>Branco</item>
+        <item>Vermelho</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>green</item>
+        <item>white</item>
+        <item>red</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>Árabe</item>
+        <item>Inglês</item>
+        <item>Espanhol</item>
+        <item>Alemão</item>
+        <item>Chinês</item>
+        <item>Português</item>
+        <item>Russo</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>ar</item>
+        <item>en</item>
+        <item>es</item>
+        <item>de</item>
+        <item>zh</item>
+        <item>pt</item>
+        <item>ru</item>
+    </string-array>
+
+    <string name="voice_recognaizing_failed_msg">Reconhecimento de voz não é suportado no seu dispositivo.</string>
+    <string name="unknown_command">Comando desconhecido</string>
+    <string name="recognition_failed_msg">Falha no reconhecimento</string>
+    <string name="permission_denied_msg">Permissão negada para ler seu armazenamento</string>
 </resources>

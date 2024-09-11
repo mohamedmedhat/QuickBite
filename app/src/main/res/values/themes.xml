@@ -13,6 +13,7 @@
         <item name="colorSecondary">#FB0303</item>
         <item name="colorOnSecondary">#575656</item>
         <item name="colorOnPrimary">#9CECE3E3</item>
+        <item name="subheaderColor">@color/gray</item>
     </style>
 
 

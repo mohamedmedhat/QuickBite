@@ -307,16 +307,36 @@
         <item>Grilling</item>
     </string-array>
 
-    <string-array name="theme_names" translatable="false">
+    <string-array name="theme_names">
         <item>Green</item>
         <item>White</item>
         <item>RED</item>
     </string-array>
 
-    <string-array name="theme_values" translatable="false">
+    <string-array name="theme_values">
         <item>green</item>
         <item>white</item>
         <item>red</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>Arabic</item>
+        <item>English</item>
+        <item>Spanish</item>
+        <item>German</item>
+        <item>Chinese</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>ar</item>
+        <item>en</item>
+        <item>es</item>
+        <item>de</item>
+        <item>zh</item>
+        <item>pt</item>
+        <item>ru</item>
     </string-array>
 
 
@@ -385,15 +405,16 @@
     <string name="please_provide_video_url_msg">Please provide a video URL or upload a video.</string>
     <string name="choose_video_or_url_msg">Please choose either a video file or a video URL, not both.</string>
     <string name="name_and_desc_cant_be_empty">Name and Description cannot be empty</string>
-    <string name="voice_recognaizing_failed_msg" translatable="false">Speech recognition is not supported on your device.</string>
-    <string name="unknown_command" translatable="false">Unknown command</string>
-    <string name="recognition_failed_msg" translatable="false">Recognition Failed</string>
+    <string name="voice_recognaizing_failed_msg">Speech recognition is not supported on your device.</string>
+    <string name="unknown_command">Unknown command</string>
+    <string name="recognition_failed_msg">Recognition Failed</string>
     <string name="area">area</string>
     <string name="recommended">recommended</string>
     <string name="signout">SignOut</string>
     <string name="generate">Generate</string>
     <string name="generate_your_random_recipe">Generate your Random Recipe</string>
     <string name="game">Game</string>
-    <string name="permission_denied_msg" translatable="false">Permission denied to read your storage</string>
+    <string name="permission_denied_msg">Permission denied to read your storage</string>
     <string name="voice_search">voice_search</string>
+    <string name="no_content_currently">No Content Currently..</string>
 </resources>

@@ -3,11 +3,14 @@ package com.xapp.quickbit.presentation.fragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.xapp.quickbit.R
+import java.util.Locale
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -18,6 +21,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val themePreference = findPreference<ListPreference>("theme_key")
         themePreference?.setOnPreferenceChangeListener { _, newValue ->
             changeTheme(newValue.toString())
+            true
+        }
+
+        val languagePreference = findPreference<ListPreference>("language_key")
+        languagePreference?.setOnPreferenceChangeListener { _, newValue ->
+            changeLanguage(newValue.toString())
             true
         }
 
@@ -42,23 +51,45 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun changeTheme(theme: String) {
-        // Apply the theme dynamically
         when (theme) {
-            "green" -> { /* Set green theme */
+            "green" -> {
+                requireActivity().setTheme(R.style.Theme_Green)
             }
 
-            "white" -> { /* Set white theme */
+            "red" -> {
+                requireActivity().setTheme(R.style.Theme_Red)
             }
-            // Handle other themes
         }
+        requireActivity().recreate()
+    }
+
+    private fun changeLanguage(lang: String) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = requireContext().resources.configuration
+        config.setLocale(locale)
+        requireContext().createConfigurationContext(config)
+
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        requireActivity().recreate()
     }
 
     private fun displayDarkMode() {
-
+        val darkModePreference = findPreference<SwitchPreferenceCompat>("dark_mode_key")
+        if (darkModePreference != null) {
+            val isDarkModeEnabled = darkModePreference.isChecked
+            if (isDarkModeEnabled) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            requireActivity().recreate()
+        }
     }
 
     private fun goToGuide() {
-
+        findNavController().navigate(R.id.action_settingsFragment_to_guideFragment)
     }
 
     private fun openFeedbackForm() {

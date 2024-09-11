@@ -145,11 +145,49 @@
     <string name="please_provide_video_url_msg">Proporcione una URL de video o suba un video.</string>
     <string name="choose_video_or_url_msg">Elija un archivo de video o una URL de video, no ambos.</string>
     <string name="name_and_desc_cant_be_empty">El nombre y la descripción no pueden estar vacíos</string>
-    <string name="area">area</string>
-    <string name="recommended">recommended</string>
-    <string name="signout">SignOut</string>
-    <string name="generate">Generate</string>
-    <string name="generate_your_random_recipe">Generate your Random Recipe</string>
-    <string name="game">Game</string>
-    <string name="voice_search">voice_search</string>
+    <string name="area">Área</string>
+    <string name="recommended">Recomendado</string>
+    <string name="signout">Cerrar sesión</string>
+    <string name="generate">Generar</string>
+    <string name="generate_your_random_recipe">Genera tu receta aleatoria</string>
+    <string name="game">Juego</string>
+    <string name="voice_search">Búsqueda por voz</string>
+    <string name="no_content_currently">No hay contenido actualmente..</string>
+
+    <string-array name="theme_names">
+        <item>Verde</item>
+        <item>Blanco</item>
+        <item>Rojo</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>green</item>
+        <item>white</item>
+        <item>red</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>Árabe</item>
+        <item>Inglés</item>
+        <item>Español</item>
+        <item>Alemán</item>
+        <item>Chino</item>
+        <item>Portugués</item>
+        <item>Ruso</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>ar</item>
+        <item>en</item>
+        <item>es</item>
+        <item>de</item>
+        <item>zh</item>
+        <item>pt</item>
+        <item>ru</item>
+    </string-array>
+
+    <string name="voice_recognaizing_failed_msg">El reconocimiento de voz no es compatible con tu dispositivo.</string>
+    <string name="unknown_command">Comando desconocido</string>
+    <string name="recognition_failed_msg">Reconocimiento fallido</string>
+    <string name="permission_denied_msg">Permiso denegado para leer tu almacenamiento</string>
 </resources>
