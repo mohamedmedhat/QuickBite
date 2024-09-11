@@ -307,6 +307,18 @@
         <item>Grilling</item>
     </string-array>
 
+    <string-array name="theme_names" translatable="false">
+        <item>Green</item>
+        <item>White</item>
+        <item>RED</item>
+    </string-array>
+
+    <string-array name="theme_values" translatable="false">
+        <item>green</item>
+        <item>white</item>
+        <item>red</item>
+    </string-array>
+
 
     <string name="get_started">Get Started</string>
     <string name="this_is_intro_image_desc">this is intro image</string>

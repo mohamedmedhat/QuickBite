@@ -42,7 +42,8 @@
     <style name="items_icons_text_style">
         <item name="android:textSize">@dimen/tv_SearchlocationIconText_text_size</item>
         <item name="android:layout_marginEnd">@dimen/tv_SearchlocationIconText_margin_end</item>
-        <item name="android:layout_marginBottom">@dimen/tv_SearchlocationIconText_margin_bottom</item>
+        <item name="android:layout_marginBottom">@dimen/tv_SearchlocationIconText_margin_bottom
+        </item>
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textStyle">bold</item>
     </style>

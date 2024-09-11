@@ -63,6 +63,9 @@ dependencies {
     // swipe (pull to refresh)
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 
+    // preference for settings screen
+    implementation("androidx.preference:preference-ktx:1.2.1")
+
     // Room dependencies
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")

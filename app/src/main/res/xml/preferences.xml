@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="appearance_category"
+        android:title="appearance">
+        <ListPreference
+            android:defaultValue="green"
+            android:entries="@array/theme_names"
+            android:entryValues="@array/theme_values"
+            android:icon="@drawable/palette_24px"
+            android:key="theme_key"
+            android:summary="Choose your preferred app color theme"
+            android:title="Select Theme" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="mode_category"
+        android:title="Display Mode">
+
+        <SwitchPreferenceCompat
+            android:icon="@drawable/dark_mode_24px"
+            android:key="dark_mode_key"
+            android:summary="Switch to dark mode for better night-time viewing"
+            android:title="Enable Dark Mode" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="help_category"
+        android:title="Help &amp; Feedback">
+
+        <Preference
+            android:icon="@drawable/developer_guide_24px"
+            android:key="guide_key"
+            android:summary="explore how to use QuickBite and know its feature"
+            android:title="Guide" />
+
+        <Preference
+            android:icon="@drawable/mail_24px"
+            android:key="feedback_key"
+            android:summary="Tell us what you think"
+            android:title="Send Feedback" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
