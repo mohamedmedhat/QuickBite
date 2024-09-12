@@ -3,56 +3,56 @@
 
     <PreferenceCategory
         android:key="appearance_category"
-        android:title="appearance">
+        android:title="@string/preference_appearance">
         <ListPreference
             android:defaultValue="green"
             android:entries="@array/theme_names"
             android:entryValues="@array/theme_values"
             android:icon="@drawable/palette_24px"
             android:key="theme_key"
-            android:summary="Choose your preferred app color theme"
-            android:title="Select Theme" />
+            android:summary="@string/preference_select_theme_desc"
+            android:title="@string/preference_select_theme" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="language_category"
-        android:title="Language">
+        android:title="@string/preference_Language">
         <ListPreference
             android:defaultValue="en"
             android:entries="@array/language_names"
             android:entryValues="@array/language_codes"
             android:icon="@drawable/language_24px"
             android:key="language_key"
-            android:summary="Select your preferred language"
-            android:title="Choose Language" />
+            android:summary="@string/preference_select_Language"
+            android:title="@string/preference_Choose_Language" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="mode_category"
-        android:title="Display Mode">
+        android:title="@string/preference_Display_Mode">
 
         <SwitchPreferenceCompat
             android:icon="@drawable/dark_mode_24px"
             android:key="dark_mode_key"
-            android:summary="Switch to dark mode for better night-time viewing"
-            android:title="Enable Dark Mode" />
+            android:summary="@string/preference_dark_mode_desc"
+            android:title="@string/preference_Enable_Dark_Mode" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="help_category"
-        android:title="Help &amp; Feedback">
+        android:title="@string/preference_help">
 
         <Preference
             android:icon="@drawable/developer_guide_24px"
             android:key="guide_key"
-            android:summary="explore how to use QuickBite and know its feature"
-            android:title="Guide" />
+            android:summary="@string/preference_guide_desc"
+            android:title="@string/preference_Guide" />
 
         <Preference
             android:icon="@drawable/mail_24px"
             android:key="feedback_key"
-            android:summary="Tell us what you think"
-            android:title="Send Feedback" />
+            android:summary="@string/preference_feedback_desc"
+            android:title="@string/preference_Send_Feedback" />
     </PreferenceCategory>
 
 </PreferenceScreen>

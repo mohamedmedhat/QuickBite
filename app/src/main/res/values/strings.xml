@@ -417,4 +417,26 @@
     <string name="permission_denied_msg">Permission denied to read your storage</string>
     <string name="voice_search">voice_search</string>
     <string name="no_content_currently">No Content Currently..</string>
+    <string name="user_example_com">user@example.com</string>
+    <string name="drawer_header_profile_image">drawer header profile image</string>
+    <string name="drawer_my_recipes">My Recipes</string>
+    <string name="drawer_dashboard">Dashboard</string>
+    <string name="drawer_profile">Profile</string>
+    <string name="drawer_game">Game</string>
+    <string name="drawer_settings">settings</string>
+    <string name="preference_select_theme">Select Theme</string>
+    <string name="preference_select_theme_desc"> Choose your preferred app color theme</string>
+    <string name="preference_appearance">appearance</string>
+    <string name="preference_Language">Language</string>
+    <string name="preference_Choose_Language">Choose Language</string>
+    <string name="preference_select_Language">Select your preferred language</string>
+    <string name="preference_Display_Mode">Display Mode</string>
+    <string name="preference_Enable_Dark_Mode">Enable Dark Mode</string>
+    <string name="preference_dark_mode_desc">Switch to dark mode for better night-time viewing</string>
+    <string name="preference_help">Help &amp; Feedback</string>
+    <string name="preference_Guide">Guide</string>
+    <string name="preference_guide_desc">explore how to use QuickBite and know its feature</string>
+    <string name="preference_Send_Feedback">Send Feedback</string>
+    <string name="preference_feedback_desc">Tell us what you think</string>
+
 </resources>

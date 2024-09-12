@@ -5,33 +5,33 @@
         android:id="@+id/myRecipesFragment"
         android:contentDescription="nav to my recipes"
         android:icon="@drawable/menu_book_24px"
-        android:title="My Recipes" />
+        android:title="@string/drawer_my_recipes" />
 
     <item
         android:id="@+id/dashboardFragment"
         android:contentDescription="nav to dashboard"
         android:icon="@drawable/emoji_events_24px"
         android:iconTint="@color/gray"
-        android:title="Dashboard" />
+        android:title="@string/drawer_dashboard" />
 
     <item
         android:id="@+id/profileFragment"
         android:contentDescription="nav to profile"
         android:icon="@drawable/profile"
-        android:title="Profile" />
+        android:title="@string/drawer_profile" />
 
     <item
         android:id="@+id/gameFragment"
         android:contentDescription="game"
         android:icon="@drawable/toys_and_games_24px"
         android:iconTint="@color/gray"
-        android:title="Game" />
+        android:title="@string/drawer_game" />
 
     <item
         android:id="@+id/settingsFragment"
         android:contentDescription="settings"
         android:icon="@drawable/setting"
         android:iconTint="@color/gray"
-        android:title="settings" />
+        android:title="@string/drawer_settings" />
 
 </menu>

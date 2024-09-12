@@ -21,11 +21,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_content_currently"
-        android:textStyle="bold"
-        android:textSize="24sp"
+        android:layout_marginHorizontal="5dp"
+        android:ellipsize="middle"
         android:fontFamily="@font/poppins_medium"
-        android:letterSpacing=".1"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/no_content_currently"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lottie" />

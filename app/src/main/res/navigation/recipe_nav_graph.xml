@@ -11,11 +11,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_recipeFragment"
-            app:destination="@id/recipeFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_in" />
-        <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
         <action
@@ -53,19 +48,10 @@
             app:destination="@id/gameFragment" />
     </fragment>
     <fragment
-        android:id="@+id/recipeFragment"
-        android:name="com.xapp.quickbit.presentation.fragment.CategoryRecipeDetailFragment"
-        android:label="fragment_recipe"
-        tools:layout="@layout/fragment_category_recipe_detail">
-        <action
-            android:id="@+id/action_recipeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/searchFragment"
         android:name="com.xapp.quickbit.presentation.fragment.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment"
@@ -78,7 +64,7 @@
         android:id="@+id/favouriteFragment"
         android:name="com.xapp.quickbit.presentation.fragment.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" >
+        tools:layout="@layout/fragment_favourite">
         <action
             android:id="@+id/action_favouriteFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment"
@@ -91,7 +77,7 @@
         android:id="@+id/recipeDetailFragment"
         android:name="com.xapp.quickbit.presentation.fragment.RecipeDetailFragment"
         android:label="fragment_recipe_detail"
-        tools:layout="@layout/fragment_recipe_detail" >
+        tools:layout="@layout/fragment_recipe_detail">
         <action
             android:id="@+id/action_recipeDetailFragment_to_favouriteFragment"
             app:destination="@id/favouriteFragment"
@@ -103,7 +89,7 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.xapp.quickbit.presentation.fragment.CategoryFragment"
-        android:label="CategoryFragment" >
+        android:label="CategoryFragment">
         <action
             android:id="@+id/action_categoryFragment_to_categoryDetailsFragment"
             app:destination="@id/categoryDetailsFragment"
@@ -115,7 +101,7 @@
     <fragment
         android:id="@+id/categoryDetailsFragment"
         android:name="com.xapp.quickbit.presentation.fragment.CategoryDetailsFragment"
-        android:label="CategoryDetailsFragment" >
+        android:label="CategoryDetailsFragment">
         <action
             android:id="@+id/action_categoryDetailsFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment"
@@ -128,7 +114,7 @@
         android:id="@+id/createRecipeFragment"
         android:name="com.xapp.quickbit.presentation.fragment.CreateRecipeFragment"
         android:label="fragment_create_recipe"
-        tools:layout="@layout/fragment_create_recipe" >
+        tools:layout="@layout/fragment_create_recipe">
         <action
             android:id="@+id/action_createRecipeFragment_to_myRecipesFragment"
             app:destination="@id/myRecipesFragment"
@@ -141,7 +127,7 @@
         android:id="@+id/dashboardFragment"
         android:name="com.xapp.quickbit.presentation.fragment.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment"
@@ -154,7 +140,7 @@
         android:id="@+id/myRecipesFragment"
         android:name="com.xapp.quickbit.presentation.fragment.MyRecipesFragment"
         android:label="fragment_my_recipes"
-        tools:layout="@layout/fragment_my_recipes" >
+        tools:layout="@layout/fragment_my_recipes">
         <action
             android:id="@+id/action_myRecipesFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment"
@@ -171,7 +157,7 @@
         android:id="@+id/gameFragment"
         android:name="com.xapp.quickbit.presentation.fragment.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" >
+        tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
@@ -180,7 +166,7 @@
         android:id="@+id/settingsFragment"
         android:name="com.xapp.quickbit.presentation.fragment.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_guideFragment"
             app:destination="@id/guideFragment"

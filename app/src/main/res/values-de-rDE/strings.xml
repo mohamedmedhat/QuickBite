@@ -188,4 +188,26 @@
     <string name="unknown_command">Unbekannter Befehl</string>
     <string name="recognition_failed_msg">Erkennung fehlgeschlagen</string>
     <string name="permission_denied_msg">Zugriff auf Ihren Speicher verweigert</string>
+    <string name="user_example_com">user@example.com</string>
+    <string name="drawer_header_profile_image">Profilbild im Kopfbereich der Schublade</string>
+    <string name="drawer_my_recipes">Meine Rezepte</string>
+    <string name="drawer_dashboard">Dashboard</string>
+    <string name="drawer_profile">Profil</string>
+    <string name="drawer_game">Spiel</string>
+    <string name="drawer_settings">Einstellungen</string>
+    <string name="preference_select_theme">Thema auswählen</string>
+    <string name="preference_select_theme_desc">Wählen Sie Ihr bevorzugtes Farbschema für die App</string>
+    <string name="preference_appearance">Erscheinungsbild</string>
+    <string name="preference_Language">Sprache</string>
+    <string name="preference_Choose_Language">Sprache auswählen</string>
+    <string name="preference_select_Language">Wählen Sie Ihre bevorzugte Sprache</string>
+    <string name="preference_Display_Mode">Anzeigemodus</string>
+    <string name="preference_Enable_Dark_Mode">Dunkelmodus aktivieren</string>
+    <string name="preference_dark_mode_desc">Wechseln Sie in den Dunkelmodus für eine bessere Ansicht bei Nacht</string>
+    <string name="preference_help">Hilfe &amp; Feedback</string>
+    <string name="preference_Guide">Anleitung</string>
+    <string name="preference_guide_desc">Erkunden Sie, wie man QuickBite verwendet und lernen Sie seine Funktionen kennen</string>
+    <string name="preference_Send_Feedback">Feedback senden</string>
+    <string name="preference_feedback_desc">Teilen Sie uns Ihre Meinung mit</string>
+
 </resources>
