@@ -13,6 +13,7 @@
         android:layout_height="72dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/profile_image_background"
+        android:contentDescription="@string/drawer_header_profile_image"
         android:scaleType="centerCrop"
         android:src="@drawable/profile" />
 
@@ -23,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
         android:gravity="center_horizontal"
-        android:text="User Name"
+        android:text="@string/user_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="?attr/colorAccent" />
 
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="user@example.com"
+        android:text="@string/user_example_com"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="?attr/colorAccent" />
 

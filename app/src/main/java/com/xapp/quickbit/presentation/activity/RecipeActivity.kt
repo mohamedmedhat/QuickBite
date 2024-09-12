@@ -225,7 +225,7 @@ class RecipeActivity : AppCompatActivity() {
 
         when {
             cleanedCommand.contains("open home") -> {
-                findNavController(R.id.fcv_recipeFragmentContainer).navigate(R.id.action_homeFragment_to_recipeFragment)
+
             }
 
             cleanedCommand.contains("open saved") -> {

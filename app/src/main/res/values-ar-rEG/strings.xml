@@ -190,4 +190,26 @@
     <string name="unknown_command">أمر غير معروف</string>
     <string name="recognition_failed_msg">فشل التعرف</string>
     <string name="permission_denied_msg">تم رفض الإذن لقراءة التخزين الخاص بك</string>
+    <string name="user_example_com">user@example.com</string>
+    <string name="drawer_header_profile_image">صورة الملف الشخصي لرأس القائمة</string>
+    <string name="drawer_my_recipes">وصفاتي</string>
+    <string name="drawer_dashboard">لوحة التحكم</string>
+    <string name="drawer_profile">الملف الشخصي</string>
+    <string name="drawer_game">لعبة</string>
+    <string name="drawer_settings">الإعدادات</string>
+    <string name="preference_select_theme">اختر الموضوع</string>
+    <string name="preference_select_theme_desc">اختر نمط اللون المفضل للتطبيق</string>
+    <string name="preference_appearance">المظهر</string>
+    <string name="preference_Language">اللغة</string>
+    <string name="preference_Choose_Language">اختر اللغة</string>
+    <string name="preference_select_Language">اختر اللغة المفضلة لديك</string>
+    <string name="preference_Display_Mode">وضع العرض</string>
+    <string name="preference_Enable_Dark_Mode">تفعيل الوضع الليلي</string>
+    <string name="preference_dark_mode_desc">قم بالتبديل إلى الوضع الليلي لتحسين العرض في الليل</string>
+    <string name="preference_help">المساعدة والملاحظات</string>
+    <string name="preference_Guide">الدليل</string>
+    <string name="preference_guide_desc">استكشف كيفية استخدام QuickBite وتعرف على ميزاته</string>
+    <string name="preference_Send_Feedback">إرسال ملاحظات</string>
+    <string name="preference_feedback_desc">أخبرنا برأيك</string>
+
 </resources>

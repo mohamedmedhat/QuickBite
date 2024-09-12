@@ -190,5 +190,26 @@
     <string name="unknown_command">未知命令</string>
     <string name="recognition_failed_msg">识别失败</string>
     <string name="permission_denied_msg">未授权读取您的存储</string>
+    <string name="user_example_com">user@example.com</string>
+    <string name="drawer_header_profile_image">抽屉标题配置文件图片</string>
+    <string name="drawer_my_recipes">我的食谱</string>
+    <string name="drawer_dashboard">仪表板</string>
+    <string name="drawer_profile">个人资料</string>
+    <string name="drawer_game">游戏</string>
+    <string name="drawer_settings">设置</string>
+    <string name="preference_select_theme">选择主题</string>
+    <string name="preference_select_theme_desc">选择您喜欢的应用程序配色主题</string>
+    <string name="preference_appearance">外观</string>
+    <string name="preference_Language">语言</string>
+    <string name="preference_Choose_Language">选择语言</string>
+    <string name="preference_select_Language">选择您喜欢的语言</string>
+    <string name="preference_Display_Mode">显示模式</string>
+    <string name="preference_Enable_Dark_Mode">启用深色模式</string>
+    <string name="preference_dark_mode_desc">切换到深色模式以获得更好的夜间观看效果</string>
+    <string name="preference_help">帮助和反馈</string>
+    <string name="preference_Guide">指南</string>
+    <string name="preference_guide_desc">探索如何使用QuickBite并了解其功能</string>
+    <string name="preference_Send_Feedback">发送反馈</string>
+    <string name="preference_feedback_desc">告诉我们您的想法</string>
 
 </resources>
