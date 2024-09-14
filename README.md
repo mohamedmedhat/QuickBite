@@ -31,9 +31,23 @@
 **QuickBite** is a feature-rich recipe app developed using modern technologies. It provides an extensive recipe collection with a user-friendly interface and robust functionality.
 
 
-## Features
+## 🚀 Features
 
-- **🌐 Multi-language Support**: Available in 7 languages - Arabic, English, Spanish, Portuguese, German, Russian, and Chinese.
+- **🌐 Multi-language Support**:  
+  Available in 7 languages - Arabic, English, Spanish, Portuguese, German, Russian, and Chinese.
+
+- **📹 Video-Player Support**:  
+  Display YouTube videos inside the app.
+
+- **🎤 Voice-Recognition Support**:  
+  Enable users to give voice commands to the app.
+
+- **📧 Send-Feedback Support**:  
+  Allow users to send their feedback via email.
+
+- **📱 Social-Media-Share Support**:  
+  Enable users to share their favorite recipe images with friends on social media.
+
 
 ---
 
@@ -57,6 +71,7 @@
   - **Favorites**: Access and manage saved recipes, with options to delete.
   - **Search**: Find recipes by name.
   - **Categories**: Filter and view recipes by category.
+  - **AddRecipe**: Add or Create a recipe
  
 ---
 
